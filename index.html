@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		    <style>
+        html, body, #map {
+            width: 100%; height: 100%; padding: 0; margin: 0;
+        }
+    </style>
+		<script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+		<script  type="text/javascript"> 
+			ymaps.ready(init);
+			function init () {
+				var myMap = new ymaps.Map("map", {
+            		center: [53.70, 15.77],
+            		zoom: 5
+        		});
+
+
+				myMap.geoObjects
+        			.add(new ymaps.Placemark([55.022692, 30.801674], {
+            			balloonContent: 'Лиозно, детство'
+        			}, {
+           					iconColor: '#200000'
+       				}))
+       				.add(new ymaps.Placemark([59.942285, 30.308079], {
+            			balloonContent: 'Петербург, обучение'
+        			}, {
+           					iconColor: '#FF2060'
+       				}))	
+       				.add(new ymaps.Placemark([48.862276, 2.346962], {
+            			balloonContent: 'Париж 1911-1914'
+        			}, {
+           					iconColor: '#993044'
+       				}))		
+			}
+		</script>
+	</head>
+
+	<body>
+		<div id="map"></div>
+	</body>
+</html>
