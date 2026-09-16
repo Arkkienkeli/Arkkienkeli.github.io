@@ -1,0 +1,1050 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Karteikarten und Grammatiktraining zum Wortschatz aus Momente A1–A2, Deutsch–Russisch.">
+<meta name="theme-color" content="#EFEEEA">
+<title>Momente Wortschatz — Deutsch/Русский</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Golos+Text:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+:root{
+  --paper:#EFEEEA; --surface:#FFFFFF; --surface-2:#F6F5F2;
+  --ink:#1A1C21; --ink-2:#5B5F69; --ink-3:#8A8E98;
+  --line:#DBD9D3; --line-2:#C8C5BD;
+  --der:#2C5AA0; --die:#AC3557; --das:#2F7358;
+  --der-bg:#E4EBF6; --die-bg:#F7E4EA; --das-bg:#E0EEE7;
+  --good:#2F7358; --bad:#AC3557; --warn:#9A6B15;
+  --shadow:0 1px 2px rgba(26,28,33,.06), 0 8px 24px -12px rgba(26,28,33,.18);
+  --shadow-lift:0 2px 4px rgba(26,28,33,.07), 0 18px 40px -16px rgba(26,28,33,.28);
+  --sans:"Golos Text","Helvetica Neue",Arial,sans-serif;
+  --disp:"Bricolage Grotesque","Golos Text",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#14161A; --surface:#1D2026; --surface-2:#23272E;
+    --ink:#ECEBE7; --ink-2:#A3A8B2; --ink-3:#767B85;
+    --line:#2E333B; --line-2:#3C424B;
+    --der:#83AAE8; --die:#E88BA5; --das:#6DBE9C;
+    --der-bg:#1E2A3C; --die-bg:#33202A; --das-bg:#1C2E28;
+    --good:#6DBE9C; --bad:#E88BA5; --warn:#D2A44A;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+    --shadow-lift:0 2px 4px rgba(0,0,0,.45), 0 18px 40px -16px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#14161A; --surface:#1D2026; --surface-2:#23272E;
+  --ink:#ECEBE7; --ink-2:#A3A8B2; --ink-3:#767B85;
+  --line:#2E333B; --line-2:#3C424B;
+  --der:#83AAE8; --die:#E88BA5; --das:#6DBE9C;
+  --der-bg:#1E2A3C; --die-bg:#33202A; --das-bg:#1C2E28;
+  --good:#6DBE9C; --bad:#E88BA5; --warn:#D2A44A;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+  --shadow-lift:0 2px 4px rgba(0,0,0,.45), 0 18px 40px -16px rgba(0,0,0,.7);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--sans); font-size:15px; line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:860px; margin:0 auto; padding-inline:18px; padding-block:22px 64px;}
+
+.mast{display:flex; align-items:flex-end; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:18px;}
+.mast h1{
+  font-family:var(--disp); font-weight:800; font-size:clamp(26px,5.2vw,38px);
+  line-height:1.02; margin:0; letter-spacing:-.022em; text-wrap:balance;
+}
+.mast h1 .sub{display:block; font-family:var(--mono); font-size:11px; font-weight:500;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3); margin-bottom:8px;}
+.mast-right{display:flex; gap:8px; align-items:center;}
+
+button{font:inherit; color:inherit; cursor:pointer; border:none; background:none;}
+.btn{
+  display:inline-flex; align-items:center; gap:7px;
+  border:1px solid var(--line-2); background:var(--surface); color:var(--ink);
+  border-radius:9px; padding:7px 12px; font-size:13px; font-weight:500;
+  transition:background .12s, border-color .12s, transform .08s;
+}
+.btn:hover{background:var(--surface-2); border-color:var(--ink-3);}
+.btn:active{transform:translateY(1px)}
+.btn.icon{padding:7px 9px;}
+:where(button,input,select,summary,a):focus-visible{outline:2px solid var(--ink); outline-offset:2px; border-radius:8px;}
+
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums;}
+.eyebrow{font-family:var(--mono); font-size:10.5px; font-weight:600; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--ink-3);}
+
+.modes{display:flex; gap:4px; background:var(--surface); border:1px solid var(--line);
+  border-radius:11px; padding:4px; overflow-x:auto; scrollbar-width:none;}
+.modes::-webkit-scrollbar{display:none}
+.modes button{
+  flex:1 0 auto; white-space:nowrap; padding:8px 14px; border-radius:8px;
+  font-size:13.5px; font-weight:600; color:var(--ink-2); transition:background .12s,color .12s;
+}
+.modes button:hover{color:var(--ink)}
+.modes button[aria-selected="true"]{background:var(--ink); color:var(--paper);}
+
+.deckbar{
+  display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+  margin-top:12px; padding:11px 14px; background:var(--surface); border:1px solid var(--line);
+  border-radius:11px;
+}
+.deckstat{display:flex; gap:18px; flex-wrap:wrap; align-items:baseline;}
+.deckstat div{display:flex; gap:6px; align-items:baseline;}
+.deckstat b{font-family:var(--mono); font-size:15px; font-weight:600; font-variant-numeric:tabular-nums;}
+.deckstat span{font-size:12px; color:var(--ink-2);}
+
+.panel{margin-top:10px; border:1px solid var(--line); border-radius:12px;
+  background:var(--surface); overflow:hidden;}
+.panel[hidden]{display:none!important}
+.panel section{padding:14px 15px; border-top:1px solid var(--line);}
+.panel section:first-child{border-top:none}
+.panel h3{margin:0 0 10px; font-family:var(--mono); font-size:10.5px; font-weight:600;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3);}
+.chips{display:flex; flex-wrap:wrap; gap:6px;}
+.chip{
+  border:1px solid var(--line-2); background:var(--surface-2); border-radius:8px;
+  padding:5px 10px; font-size:12.5px; font-weight:500; color:var(--ink-2);
+  transition:background .1s,color .1s,border-color .1s;
+}
+.chip:hover{border-color:var(--ink-3); color:var(--ink);}
+.chip[aria-pressed="true"]{background:var(--ink); border-color:var(--ink); color:var(--paper);}
+.chip .n{font-family:var(--mono); font-size:10.5px; opacity:.6; margin-left:5px;}
+.lessongrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(86px,1fr)); gap:5px;}
+.lessongrid .chip{display:flex; justify-content:space-between; align-items:baseline; padding:5px 8px;}
+.lessongrid .chip .dt{font-family:var(--mono); font-size:11.5px;}
+.quicklinks{display:flex; gap:12px; margin-bottom:9px; flex-wrap:wrap; align-items:baseline;}
+.quicklinks button{font-size:12px; color:var(--ink-2); text-decoration:underline;
+  text-underline-offset:3px; text-decoration-color:var(--line-2);}
+.quicklinks button:hover{color:var(--ink);}
+
+.stage{margin-top:18px;}
+.card-outer{perspective:1400px;}
+.card{
+  position:relative; width:100%; min-height:300px; cursor:pointer;
+  transform-style:preserve-3d; transition:transform .42s cubic-bezier(.4,.16,.2,1);
+}
+.card.flipped{transform:rotateY(180deg);}
+.face{
+  position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden;
+  background:var(--surface); border:1px solid var(--line); border-radius:18px;
+  box-shadow:var(--shadow); padding:26px 26px 22px;
+  display:flex; flex-direction:column;
+}
+.card:hover .face{box-shadow:var(--shadow-lift);}
+.face.back{transform:rotateY(180deg);}
+.card-spacer{min-height:300px; visibility:hidden;}
+.face-top{display:flex; justify-content:space-between; align-items:center; gap:10px; min-height:22px;}
+.face-mid{flex:1; display:flex; flex-direction:column; justify-content:center; gap:12px;
+  padding-block:16px;}
+.face-bot{display:flex; justify-content:space-between; align-items:center; gap:10px; min-height:20px;}
+
+.term{font-family:var(--disp); font-weight:700; letter-spacing:-.02em; line-height:1.1;
+  font-size:clamp(26px,6.4vw,42px); text-wrap:balance; margin:0; overflow-wrap:anywhere;}
+.term.small{font-size:clamp(19px,4.2vw,28px); line-height:1.24;}
+.term .art{color:var(--gcol,var(--ink-2));}
+.trans{font-size:clamp(17px,3.4vw,23px); font-weight:500; line-height:1.34; text-wrap:balance; margin:0; overflow-wrap:anywhere;}
+.gram{display:flex; flex-wrap:wrap; gap:6px;}
+.gtag{
+  font-family:var(--mono); font-size:11px; font-weight:500; padding:3px 8px; border-radius:6px;
+  background:var(--surface-2); color:var(--ink-2); border:1px solid var(--line); white-space:nowrap;
+}
+.gtag.g{background:var(--gbg); color:var(--gcol); border-color:transparent; font-weight:600;}
+.ex{border-top:1px dashed var(--line-2); padding-top:12px; display:flex; flex-direction:column; gap:10px;}
+.ex-item{display:grid; gap:2px;}
+.ex-de{font-family:var(--disp); font-weight:500; font-size:15px; line-height:1.35;}
+.ex-ru{font-size:13.5px; color:var(--ink-2); line-height:1.35;}
+.hint{font-size:12px; color:var(--ink-3);}
+kbd{font-family:var(--mono); font-size:10.5px; border:1px solid var(--line-2);
+  border-bottom-width:2px; border-radius:5px; padding:1px 5px; color:var(--ink-2); background:var(--surface-2);}
+
+.star{font-size:17px; line-height:1; color:var(--ink-3); padding:3px 5px;}
+.star[aria-pressed="true"]{color:var(--warn);}
+
+.rate{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:12px;}
+.rate button{
+  border:1px solid var(--line-2); background:var(--surface); border-radius:11px;
+  padding:12px 8px 10px; display:grid; gap:2px; justify-items:center; transition:.12s;
+}
+.rate button:hover{border-color:var(--ink-3);}
+.rate .lab{font-size:13.5px; font-weight:600;}
+.rate .sub{font-family:var(--mono); font-size:10.5px; color:var(--ink-3);}
+.rate .again{color:var(--bad)} .rate .hard{color:var(--warn)} .rate .good{color:var(--good)}
+.showbtn{width:100%; margin-top:12px; justify-content:center; padding:13px; font-size:14px;
+  font-weight:600; background:var(--ink); color:var(--paper); border:1px solid var(--ink); border-radius:11px;}
+.showbtn:hover{background:var(--ink); color:var(--paper); opacity:.88; border-color:var(--ink);}
+
+.opts{display:grid; gap:8px; margin-top:12px;}
+.opt{
+  text-align:left; border:1px solid var(--line-2); background:var(--surface); border-radius:11px;
+  padding:13px 15px; font-size:15px; line-height:1.35; transition:.12s; width:100%; color:var(--ink);
+}
+.opt:hover:not(:disabled){border-color:var(--ink-3); background:var(--surface-2);}
+.opt:disabled{cursor:default}
+.opt.correct{border-color:var(--good); background:var(--das-bg); color:var(--das);}
+.opt.wrong{border-color:var(--bad); background:var(--die-bg); color:var(--die);}
+.artopts{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:12px;}
+.artopts .opt{text-align:center; font-family:var(--disp); font-weight:700; font-size:20px; padding:16px 8px;}
+.artopts .opt[data-a="der"]{color:var(--der)} .artopts .opt[data-a="die"]{color:var(--die)} .artopts .opt[data-a="das"]{color:var(--das)}
+.artopts .opt.dim{opacity:.32}
+
+.typerow{display:flex; gap:8px; margin-top:12px;}
+.typerow input{
+  flex:1; min-width:0; font:600 17px/1.3 var(--disp); padding:13px 15px; color:var(--ink);
+  background:var(--surface); border:1px solid var(--line-2); border-radius:11px;
+}
+.typerow input.ok{border-color:var(--good); background:var(--das-bg);}
+.typerow input.no{border-color:var(--bad); background:var(--die-bg);}
+.umlauts{display:flex; gap:5px; margin-top:8px; flex-wrap:wrap;}
+.umlauts button{font-family:var(--disp); font-weight:600; font-size:14px; width:34px; height:30px;
+  border:1px solid var(--line); background:var(--surface-2); border-radius:7px; color:var(--ink-2);}
+.umlauts button:hover{color:var(--ink); border-color:var(--ink-3);}
+.verdict{margin-top:12px; margin-bottom:12px; font-size:15px; display:flex; gap:10px; align-items:baseline; flex-wrap:wrap;}
+.verdict .yes{color:var(--good); font-weight:600;}
+.verdict .no{color:var(--bad); font-weight:600;}
+.verdict .ans{font-family:var(--disp); font-weight:700; font-size:19px;}
+
+.prog{margin-top:22px; display:grid; gap:9px;}
+.bar{display:flex; height:9px; border-radius:99px; overflow:hidden; background:var(--surface-2);
+  border:1px solid var(--line);}
+.bar i{display:block; height:100%;}
+.legend{display:flex; gap:14px; flex-wrap:wrap; font-size:11.5px; color:var(--ink-2);}
+.legend span{display:flex; align-items:center; gap:5px;}
+.dot{width:8px; height:8px; border-radius:2px; display:inline-block;}
+.legend b{font-family:var(--mono); font-weight:600; color:var(--ink); font-variant-numeric:tabular-nums;}
+
+.search{width:100%; font:inherit; font-size:14px; padding:11px 14px; color:var(--ink);
+  background:var(--surface); border:1px solid var(--line-2); border-radius:11px; margin-bottom:10px;}
+.list{border:1px solid var(--line); border-radius:12px; background:var(--surface); overflow:hidden;}
+.row{display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,1fr) auto; gap:14px; align-items:baseline;
+  padding:11px 14px; border-top:1px solid var(--line);}
+.row:first-child{border-top:none}
+.row .de{font-family:var(--disp); font-weight:600; font-size:15.5px; line-height:1.3; min-width:0; overflow-wrap:anywhere;}
+.row .ru{font-size:13.5px; color:var(--ink-2); line-height:1.35; min-width:0; overflow-wrap:anywhere;}
+.row .tag{font-family:var(--mono); font-size:10.5px; color:var(--ink-3); white-space:nowrap;}
+.list.hidden .ru{filter:blur(4.5px); opacity:.55; transition:.15s;}
+.list.hidden .row:hover .ru{filter:none; opacity:1;}
+.more{padding:13px; text-align:center; font-size:13px; color:var(--ink-2); border-top:1px solid var(--line); width:100%;}
+.more:hover{background:var(--surface-2); color:var(--ink);}
+
+/* ---------- Grammatik ---------- */
+.subnav{display:flex; gap:5px; margin-bottom:14px; overflow-x:auto; scrollbar-width:none; padding-bottom:2px;}
+.subnav::-webkit-scrollbar{display:none}
+.subnav button{
+  flex:0 0 auto; white-space:nowrap; border:1px solid var(--line-2); background:var(--surface);
+  border-radius:99px; padding:6px 13px; font-size:12.5px; font-weight:600; color:var(--ink-2);
+}
+.subnav button:hover{color:var(--ink); border-color:var(--ink-3);}
+.subnav button[aria-selected="true"]{background:var(--ink); border-color:var(--ink); color:var(--paper);}
+.gprompt{display:flex; flex-direction:column; gap:10px; padding-block:6px;}
+.gsent{font-family:var(--disp); font-weight:600; font-size:clamp(19px,3.8vw,25px); line-height:1.34;
+  text-wrap:balance; margin:0;}
+.gsent .gap{
+  display:inline-block; min-width:5.5ch; border-bottom:2px solid var(--ink-3);
+  margin-inline:3px; color:var(--ink-3); text-align:center; vertical-align:baseline;
+}
+.gsent .gap.filled{border-bottom-color:currentColor;}
+.gsent .ok{color:var(--good)} .gsent .bad{color:var(--bad)}
+.gru{font-size:14px; color:var(--ink-2); line-height:1.4; margin:0;}
+.steps{display:grid; gap:8px; margin-top:12px;}
+.steprow{display:flex; gap:8px; align-items:center; flex-wrap:wrap;}
+.steprow .lbl{font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ink-3); flex:0 0 auto; min-width:6.5em;}
+.pill{
+  border:1px solid var(--line-2); background:var(--surface); border-radius:99px;
+  padding:9px 16px; font-family:var(--disp); font-weight:700; font-size:15px; color:var(--ink);
+}
+.pill:hover:not(:disabled){border-color:var(--ink-3); background:var(--surface-2);}
+.pill:disabled{cursor:default}
+.pill.correct{border-color:var(--good); background:var(--das-bg); color:var(--das);}
+.pill.wrong{border-color:var(--bad); background:var(--die-bg); color:var(--die);}
+.pill.dim{opacity:.32}
+.pill.chosen{border-color:var(--ink); background:var(--ink); color:var(--paper);}
+.why{
+  margin-top:12px; padding:11px 13px; border-radius:10px; background:var(--surface-2);
+  border:1px solid var(--line); font-size:13.5px; line-height:1.45; color:var(--ink-2);
+  display:flex; flex-direction:column; gap:5px;
+}
+.why b{color:var(--ink); font-weight:600;}
+.why .rule{font-family:var(--mono); font-size:11.5px; color:var(--ink-3);}
+.gscore{display:flex; gap:14px; align-items:baseline; font-size:12px; color:var(--ink-2);}
+.gscore b{font-family:var(--mono); font-size:14px; color:var(--ink); font-variant-numeric:tabular-nums;}
+
+.empty{padding:44px 20px; text-align:center; color:var(--ink-2); background:var(--surface);
+  border:1px dashed var(--line-2); border-radius:14px;}
+.empty b{display:block; font-family:var(--disp); font-size:19px; color:var(--ink); margin-bottom:6px;}
+.sync{font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3);}
+
+@media (max-width:560px){
+  .rate button{padding:11px 6px;}
+  .rate .lab{font-size:12.5px}
+  .row{grid-template-columns:1fr; gap:3px;}
+  .row .tag{grid-row:1; justify-self:end; margin-top:-2px;}
+  .face{padding:20px 18px 18px;}
+}
+@media (prefers-reduced-motion: reduce){
+  *{transition-duration:.01ms!important; animation-duration:.01ms!important;}
+}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <header class="mast">
+    <h1><span class="sub">Momente A1–A2 · Wortschatz</span>Deutsch&nbsp;→&nbsp;Русский</h1>
+    <div class="mast-right">
+      <span class="sync" title="Fortschritt bleibt in diesem Browser.">lokal gespeichert</span>
+      <button class="btn icon" id="themeBtn" title="Theme wechseln" aria-label="Theme wechseln">◐</button>
+      <button class="btn" id="filterBtn" aria-expanded="false">Deck</button>
+    </div>
+  </header>
+
+  <div class="modes" role="tablist" id="modes">
+    <button role="tab" data-mode="cards" aria-selected="true">Karten</button>
+    <button role="tab" data-mode="choice" aria-selected="false">Auswahl</button>
+    <button role="tab" data-mode="artikel" aria-selected="false">der·die·das</button>
+    <button role="tab" data-mode="type" aria-selected="false">Tippen</button>
+    <button role="tab" data-mode="gram" aria-selected="false">Grammatik</button>
+    <button role="tab" data-mode="browse" aria-selected="false">Liste</button>
+  </div>
+
+  <div class="panel" id="panel" hidden>
+    <section>
+      <h3>Richtung</h3>
+      <div class="chips" id="dirChips">
+        <button class="chip" data-dir="de" aria-pressed="true">Deutsch → Русский</button>
+        <button class="chip" data-dir="ru" aria-pressed="false">Русский → Deutsch</button>
+        <button class="chip" data-dir="mix" aria-pressed="false">Gemischt</button>
+      </div>
+    </section>
+    <section>
+      <h3>Wortart</h3>
+      <div class="chips" id="posChips"></div>
+    </section>
+    <section>
+      <h3>Auswahl</h3>
+      <div class="chips" id="flagChips">
+        <button class="chip" data-flag="due" aria-pressed="false">Nur fällige</button>
+        <button class="chip" data-flag="star" aria-pressed="false">Nur markierte ★</button>
+        <button class="chip" data-flag="new" aria-pressed="false">Nur neue</button>
+      </div>
+    </section>
+    <section>
+      <h3>Lektionen</h3>
+      <div class="quicklinks">
+        <button data-pick="all">Alle</button>
+        <button data-pick="last5">Letzte 5</button>
+        <button data-pick="last1">Letzte</button>
+        <button data-pick="none">Keine</button>
+        <button data-pick="invert">Umkehren</button>
+      </div>
+      <div class="lessongrid" id="lessonGrid"></div>
+    </section>
+    <section>
+      <h3>Fortschritt</h3>
+      <p class="hint" id="syncNote" style="margin:0 0 9px">Der Fortschritt liegt in diesem Browser. Zum Gerätewechsel exportieren und drüben einlesen.</p>
+      <div class="quicklinks" style="margin:0">
+        <button id="exportBtn">Exportieren</button>
+        <button id="importBtn">Importieren</button>
+        <button id="resetBtn">Zurücksetzen</button>
+      </div>
+      <div id="xfer" hidden>
+        <textarea id="xferBox" class="search" rows="3" spellcheck="false"
+          style="margin-top:10px;margin-bottom:8px;font-family:var(--mono);font-size:11px;resize:vertical"
+          aria-label="Fortschrittsdaten"></textarea>
+        <div class="quicklinks" style="margin:0">
+          <button id="xferApply">Einlesen</button>
+          <button id="xferClose">Schließen</button>
+          <span class="hint" id="xferMsg"></span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="deckbar">
+    <div class="deckstat">
+      <div><b id="sDeck">0</b><span>im Deck</span></div>
+      <div><b id="sDue">0</b><span>fällig</span></div>
+      <div><b id="sToday">0</b><span>heute geübt</span></div>
+      <div><b id="sKnown">0</b><span>gelernt</span></div>
+    </div>
+    <button class="btn" id="shuffleBtn">Neu mischen</button>
+  </div>
+
+  <main class="stage" id="stage"></main>
+
+  <div class="prog">
+    <div class="bar" id="bar"></div>
+    <div class="legend" id="legend"></div>
+  </div>
+</div>
+
+<script>
+const DATA = [{"i":0,"d":"immer","r":"всегда","l":1,"t":"2026-02-14","p":"other"},{"i":1,"d":"jetzt","r":"теперь","l":1,"t":"2026-02-14","p":"other"},{"i":2,"d":"heute","r":"сегодня","l":1,"t":"2026-02-14","p":"other"},{"i":3,"d":"im Moment","r":"в данный момент","l":1,"t":"2026-02-14","p":"phrase"},{"i":4,"d":"fragen","r":"спрашивать","l":1,"t":"2026-02-14","p":"verb"},{"i":5,"d":"die Frage, -n","r":"вопрос","l":1,"t":"2026-02-14","p":"noun","g":"die","n":"-n"},{"i":6,"d":"antworten","r":"отвечать","l":1,"t":"2026-02-14","p":"verb"},{"i":7,"d":"die Antwort, -en","r":"ответ","l":1,"t":"2026-02-14","p":"noun","g":"die","n":"-en"},{"i":8,"d":"ich bin müde","r":"я устал","l":1,"t":"2026-02-14","p":"phrase"},{"i":9,"d":"der Freund, -e","r":"друг","l":1,"t":"2026-02-14","p":"noun","g":"der","n":"-e"},{"i":10,"d":"der Traum, Träume","r":"мечта","l":1,"t":"2026-02-14","p":"noun","g":"der","n":"Träume"},{"i":11,"d":"die Zeit","r":"время","l":1,"t":"2026-02-14","p":"noun","g":"die"},{"i":12,"d":"das Glück","r":"счастье","l":1,"t":"2026-02-14","p":"noun","g":"das"},{"i":13,"d":"sehen","r":"видеть","l":1,"t":"2026-02-14","p":"verb"},{"i":14,"d":"brauchen","r":"нуждаться","l":1,"t":"2026-02-14","p":"verb"},{"i":15,"d":"suchen","r":"искать","l":1,"t":"2026-02-14","p":"verb"},{"i":16,"d":"der Computer, -","r":"компьютер","l":1,"t":"2026-02-14","p":"noun","g":"der","n":"-"},{"i":17,"d":"der Laptop, -s","r":"ноутбук","l":1,"t":"2026-02-14","p":"noun","g":"der","n":"-s"},{"i":18,"d":"die Nachricht, -en","r":"сообщение","l":1,"t":"2026-02-14","p":"noun","g":"die","n":"-en"},{"i":19,"d":"das Passwort, -wörter","r":"пароль","l":1,"t":"2026-02-14","p":"noun","g":"das","n":"-wörter"},{"i":20,"d":"der Termin, -e","r":"встреча, запись","l":1,"t":"2026-02-14","p":"noun","g":"der","n":"-e"},{"i":21,"d":"der Drucker,","r":"- принтер","l":1,"t":"2026-02-14","p":"noun","g":"der"},{"i":22,"d":"die Maus, Mäuse","r":"мышь","l":1,"t":"2026-02-14","p":"noun","g":"die","n":"Mäuse"},{"i":23,"d":"der Kugelschreiber,","r":"- шариковая ручка","l":1,"t":"2026-02-14","p":"noun","g":"der"},{"i":24,"d":"der Stift, -e","r":"ручка, карандаш","l":1,"t":"2026-02-14","p":"noun","g":"der","n":"-e"},{"i":25,"d":"das Tablet, -s","r":"планшет","l":1,"t":"2026-02-14","p":"noun","g":"das","n":"-s"},{"i":26,"d":"der Schlüssel,","r":"- ключ","l":1,"t":"2026-02-14","p":"noun","g":"der"},{"i":27,"d":"leider","r":"к сожалению","l":1,"t":"2026-02-14","p":"other"},{"i":28,"d":"schwer","r":"тяжелый","l":1,"t":"2026-02-14","p":"other"},{"i":29,"d":"Seife","r":"мыло","l":1,"t":"2026-02-14","p":"other"},{"i":30,"d":"ich glaube","r":"я думаю","l":2,"t":"2026-02-17","p":"phrase"},{"i":31,"d":"finden","r":"считать / находить (по мнению)","l":2,"t":"2026-02-17","p":"verb","e":[["Ich finde das toll.","Мне это нравится / Я считаю это отличным"],["Wie findest du das?","Как тебе это? / Что ты об этом думаешь?"]]},{"i":32,"d":"komisch","r":"странный","l":2,"t":"2026-02-17","p":"other"},{"i":33,"d":"blöd","r":"глупый / дурацкий","l":2,"t":"2026-02-17","p":"other"},{"i":34,"d":"interessant","r":"интересный","l":2,"t":"2026-02-17","p":"other"},{"i":35,"d":"lustig","r":"смешной / весёлый","l":2,"t":"2026-02-17","p":"other"},{"i":36,"d":"kennen","r":"знать (быть знакомым)","l":2,"t":"2026-02-17","p":"verb","e":[["Ich kenne die Musik nicht.","Я не знаю эту музыку"]]},{"i":37,"d":"können","r":"уметь / мочь","l":2,"t":"2026-02-17","p":"verb"},{"i":38,"d":"Sie kann toll tanzen.","r":"Она отлично танцует","l":2,"t":"2026-02-17","p":"sentence","e":[["Sie kann gar nicht tanzen.","Она совсем не умеет танцевать"],["Sie kann nicht so gut tanzen.","Она танцует не очень хорошо"]]},{"i":39,"d":"überall","r":"везде","l":2,"t":"2026-02-17","p":"other","e":[["Ich kann überall tanzen. Ich brauche keinen Klub.","Я могу танцевать везде. Мне не нужен клуб."]]},{"i":40,"d":"die Zeit","r":"время","l":2,"t":"2026-02-17","p":"noun","g":"die"},{"i":41,"d":"zurzeit","r":"сейчас, в настоящее время","l":2,"t":"2026-02-17","p":"other"},{"i":42,"d":"die Freizeit","r":"свободное время","l":2,"t":"2026-02-17","p":"noun","g":"die"},{"i":43,"d":"in der Freizeit","r":"в свободное время","l":2,"t":"2026-02-17","p":"phrase"},{"i":44,"d":"Vielen Dank!","r":"Большое спасибо!","l":2,"t":"2026-02-17","p":"sentence"},{"i":45,"d":"Herzlichen Dank!","r":"Огромное спасибо!","l":2,"t":"2026-02-17","p":"sentence"},{"i":46,"d":"kochen","r":"готовить","l":2,"t":"2026-02-17","p":"verb"},{"i":47,"d":"singen","r":"петь","l":2,"t":"2026-02-17","p":"verb"},{"i":48,"d":"schwimmen","r":"плавать","l":2,"t":"2026-02-17","p":"verb"},{"i":49,"d":"fotografieren","r":"фотографировать","l":2,"t":"2026-02-17","p":"verb"},{"i":50,"d":"Schach spielen","r":"играть в шахматы","l":2,"t":"2026-02-17","p":"phrase"},{"i":51,"d":"Tennis spielen","r":"играть в теннис","l":2,"t":"2026-02-17","p":"phrase"},{"i":52,"d":"Fußball spielen","r":"играть в футбол","l":2,"t":"2026-02-17","p":"phrase"},{"i":53,"d":"Gitarre spielen","r":"играть на гитаре","l":2,"t":"2026-02-17","p":"phrase"},{"i":54,"d":"malen","r":"рисовать","l":2,"t":"2026-02-17","p":"verb"},{"i":55,"d":"backen","r":"печь","l":2,"t":"2026-02-17","p":"verb"},{"i":56,"d":"Rad fahren","r":"ездить на велосипеде","l":2,"t":"2026-02-17","p":"phrase"},{"i":57,"d":"Ski fahren","r":"кататься на лыжах","l":2,"t":"2026-02-17","p":"phrase"},{"i":58,"d":"reiten","r":"ездить верхом","l":2,"t":"2026-02-17","p":"verb"},{"i":59,"d":"mein Hobby / dein Hobby / sein Hobby / ihr Hobby","r":"моё хобби / твоё хобби / его хобби / её хобби","l":2,"t":"2026-02-17","p":"sentence"},{"i":60,"d":"lieben","r":"любить","l":2,"t":"2026-02-17","p":"verb","e":[["Ich liebe Sport.","Я люблю спорт"]]},{"i":61,"d":"gern","r":"с удовольствием","l":2,"t":"2026-02-17","p":"verb","e":[["Ich male sehr gern.","Я очень люблю рисовать"]]},{"i":62,"d":"zu Hause wohnen","r":"жить дома","l":2,"t":"2026-02-17","p":"phrase"},{"i":63,"d":"im Seniorenheim wohnen","r":"жить в доме престарелых","l":2,"t":"2026-02-17","p":"phrase"},{"i":64,"d":"die Versicherung","r":"страховка / страховая компания","l":2,"t":"2026-02-17","p":"noun","g":"die"},{"i":65,"d":"der Versicherungskaufmann","r":"страховой агент","l":2,"t":"2026-02-17","p":"noun","g":"der"},{"i":66,"d":"lange arbeiten","r":"долго работать","l":2,"t":"2026-02-17","p":"phrase"},{"i":67,"d":"immer","r":"всегда","l":2,"t":"2026-02-17","p":"other"},{"i":68,"d":"oft","r":"часто","l":2,"t":"2026-02-17","p":"other"},{"i":69,"d":"manchmal","r":"иногда","l":2,"t":"2026-02-17","p":"other"},{"i":70,"d":"nie","r":"никогда","l":2,"t":"2026-02-17","p":"other"},{"i":71,"d":"lesen","r":"читать","l":2,"t":"2026-02-17","p":"verb","e":[["Ich lese ein Buch.",""],["Du liest einen Roman.",""],["Er liest ein Magazin.",""]]},{"i":72,"d":"treffen","r":"встречаться","l":2,"t":"2026-02-17","p":"verb","e":[["Ich treffe meine Freunde.",""],["Du triffst deinen Freund.",""],["Sie trifft ihre Freundin.",""]]},{"i":73,"d":"fahren","r":"ехать","l":2,"t":"2026-02-17","p":"verb","e":[["Ich fahre Rad.",""],["Du fährst Ski.",""],["Er fährt Snowboard.",""]]},{"i":74,"d":"sagen","r":"говорить","l":3,"t":"2026-02-25","p":"verb"},{"i":75,"d":"fragen","r":"спрашивать","l":3,"t":"2026-02-25","p":"verb"},{"i":76,"d":"eine Nachricht schreiben","r":"писать сообщение","l":3,"t":"2026-02-25","p":"phrase"},{"i":77,"d":"chatten","r":"общаться в чате","l":3,"t":"2026-02-25","p":"verb"},{"i":78,"d":"du hast recht","r":"ты прав / ты права","l":3,"t":"2026-02-25","p":"phrase"},{"i":79,"d":"ich glaube","r":"я думаю / я полагаю","l":3,"t":"2026-02-25","p":"phrase"},{"i":80,"d":"ich meine","r":"я считаю / я имею в виду","l":3,"t":"2026-02-25","p":"phrase"},{"i":81,"d":"chillen","r":"отдыхать / тусоваться / расслабляться","l":3,"t":"2026-02-25","p":"verb"},{"i":82,"d":"der Montag, am Montag","r":"понедельник, в понедельник","l":3,"t":"2026-02-25","p":"noun","g":"der"},{"i":83,"d":"der Dienstag, am Dienstag","r":"вторник, во вторник","l":3,"t":"2026-02-25","p":"noun","g":"der"},{"i":84,"d":"der Mittwoch, am Mittwoch","r":"среда, в среду","l":3,"t":"2026-02-25","p":"noun","g":"der"},{"i":85,"d":"der Donnerstag, am Donnerstag","r":"четверг, в четверг","l":3,"t":"2026-02-25","p":"noun","g":"der"},{"i":86,"d":"der Freitag, am Freitag","r":"пятница, в пятницу","l":3,"t":"2026-02-25","p":"noun","g":"der"},{"i":87,"d":"der Samstag, am Samstag","r":"суббота, в субботу","l":3,"t":"2026-02-25","p":"noun","g":"der"},{"i":88,"d":"der Sonntag, am Sonntag","r":"воскресенье, в воскресенье","l":3,"t":"2026-02-25","p":"noun","g":"der"},{"i":89,"d":"das Wochenende, am Wochenende","r":"выходные, на выходных","l":3,"t":"2026-02-25","p":"noun","g":"das"},{"i":90,"d":"der Morgen, am Morgen","r":"утро, утром","l":3,"t":"2026-02-25","p":"noun","g":"der"},{"i":91,"d":"der Vormittag, am Vormittag","r":"первая половина дня, до обеда","l":3,"t":"2026-02-25","p":"noun","g":"der"},{"i":92,"d":"der Mittag, am Mittag","r":"полдень / обеденное время, в полдень","l":3,"t":"2026-02-25","p":"noun","g":"der"},{"i":93,"d":"der Nachmittag, am Nachmittag","r":"вторая половина дня, днём (после обеда)","l":3,"t":"2026-02-25","p":"noun","g":"der"},{"i":94,"d":"der Abend, am Abend","r":"вечер, вечером","l":3,"t":"2026-02-25","p":"noun","g":"der"},{"i":95,"d":"die Nacht, in der Nacht","r":"ночь, ночью","l":3,"t":"2026-02-25","p":"noun","g":"die"},{"i":96,"d":"heute Nachmittag","r":"сегодня днём","l":3,"t":"2026-02-25","p":"phrase"},{"i":97,"d":"morgen","r":"завтра","l":3,"t":"2026-02-25","p":"verb"},{"i":98,"d":"morgen Abend","r":"завтра вечером","l":3,"t":"2026-02-25","p":"phrase"},{"i":99,"d":"morgen früh","r":"завтра рано утром","l":3,"t":"2026-02-25","p":"phrase"},{"i":100,"d":"wissen: ich weiß, du weißt, er weiß","r":"знать: я знаю, ты знаешь, он знает","l":3,"t":"2026-02-25","p":"sentence"},{"i":101,"d":"Ich habe Lust aufs Kino.","r":"Мне хочется в кино.","l":3,"t":"2026-02-25","p":"sentence","e":[["Ich habe keine Lust.","Мне не хочется."]]},{"i":102,"d":"dann","r":"потом / тогда","l":3,"t":"2026-02-25","p":"verb"},{"i":103,"d":"danach","r":"после этого","l":3,"t":"2026-02-25","p":"other"},{"i":104,"d":"bis dann!","r":"до встречи! / пока!","l":3,"t":"2026-02-25","p":"sentence"},{"i":105,"d":"das ist zu spät","r":"это слишком поздно","l":3,"t":"2026-02-25","p":"noun","g":"das"},{"i":106,"d":"ich habe keine Zeit","r":"у меня нет времени","l":3,"t":"2026-02-25","p":"phrase","e":[["Am Abend habe ich keine Zeit.","Вечером у меня нет времени."]]},{"i":107,"d":"der Klub, -s","r":"клуб","l":3,"t":"2026-02-25","p":"noun","g":"der","n":"-s"},{"i":108,"d":"die Disko, -s","r":"дискотека","l":3,"t":"2026-02-25","p":"noun","g":"die","n":"-s"},{"i":109,"d":"der Supermarkt, -märkte","r":"супермаркет","l":3,"t":"2026-02-25","p":"noun","g":"der","n":"-märkte"},{"i":110,"d":"das Schwimmbad, -bäder","r":"бассейн","l":3,"t":"2026-02-25","p":"noun","g":"das","n":"-bäder"},{"i":111,"d":"das Kino, -s","r":"кинотеатр","l":3,"t":"2026-02-25","p":"noun","g":"das","n":"-s"},{"i":112,"d":"das Konzert, -e","r":"концерт","l":3,"t":"2026-02-25","p":"noun","g":"das","n":"-e"},{"i":113,"d":"das Restaurant, -s","r":"ресторан","l":3,"t":"2026-02-25","p":"noun","g":"das","n":"-s"},{"i":114,"d":"das Café, -s","r":"кафе","l":3,"t":"2026-02-25","p":"noun","g":"das","n":"-s"},{"i":115,"d":"das Fitnessstudio, -s","r":"фитнес-клуб","l":3,"t":"2026-02-25","p":"noun","g":"das","n":"-s"},{"i":116,"d":"das Gym, -s","r":"тренажёрный зал","l":3,"t":"2026-02-25","p":"noun","g":"das","n":"-s"},{"i":117,"d":"das Museum, die Museen","r":"музей","l":3,"t":"2026-02-25","p":"noun","g":"das"},{"i":118,"d":"das Theater, -","r":"театр","l":3,"t":"2026-02-25","p":"noun","g":"das","n":"-"},{"i":119,"d":"die Ausstellung, -en","r":"выставка","l":3,"t":"2026-02-25","p":"noun","g":"die","n":"-en"},{"i":120,"d":"Hast du um vier / am Abend / … Zeit?","r":"У тебя есть время в четыре / вечером / …?","l":4,"t":"2026-02-27","p":"sentence","e":[["Vielleicht können wir mal wieder / heute Abend ins Theater gehen?","Может быть, мы снова как-нибудь / сегодня вечером пойдём в театр?"]]},{"i":121,"d":"Lust auf …?","r":"Есть желание / Хочешь …?","l":4,"t":"2026-02-27","p":"sentence"},{"i":122,"d":"Gehen wir ins Kino?","r":"Пойдём в кино?","l":4,"t":"2026-02-27","p":"sentence"},{"i":123,"d":"Kannst du heute Abend / am … / um …?","r":"Ты можешь сегодня вечером / в … (день) / в … (время)?","l":4,"t":"2026-02-27","p":"sentence"},{"i":124,"d":"Was machst du am Dienstagabend / heute um 19 Uhr / … ?","r":"Что ты делаешь во вторник вечером / сегодня в 19 / …?","l":4,"t":"2026-02-27","p":"sentence"},{"i":125,"d":"Ja (gern).","r":"Да (с удовольствием).","l":4,"t":"2026-02-27","p":"sentence"},{"i":126,"d":"Gute Idee!","r":"Хорошая идея!","l":4,"t":"2026-02-27","p":"sentence"},{"i":127,"d":"Ja, klar.","r":"Да, конечно.","l":4,"t":"2026-02-27","p":"sentence"},{"i":128,"d":"Ja, da kann ich.","r":"Да, в это время я могу.","l":4,"t":"2026-02-27","p":"sentence"},{"i":129,"d":"Okay.","r":"Хорошо.","l":4,"t":"2026-02-27","p":"other"},{"i":130,"d":"Vielleicht.","r":"Возможно.","l":4,"t":"2026-02-27","p":"other"},{"i":131,"d":"Das weiß ich noch nicht.","r":"Я ещё не знаю.","l":4,"t":"2026-02-27","p":"sentence","g":"das"},{"i":132,"d":"Tut mir leid, ich kann leider nicht. Ich …","r":"Извини, я, к сожалению, не могу. Я …","l":4,"t":"2026-02-27","p":"sentence","e":[["Tut mir leid.","Мне жаль / Извини."],["(Nein,) heute Abend habe ich (leider) keine Zeit.","(Нет,) сегодня вечером у меня (к сожалению) нет времени."]]},{"i":133,"d":"Nö, keine Lust.","r":"Нет, не хочу (нет желания).","l":4,"t":"2026-02-27","p":"sentence","e":[["Das ist zu spät / zu früh. Da habe ich keine Zeit.","Это слишком поздно / слишком рано. В это время я занят."]]},{"i":134,"d":"mögen","r":"любить, нравиться","l":5,"t":"2026-03-03","p":"verb"},{"i":135,"d":"ich mag","r":"я люблю","l":5,"t":"2026-03-03","p":"phrase"},{"i":136,"d":"du magst","r":"ты любишь","l":5,"t":"2026-03-03","p":"phrase"},{"i":137,"d":"er mag","r":"он любит","l":5,"t":"2026-03-03","p":"phrase"},{"i":138,"d":"Ich mag Schokolade, Äpfel.","r":"Я люблю шоколад, яблоки.","l":5,"t":"2026-03-03","p":"sentence","e":[["Ich mag keinen Käse, keine Schokolade, kein Bier.","Я не люблю сыр, шоколад, пиво."]]},{"i":139,"d":"Was magst du besonders gern?","r":"Что ты особенно любишь?","l":5,"t":"2026-03-03","p":"sentence"},{"i":140,"d":"essen","r":"есть","l":5,"t":"2026-03-03","p":"verb"},{"i":141,"d":"du isst","r":"ты ешь","l":5,"t":"2026-03-03","p":"phrase"},{"i":142,"d":"er isst","r":"он ест","l":5,"t":"2026-03-03","p":"phrase","e":[["Was isst du gern zum Frühstück / zum Mittagessen / zum Abendessen?","Что ты любишь есть на завтрак / обед / ужин?"]]},{"i":143,"d":"Hier bitte.","r":"Вот, пожалуйста.","l":5,"t":"2026-03-03","p":"sentence"},{"i":144,"d":"Guten Appetit!","r":"Приятного аппетита!","l":5,"t":"2026-03-03","p":"sentence"},{"i":145,"d":"lecker","r":"вкусный / вкусно","l":5,"t":"2026-03-03","p":"other"},{"i":146,"d":"Was ist dein Lieblingsessen?","r":"Какое твоё любимое блюдо?","l":5,"t":"2026-03-03","p":"sentence","e":[["Was ist dein Lieblingsgetränk?","Какой твой любимый напиток?"]]},{"i":147,"d":"trinken","r":"пить","l":5,"t":"2026-03-03","p":"verb"},{"i":148,"d":"das Getränk, -e","r":"напиток, напитки","l":5,"t":"2026-03-03","p":"noun","g":"das","n":"-e"},{"i":149,"d":"die Schokolade","r":"шоколад","l":5,"t":"2026-03-03","p":"noun","g":"die"},{"i":150,"d":"der Kuchen","r":"торт, пирог","l":5,"t":"2026-03-03","p":"noun","g":"der"},{"i":151,"d":"die Suppe, -n","r":"суп, супы","l":5,"t":"2026-03-03","p":"noun","g":"die","n":"-n"},{"i":152,"d":"der Apfel, Äpfel","r":"яблоко, яблоки","l":5,"t":"2026-03-03","p":"noun","g":"der","n":"Äpfel"},{"i":153,"d":"der Tee","r":"чай","l":5,"t":"2026-03-03","p":"noun","g":"der"},{"i":154,"d":"die Orange, -n","r":"апельсин, апельсины","l":5,"t":"2026-03-03","p":"noun","g":"die","n":"-n"},{"i":155,"d":"der Fisch","r":"рыба","l":5,"t":"2026-03-03","p":"noun","g":"der"},{"i":156,"d":"die Tomate, -n","r":"помидор, помидоры","l":5,"t":"2026-03-03","p":"noun","g":"die","n":"-n"},{"i":157,"d":"das Brot","r":"хлеб","l":5,"t":"2026-03-03","p":"noun","g":"das"},{"i":158,"d":"der Salat","r":"салат","l":5,"t":"2026-03-03","p":"noun","g":"der"},{"i":159,"d":"der Käse","r":"сыр","l":5,"t":"2026-03-03","p":"noun","g":"der"},{"i":160,"d":"der Kaffee","r":"кофе","l":5,"t":"2026-03-03","p":"noun","g":"der"},{"i":161,"d":"der Saft, Säfte","r":"сок, соки","l":5,"t":"2026-03-03","p":"noun","g":"der","n":"Säfte"},{"i":162,"d":"die Butter","r":"масло","l":5,"t":"2026-03-03","p":"noun","g":"die"},{"i":163,"d":"der Schinken","r":"ветчина","l":5,"t":"2026-03-03","p":"noun","g":"der"},{"i":164,"d":"das Ei, -er","r":"яйцо, яйца","l":5,"t":"2026-03-03","p":"noun","g":"das","n":"-er"},{"i":165,"d":"das Müsli","r":"мюсли","l":5,"t":"2026-03-03","p":"noun","g":"das"},{"i":166,"d":"die Milch","r":"молоко","l":5,"t":"2026-03-03","p":"noun","g":"die"},{"i":167,"d":"das Obst","r":"фрукты","l":5,"t":"2026-03-03","p":"noun","g":"das"},{"i":168,"d":"das Gemüse","r":"овощи","l":5,"t":"2026-03-03","p":"noun","g":"das"},{"i":169,"d":"Sie wünschen?","r":"Что вы желаете? / Что вам подать?","l":6,"t":"2026-03-06","p":"sentence"},{"i":170,"d":"Einen Kaffee, bitte.","r":"Кофе, пожалуйста.","l":6,"t":"2026-03-06","p":"sentence","e":[["Ich möchte / nehme einen Kaffee, bitte.","Я хотел(а) бы / возьму кофе, пожалуйста."]]},{"i":171,"d":"möchte","r":"хотел(а) бы","l":6,"t":"2026-03-06","p":"other","e":[["Möchten Sie einen Apfelkuchen?","Хотите яблочный пирог?"]]},{"i":172,"d":"nehmen","r":"брать / взять","l":6,"t":"2026-03-06","p":"verb","e":[["Dann nehme ich einen Schokoladenkuchen.","Тогда я возьму шоколадный торт (или пирог)."]]},{"i":173,"d":"Er nimmt einen Apfelkuchen.","r":"Он берёт яблочный пирог.","l":6,"t":"2026-03-06","p":"sentence"},{"i":174,"d":"mögen","r":"любить / нравиться","l":6,"t":"2026-03-06","p":"verb"},{"i":175,"d":"Ich mag keinen Kuchen.","r":"Я не люблю торт / пирог.","l":6,"t":"2026-03-06","p":"sentence"},{"i":176,"d":"tut mir leid","r":"мне жаль / извините","l":6,"t":"2026-03-06","p":"phrase"},{"i":177,"d":"Schade!","r":"Жаль! / Как жаль!","l":6,"t":"2026-03-06","p":"other"},{"i":178,"d":"Was haben Sie denn noch?","r":"Что у вас ещё есть?","l":6,"t":"2026-03-06","p":"sentence"},{"i":179,"d":"ein Glas Wasser","r":"стакан воды","l":6,"t":"2026-03-06","p":"phrase"},{"i":180,"d":"eine Tasse Kaffee","r":"чашка кофе","l":6,"t":"2026-03-06","p":"phrase"},{"i":181,"d":"eine Flasche Wein","r":"бутылка вина","l":6,"t":"2026-03-06","p":"phrase"},{"i":182,"d":"eine Portion Sahne","r":"порция сливок","l":6,"t":"2026-03-06","p":"phrase"},{"i":183,"d":"ein Stück Pizza","r":"кусок пиццы","l":6,"t":"2026-03-06","p":"phrase"},{"i":184,"d":"eine Kugel Vanilleeis","r":"шарик ванильного мороженого","l":6,"t":"2026-03-06","p":"phrase"},{"i":185,"d":"Die Suppe schmeckt toll.","r":"Суп очень вкусный.","l":6,"t":"2026-03-06","p":"sentence","g":"die","e":[["Die Suppe ist lecker.","Суп вкусный."]]},{"i":186,"d":"Das geht schnell.","r":"Это делается быстро.","l":6,"t":"2026-03-06","p":"sentence","g":"das"},{"i":187,"d":"Ich habe Hunger.","r":"Я голоден / Я голодна.","l":6,"t":"2026-03-06","p":"sentence"},{"i":188,"d":"das Lieblingsrezept","r":"любимый рецепт","l":6,"t":"2026-03-06","p":"noun","g":"das"},{"i":189,"d":"das Lieblingscafé","r":"любимое кафе","l":6,"t":"2026-03-06","p":"noun","g":"das"},{"i":190,"d":"der Pfannkuchen","r":"блин / оладья","l":6,"t":"2026-03-06","p":"noun","g":"der"},{"i":191,"d":"die Bratkartoffeln","r":"жареная картошка","l":6,"t":"2026-03-06","p":"noun","g":"die"},{"i":192,"d":"die Pommes Frites","r":"картофель фри","l":6,"t":"2026-03-06","p":"noun","g":"die"},{"i":193,"d":"kochen","r":"готовить (варить, стряпать)","l":6,"t":"2026-03-06","p":"verb"},{"i":194,"d":"Das ist nichts für mich.","r":"Это не для меня / Мне это не подходит.","l":6,"t":"2026-03-06","p":"sentence","g":"das"},{"i":195,"d":"bestellen","r":"заказывать","l":6,"t":"2026-03-06","p":"verb"},{"i":196,"d":"wissen","r":"ich weiß, du weißt, er weiß, wir wissen, ihr wisst, sie wissen","l":7,"t":"2026-03-10","p":"verb"},{"i":197,"d":"beruflich","r":"по работе, профессионально","l":7,"t":"2026-03-10","p":"other"},{"i":198,"d":"privat","r":"лично, в частной жизни","l":7,"t":"2026-03-10","p":"other"},{"i":199,"d":"arbeiten bei","r":"работать в / у (в компании)","l":7,"t":"2026-03-10","p":"phrase"},{"i":200,"d":"Teilzeit arbeiten","r":"работать неполный рабочий день","l":7,"t":"2026-03-10","p":"phrase"},{"i":201,"d":"bis dann!","r":"до встречи! / до скорого!","l":7,"t":"2026-03-10","p":"sentence"},{"i":202,"d":"die Besprechung","r":"совещание, обсуждение","l":7,"t":"2026-03-10","p":"noun","g":"die"},{"i":203,"d":"die Teamsitzung","r":"собрание команды","l":7,"t":"2026-03-10","p":"noun","g":"die"},{"i":204,"d":"von … bis","r":"с … до von 9 bis 10 Uhr","l":7,"t":"2026-03-10","p":"phrase"},{"i":205,"d":"Liebe Frau Schmidt / lieber Herr Schmidt","r":"уважаемая госпожа Шмидт / уважаемый господин Шмидт (официальное обращение в письмах)","l":7,"t":"2026-03-10","p":"sentence","e":[["Liebe Grüße / Schöne Grüße / Viele Grüße","c наилучшими пожеланиями"]]},{"i":206,"d":"Mit freundlichen Grüßen","r":"c уважением (официальное окончание письма)","l":7,"t":"2026-03-10","p":"phrase"},{"i":207,"d":"der Flughafen, -häfen","r":"аэропорт","l":8,"t":"2026-03-13","p":"noun","g":"der","n":"-häfen"},{"i":208,"d":"der Flug, Flüge","r":"рейс, полёт","l":8,"t":"2026-03-13","p":"noun","g":"der","n":"Flüge","e":[["Ich nehme den Abendflug.","Я беру вечерний рейс."],["Mein Flug startet um 9 Uhr.","Мой рейс отправляется в 9 часов"]]},{"i":209,"d":"das Flugzeug, -e","r":"самолёт","l":8,"t":"2026-03-13","p":"noun","g":"das","n":"-e"},{"i":210,"d":"fliegen","r":"летать, лететь","l":8,"t":"2026-03-13","p":"verb"},{"i":211,"d":"abfliegen","r":"вылетать","l":8,"t":"2026-03-13","p":"verb"},{"i":212,"d":"landen","r":"приземляться","l":8,"t":"2026-03-13","p":"verb"},{"i":213,"d":"kurz vor sechs","r":"без пяти шесть / незадолго до шести","l":8,"t":"2026-03-13","p":"phrase"},{"i":214,"d":"kurz nach acht","r":"чуть после восьми","l":8,"t":"2026-03-13","p":"phrase"},{"i":215,"d":"hoffentlich","r":"надеюсь","l":8,"t":"2026-03-13","p":"other"},{"i":216,"d":"versuchen","r":"пытаться, пробовать","l":8,"t":"2026-03-13","p":"verb"},{"i":217,"d":"die Stimme, -n","r":"голос","l":8,"t":"2026-03-13","p":"noun","g":"die","n":"-n"},{"i":218,"d":"anrufen","r":"звонить (по телефону)","l":8,"t":"2026-03-13","p":"verb"},{"i":219,"d":"Mein Handy hat wenig Akku.","r":"У моего телефона почти разрядился аккумулятор","l":8,"t":"2026-03-13","p":"sentence"},{"i":220,"d":"ankommen","r":"прибывать, приезжать","l":8,"t":"2026-03-13","p":"verb"},{"i":221,"d":"einsteigen","r":"садиться (в транспорт) aussteigen — выходить (из транспорта)","l":8,"t":"2026-03-13","p":"verb"},{"i":222,"d":"umsteigen","r":"делать пересадку","l":8,"t":"2026-03-13","p":"verb"},{"i":223,"d":"abholen","r":"встречать, забирать","l":8,"t":"2026-03-13","p":"verb"},{"i":224,"d":"die S-Bahn, -en","r":"городская электричка","l":8,"t":"2026-03-13","p":"noun","g":"die","n":"-en"},{"i":225,"d":"die U-Bahn, -en","r":"метро","l":8,"t":"2026-03-13","p":"noun","g":"die","n":"-en"},{"i":226,"d":"der Bahnhof, -höfe","r":"вокзал","l":8,"t":"2026-03-13","p":"noun","g":"der","n":"-höfe"},{"i":227,"d":"die Haltestelle, -n","r":"остановка","l":8,"t":"2026-03-13","p":"noun","g":"die","n":"-n","e":[["Ich steige an der nächsten Haltestelle aus.","Я выхожу на следующей остановке"]]},{"i":228,"d":"das Gepäck","r":"багаж","l":8,"t":"2026-03-13","p":"noun","g":"das"},{"i":229,"d":"der Koffer, -","r":"чемодан","l":8,"t":"2026-03-13","p":"noun","g":"der","n":"-"},{"i":230,"d":"die Tasche, -n","r":"сумка","l":8,"t":"2026-03-13","p":"noun","g":"die","n":"-n"},{"i":231,"d":"der Rucksack, -säcke","r":"рюкзак","l":8,"t":"2026-03-13","p":"noun","g":"der","n":"-säcke"},{"i":232,"d":"einen Spaziergang machen","r":"гулять / пойти на прогулку","l":9,"t":"2026-03-17","p":"phrase"},{"i":233,"d":"aufräumen","r":"убирать / наводить порядок","l":9,"t":"2026-03-17","p":"verb"},{"i":234,"d":"die Zeitung, -en","r":"газета","l":9,"t":"2026-03-17","p":"noun","g":"die","n":"-en"},{"i":235,"d":"der Vogel, die Vögel","r":"птица","l":9,"t":"2026-03-17","p":"noun","g":"der"},{"i":236,"d":"dann","r":"потом / тогда","l":9,"t":"2026-03-17","p":"verb"},{"i":237,"d":"danach","r":"после этого / затем","l":9,"t":"2026-03-17","p":"other"},{"i":238,"d":"den ganzen Tag","r":"весь день","l":9,"t":"2026-03-17","p":"phrase"},{"i":239,"d":"die ganze Nacht","r":"всю ночь","l":9,"t":"2026-03-17","p":"noun","g":"die"},{"i":240,"d":"heute","r":"сегодня","l":9,"t":"2026-03-17","p":"other"},{"i":241,"d":"gestern","r":"вчера","l":9,"t":"2026-03-17","p":"verb"},{"i":242,"d":"morgen","r":"завтра","l":9,"t":"2026-03-17","p":"verb"},{"i":243,"d":"singen, ich habe gesungen","r":"петь","l":9,"t":"2026-03-17","p":"verb"},{"i":244,"d":"trinken, ich habe getrunken","r":"пить","l":9,"t":"2026-03-17","p":"verb"},{"i":245,"d":"schreiben, ich habe geschrieben","r":"писать","l":9,"t":"2026-03-17","p":"verb"},{"i":246,"d":"sehen, ich habe gesehen","r":"видеть","l":9,"t":"2026-03-17","p":"verb"},{"i":247,"d":"lesen, ich habe gelesen","r":"читать","l":9,"t":"2026-03-17","p":"verb"},{"i":248,"d":"essen, ich habe gegessen","r":"есть","l":9,"t":"2026-03-17","p":"verb"},{"i":249,"d":"waschen, ich habe gewaschen","r":"мыть","l":9,"t":"2026-03-17","p":"verb"},{"i":250,"d":"schlafen, ich habe geschlafen","r":"спать","l":9,"t":"2026-03-17","p":"verb"},{"i":251,"d":"treffen, ich habe getroffen","r":"встречать","l":9,"t":"2026-03-17","p":"verb"},{"i":252,"d":"der Blumenladen","r":"цветочный магазин","l":10,"t":"2026-03-20","p":"noun","g":"der"},{"i":253,"d":"die Boutique","r":"бутик","l":10,"t":"2026-03-20","p":"noun","g":"die"},{"i":254,"d":"das Eiscafé","r":"кафе-мороженое","l":10,"t":"2026-03-20","p":"noun","g":"das"},{"i":255,"d":"die Praxis","r":"кабинет врача / клиника","l":10,"t":"2026-03-20","p":"noun","g":"die"},{"i":256,"d":"der Kiosk","r":"киоск","l":10,"t":"2026-03-20","p":"noun","g":"der"},{"i":257,"d":"der Kurs","r":"курс","l":10,"t":"2026-03-20","p":"noun","g":"der"},{"i":258,"d":"Urlaub haben","r":"быть в отпуске","l":10,"t":"2026-03-20","p":"phrase"},{"i":259,"d":"geschlossen","r":"закрыто","l":10,"t":"2026-03-20","p":"verb","e":[["Wann ist der Supermarkt geschlossen?","Когда супермаркет закрыт?"]]},{"i":260,"d":"geöffnet","r":"открыто","l":10,"t":"2026-03-20","p":"other","e":[["Wann ist die Praxis geöffnet?","Когда кабинет открыт?"],["Ab April ist das Café wieder geöffnet.","С апреля кафе снова открыто."]]},{"i":261,"d":"beginnen","r":"начинаться","l":10,"t":"2026-03-20","p":"verb","e":[["Wann beginnt der Film?","Когда начинается фильм?"]]},{"i":262,"d":"Wann ist der Deutschkurs?","r":"Когда курс немецкого?","l":10,"t":"2026-03-20","p":"sentence"},{"i":263,"d":"fernsehen, ich habe ferngesehen","r":"смотреть телевизор, я смотрел(а) телевизор","l":10,"t":"2026-03-20","p":"verb"},{"i":264,"d":"einladen, ich habe eingeladen","r":"приглашать, я пригласил(а)","l":10,"t":"2026-03-20","p":"verb"},{"i":265,"d":"backen, ich habe gebacken","r":"печь, я пёк/пекла","l":10,"t":"2026-03-20","p":"verb"},{"i":266,"d":"anrufen, ich habe angerufen","r":"звонить, я позвонил(а)","l":10,"t":"2026-03-20","p":"verb"},{"i":267,"d":"letzten Mittwoch","r":"в прошлую среду","l":10,"t":"2026-03-20","p":"phrase"},{"i":268,"d":"letzten Monat","r":"в прошлом месяце","l":10,"t":"2026-03-20","p":"phrase"},{"i":269,"d":"letzten Sommer","r":"прошлым летом","l":10,"t":"2026-03-20","p":"phrase"},{"i":270,"d":"letzte Woche","r":"на прошлой неделе","l":10,"t":"2026-03-20","p":"phrase"},{"i":271,"d":"letzte Nacht","r":"прошлой ночью","l":10,"t":"2026-03-20","p":"phrase"},{"i":272,"d":"letztes Jahr","r":"в прошлом году","l":10,"t":"2026-03-20","p":"phrase"},{"i":273,"d":"letztes Wochenende","r":"в прошлые выходные","l":10,"t":"2026-03-20","p":"phrase"},{"i":274,"d":"diesen Sommer","r":"этим летом","l":10,"t":"2026-03-20","p":"phrase"},{"i":275,"d":"nächste Woche","r":"на следующей неделе","l":10,"t":"2026-03-20","p":"phrase"},{"i":276,"d":"einen Marathon laufen","r":"бежать марафон (ich bin galufen)","l":11,"t":"2026-03-24","p":"phrase"},{"i":277,"d":"eine Radtour machen","r":"совершать велосипедную прогулку","l":11,"t":"2026-03-24","p":"phrase"},{"i":278,"d":"wieder","r":"снова","l":11,"t":"2026-03-24","p":"other"},{"i":279,"d":"besuchen","r":"посещать (ich habe besucht)","l":11,"t":"2026-03-24","p":"verb"},{"i":280,"d":"der Besucher","r":"посетитель","l":11,"t":"2026-03-24","p":"noun","g":"der"},{"i":281,"d":"viel Spaß haben","r":"хорошо проводить время","l":11,"t":"2026-03-24","p":"phrase"},{"i":282,"d":"bleiben","r":"оставаться (ich bin geblieben)","l":11,"t":"2026-03-24","p":"verb"},{"i":283,"d":"das Volksfest, -e","r":"народный праздник","l":11,"t":"2026-03-24","p":"noun","g":"das","n":"-e"},{"i":284,"d":"feiern","r":"праздновать","l":11,"t":"2026-03-24","p":"verb"},{"i":285,"d":"Weihnachten, Silvester feiern","r":"праздновать Рождество, Новый год","l":11,"t":"2026-03-24","p":"phrase"},{"i":286,"d":"ziemlich","r":"довольно","l":11,"t":"2026-03-24","p":"other","e":[["ziemlich gut / cool / schlecht","довольно хорошо / круто / плохо"]]},{"i":287,"d":"passieren","r":"происходить, случаться (Was ist passiert?)","l":11,"t":"2026-03-24","p":"verb"},{"i":288,"d":"wandern","r":"ходить в поход, гулять (ich bin gewandert)","l":11,"t":"2026-03-24","p":"verb"},{"i":289,"d":"reiten","r":"ездить верхом (ich bin geritten)","l":11,"t":"2026-03-24","p":"verb"},{"i":290,"d":"segeln","r":"плавать под парусом","l":11,"t":"2026-03-24","p":"verb"},{"i":291,"d":"springen","r":"прыгать (ich bin gesprungen)","l":11,"t":"2026-03-24","p":"verb"},{"i":292,"d":"der Hubschrauber, -","r":"вертолёт","l":12,"t":"2026-03-27","p":"noun","g":"der","n":"-"},{"i":293,"d":"schon einmal","r":"однажды, когда-либо","l":12,"t":"2026-03-27","p":"phrase"},{"i":294,"d":"nie","r":"никогда","l":12,"t":"2026-03-27","p":"other"},{"i":295,"d":"auf keinen Fall","r":"ни в коем случае","l":12,"t":"2026-03-27","p":"phrase"},{"i":296,"d":"das ist nichts für mich","r":"это не для меня","l":12,"t":"2026-03-27","p":"noun","g":"das"},{"i":297,"d":"die Stadt, Städte","r":"город","l":12,"t":"2026-03-27","p":"noun","g":"die","n":"Städte"},{"i":298,"d":"der Staat, Staaten","r":"государство","l":12,"t":"2026-03-27","p":"noun","g":"der","n":"Staaten"},{"i":299,"d":"Ich hatte Glück mit dem Wetter.","r":"Мне повезло с погодой.","l":12,"t":"2026-03-27","p":"sentence","e":[["Ich hatte viel Spaß.","Я получил(а) большое удовольствие."]]},{"i":300,"d":"Ich war allein unterwegs.","r":"Я был(а) в пути один(одна).","l":12,"t":"2026-03-27","p":"sentence"},{"i":301,"d":"der Hafen, Häfen","r":"порт","l":12,"t":"2026-03-27","p":"noun","g":"der","n":"Häfen"},{"i":302,"d":"der Flughafen","r":"аэропорт","l":12,"t":"2026-03-27","p":"noun","g":"der"},{"i":303,"d":"das Volksfest, -e","r":"народный праздник, ярмарка","l":12,"t":"2026-03-27","p":"noun","g":"das","n":"-e"},{"i":304,"d":"seit","r":"с (какого-то момента)","l":12,"t":"2026-03-27","p":"other","e":[["seit 1997, seit einem Jahr",""]]},{"i":305,"d":"dauern","r":"длиться, продолжаться","l":12,"t":"2026-03-27","p":"verb"},{"i":306,"d":"es gibt + A","r":"есть, имеется","l":12,"t":"2026-03-27","p":"phrase","e":[["In Hamburg gibt es einen Hafen.",""]]},{"i":307,"d":"hassen","r":"ненавидеть","l":12,"t":"2026-03-27","p":"verb"},{"i":308,"d":"nachdenken, ich habe nachgedacht","r":"думать, размышлять","l":13,"t":"2026-04-03","p":"verb"},{"i":309,"d":"rechnen","r":"считать","l":13,"t":"2026-04-03","p":"verb"},{"i":310,"d":"pflegen","r":"ухаживать за кем-то, за чем-то","l":13,"t":"2026-04-03","p":"verb"},{"i":311,"d":"holen","r":"приносить, сходить за чем-то","l":13,"t":"2026-04-03","p":"verb"},{"i":312,"d":"reden","r":"разговаривать с кем-то","l":13,"t":"2026-04-03","p":"verb"},{"i":313,"d":"zu Abend essen","r":"ужинать","l":13,"t":"2026-04-03","p":"phrase"},{"i":314,"d":"einkaufen","r":"делать покупки","l":13,"t":"2026-04-03","p":"verb"},{"i":315,"d":"die Woche ist vorbei","r":"неделя закончилась","l":13,"t":"2026-04-03","p":"noun","g":"die"},{"i":316,"d":"der Datenschutz","r":"защита данных","l":13,"t":"2026-04-03","p":"noun","g":"der"},{"i":317,"d":"der Teil, -e","r":"часть","l":14,"t":"2026-04-07","p":"noun","g":"der","n":"-e"},{"i":318,"d":"teilen","r":"делить, разделять","l":14,"t":"2026-04-07","p":"verb"},{"i":319,"d":"geteilt","r":"разделённый","l":14,"t":"2026-04-07","p":"other","e":[["Berlin war bis 1989 in West- und Ostberlin geteilt.",""]]},{"i":320,"d":"die Mauer, -","r":"стена","l":14,"t":"2026-04-07","p":"noun","g":"die","n":"-"},{"i":321,"d":"liegen","r":"лежать, находиться","l":14,"t":"2026-04-07","p":"verb"},{"i":322,"d":"der Mietpreis, -e","r":"арендная плата, цена аренды","l":14,"t":"2026-04-07","p":"noun","g":"der","n":"-e"},{"i":323,"d":"anders","r":"по-другому, иной","l":14,"t":"2026-04-07","p":"other"},{"i":324,"d":"bunt","r":"разноцветный, яркий","l":14,"t":"2026-04-07","p":"other"},{"i":325,"d":"nass","r":"мокрый","l":14,"t":"2026-04-07","p":"other"},{"i":326,"d":"einfach","r":"простой","l":14,"t":"2026-04-07","p":"other"},{"i":327,"d":"einfach cool","r":"просто класс / очень круто","l":14,"t":"2026-04-07","p":"phrase"},{"i":328,"d":"verrückt","r":"сумасшедший, безумный","l":14,"t":"2026-04-07","p":"other"},{"i":329,"d":"du hast recht","r":"ты прав","l":14,"t":"2026-04-07","p":"phrase"},{"i":330,"d":"zeigen","r":"показывать","l":14,"t":"2026-04-07","p":"verb"},{"i":331,"d":"der Tipp, -s","r":"совет","l":14,"t":"2026-04-07","p":"noun","g":"der","n":"-s"},{"i":332,"d":"Tipps geben","r":"давать советы","l":14,"t":"2026-04-07","p":"phrase"},{"i":333,"d":"manche Menschen","r":"некоторые люди","l":14,"t":"2026-04-07","p":"phrase"},{"i":334,"d":"danken","r":"благодарить","l":15,"t":"2026-04-10","p":"verb"},{"i":335,"d":"gefallen","r":"нравиться","l":15,"t":"2026-04-10","p":"verb"},{"i":336,"d":"gehören","r":"принадлежать","l":15,"t":"2026-04-10","p":"verb"},{"i":337,"d":"helfen","r":"помогать","l":15,"t":"2026-04-10","p":"verb"},{"i":338,"d":"besonders gut","r":"особенно хорошо","l":15,"t":"2026-04-10","p":"phrase"},{"i":339,"d":"gar / überhaupt nicht","r":"совсем не / вообще не","l":15,"t":"2026-04-10","p":"phrase"},{"i":340,"d":"der Lieblingsort","r":"любимое место","l":15,"t":"2026-04-10","p":"noun","g":"der"},{"i":341,"d":"fehlen","r":"отсутствовать / не хватать","l":15,"t":"2026-04-10","p":"verb"},{"i":342,"d":"der Fehler","r":"ошибка","l":15,"t":"2026-04-10","p":"noun","g":"der"},{"i":343,"d":"Mein Akku ist leer","r":"Мой мобильник разряжен","l":16,"t":"2026-04-21","p":"phrase"},{"i":344,"d":"suchen","r":"искать","l":16,"t":"2026-04-21","p":"verb","e":[["Ich suche den Hauptbahnhof","Я ищу главный вокзал"]]},{"i":345,"d":"der Weg, -e","r":"дорога, путь","l":16,"t":"2026-04-21","p":"noun","g":"der","n":"-e"},{"i":346,"d":"weit","r":"далеко","l":16,"t":"2026-04-21","p":"other","e":[["Der Weg ist nicht weit","Путь недалеко"]]},{"i":347,"d":"nach rechts","r":"направо","l":16,"t":"2026-04-21","p":"phrase"},{"i":348,"d":"nach links","r":"налево","l":16,"t":"2026-04-21","p":"phrase"},{"i":349,"d":"geradeaus","r":"прямо","l":16,"t":"2026-04-21","p":"other"},{"i":350,"d":"über die Straße gehen","r":"переходить улицу","l":16,"t":"2026-04-21","p":"phrase"},{"i":351,"d":"die Ampel, -n","r":"светофор","l":16,"t":"2026-04-21","p":"noun","g":"die","n":"-n","e":[["an der Ampel","у светофора"]]},{"i":352,"d":"abbiegen (hat abgebogen)","r":"поворачивать (повернул)","l":16,"t":"2026-04-21","p":"verb","v":"hat abgebogen"},{"i":353,"d":"wo?","r":"где? + Dativ","l":16,"t":"2026-04-21","p":"other"},{"i":354,"d":"in","r":"в","l":16,"t":"2026-04-21","p":"verb","e":[["in der Schule",""]]},{"i":355,"d":"auf","r":"на","l":16,"t":"2026-04-21","p":"other","e":[["auf dem Tisch",""]]},{"i":356,"d":"an","r":"у / на","l":16,"t":"2026-04-21","p":"verb","e":[["am Tisch, an der Wand, am Meer",""]]},{"i":357,"d":"unter","r":"под","l":16,"t":"2026-04-21","p":"other","e":[["unter dem Bett",""]]},{"i":358,"d":"hinter","r":"за","l":16,"t":"2026-04-21","p":"other","e":[["hinter dem Schrank",""]]},{"i":359,"d":"vor","r":"перед","l":16,"t":"2026-04-21","p":"other","e":[["vor dem Fenster",""]]},{"i":360,"d":"zwischen","r":"между","l":16,"t":"2026-04-21","p":"verb","e":[["zwischen dem Schrank und der Tür",""]]},{"i":361,"d":"neben","r":"рядом с","l":16,"t":"2026-04-21","p":"verb","e":[["neben meinem Haus",""]]},{"i":362,"d":"über","r":"над / через","l":16,"t":"2026-04-21","p":"other","e":[["über dem Tisch",""]]},{"i":363,"d":"das Kaufhaus, -häuser","r":"универмаг","l":16,"t":"2026-04-21","p":"noun","g":"das","n":"-häuser"},{"i":364,"d":"die Apotheke, -n","r":"аптека","l":16,"t":"2026-04-21","p":"noun","g":"die","n":"-n"},{"i":365,"d":"der Kindergarten, -gärten","r":"детский сад","l":16,"t":"2026-04-21","p":"noun","g":"der","n":"-gärten"},{"i":366,"d":"die Schule, -n","r":"школа","l":16,"t":"2026-04-21","p":"noun","g":"die","n":"-n"},{"i":367,"d":"der Park, -s","r":"парк","l":16,"t":"2026-04-21","p":"noun","g":"der","n":"-s"},{"i":368,"d":"der Bahnhof, -höfe","r":"вокзал","l":16,"t":"2026-04-21","p":"noun","g":"der","n":"-höfe"},{"i":369,"d":"das Krankenhaus, -häuser","r":"больница","l":16,"t":"2026-04-21","p":"noun","g":"das","n":"-häuser"},{"i":370,"d":"die Post","r":"почта","l":16,"t":"2026-04-21","p":"noun","g":"die"},{"i":371,"d":"die Bank, -en","r":"банк","l":16,"t":"2026-04-21","p":"noun","g":"die","n":"-en"},{"i":372,"d":"die Bank, Bänke","r":"скамейка","l":16,"t":"2026-04-21","p":"noun","g":"die","n":"Bänke"},{"i":373,"d":"die Kreuzung, -en","r":"перекрёсток","l":16,"t":"2026-04-21","p":"noun","g":"die","n":"-en"},{"i":374,"d":"die Polizei","r":"полиция","l":16,"t":"2026-04-21","p":"noun","g":"die"},{"i":375,"d":"die Brücke, -n","r":"мост","l":16,"t":"2026-04-21","p":"noun","g":"die","n":"-n"},{"i":376,"d":"Entschuldigung, können Sie mir helfen?","r":"Извините, вы можете мне помочь?","l":17,"t":"2026-04-24","p":"sentence"},{"i":377,"d":"Sie gehen / fahren hier geradeaus / nach rechts / nach links.","r":"Идите / поезжайте здесь прямо / направо / налево.","l":17,"t":"2026-04-24","p":"sentence"},{"i":378,"d":"Eine Frage bitte: Ich suche den Schlosspark / das Hotel Augustin / die Commerzbank.","r":"Можно вопрос: я ищу парк Шлосс / отель Augustin / банк Commerzbank.","l":17,"t":"2026-04-24","p":"sentence"},{"i":379,"d":"Wo ist denn hier ein Supermarkt / ein Café / eine Bank?","r":"Где здесь супермаркет / кафе / банк?","l":17,"t":"2026-04-24","p":"sentence","e":[["Tut mir leid. Ich bin nicht von hier.","Извините, я не отсюда."]]},{"i":380,"d":"Herzlichen Dank.","r":"Большое спасибо.","l":17,"t":"2026-04-24","p":"sentence"},{"i":381,"d":"Ist das sehr weit?","r":"Это очень далеко?","l":17,"t":"2026-04-24","p":"sentence"},{"i":382,"d":"Kann ich zu Fuß gehen?","r":"Я могу дойти пешком?","l":17,"t":"2026-04-24","p":"sentence"},{"i":383,"d":"Da sehen Sie einen Park / eine Apotheke / ein Kino.","r":"Там вы увидите парк / аптеку / кинотеатр.","l":17,"t":"2026-04-24","p":"sentence","e":[["Vor dem Kino / der Bank biegen Sie nach rechts / nach links ab.","Перед кинотеатром / банком поверните направо / налево."]]},{"i":384,"d":"Das weiß ich leider nicht.","r":"К сожалению, я этого не знаю.","l":17,"t":"2026-04-24","p":"sentence","g":"das"},{"i":385,"d":"Ich bin fremd hier.","r":"Я здесь чужой / я здесь не местный.","l":17,"t":"2026-04-24","p":"sentence"},{"i":386,"d":"Das ist gar nicht weit.","r":"Это совсем недалеко.","l":17,"t":"2026-04-24","p":"sentence","g":"das","e":[["Sie gehen die erste / zweite / dritte Straße nach rechts / nach links.","Идите на первую / вторую / третью улицу направо / налево."]]},{"i":387,"d":"gehören","r":"принадлежать","l":17,"t":"2026-04-24","p":"verb","e":[["Das gehört mir.","Это принадлежит мне."]]},{"i":388,"d":"sammeln","r":"собирать","l":17,"t":"2026-04-24","p":"verb"},{"i":389,"d":"die Pfandflaschen sammeln","r":"собирать бутылки с залогом","l":17,"t":"2026-04-24","p":"noun","g":"die"},{"i":390,"d":"der Stau, -s","r":"пробка (на дороге)","l":17,"t":"2026-04-24","p":"noun","g":"der","n":"-s"},{"i":391,"d":"laut","r":"громкий / шумный","l":17,"t":"2026-04-24","p":"other"},{"i":392,"d":"der Lärm","r":"шум","l":17,"t":"2026-04-24","p":"noun","g":"der"},{"i":393,"d":"schlecht","r":"плохой","l":17,"t":"2026-04-24","p":"other"},{"i":394,"d":"die Luft","r":"воздух","l":17,"t":"2026-04-24","p":"noun","g":"die","e":[["Autos machen schlechte Luft.","Машины загрязняют воздух."]]},{"i":395,"d":"meistens","r":"чаще всего / обычно","l":17,"t":"2026-04-24","p":"other"},{"i":396,"d":"die Wohngemeinschaft (die WG)","r":"коммунальная квартира / совместное проживание","l":18,"t":"2026-04-28","p":"noun","g":"die"},{"i":397,"d":"die Möbel (Pl.)","r":"мебель","l":18,"t":"2026-04-28","p":"noun","g":"die"},{"i":398,"d":"ordentlich","r":"аккуратный, опрятный","l":18,"t":"2026-04-28","p":"other"},{"i":399,"d":"hässlich","r":"некрасивый","l":18,"t":"2026-04-28","p":"other"},{"i":400,"d":"gemütlich","r":"уютный","l":18,"t":"2026-04-28","p":"other"},{"i":401,"d":"praktisch","r":"практичный","l":18,"t":"2026-04-28","p":"other"},{"i":402,"d":"bequem","r":"удобный","l":18,"t":"2026-04-28","p":"other"},{"i":403,"d":"modern","r":"современный","l":18,"t":"2026-04-28","p":"verb"},{"i":404,"d":"sauber","r":"чистый","l":18,"t":"2026-04-28","p":"other"},{"i":405,"d":"schmutzig","r":"грязный","l":18,"t":"2026-04-28","p":"other"},{"i":406,"d":"überhaupt nicht","r":"совсем не","l":18,"t":"2026-04-28","p":"phrase"},{"i":407,"d":"der Flur, -e","r":"коридор, прихожая","l":18,"t":"2026-04-28","p":"noun","g":"der","n":"-e"},{"i":408,"d":"die Tür, -en","r":"дверь","l":18,"t":"2026-04-28","p":"noun","g":"die","n":"-en"},{"i":409,"d":"die Eingangstür","r":"входная дверь","l":18,"t":"2026-04-28","p":"noun","g":"die"},{"i":410,"d":"das Fenster, -","r":"окно","l":18,"t":"2026-04-28","p":"noun","g":"das","n":"-"},{"i":411,"d":"die Küche, -n","r":"кухня","l":18,"t":"2026-04-28","p":"noun","g":"die","n":"-n"},{"i":412,"d":"der Balkon, -e","r":"балкон","l":18,"t":"2026-04-28","p":"noun","g":"der","n":"-e"},{"i":413,"d":"die Toilette, -n","r":"туалет","l":18,"t":"2026-04-28","p":"noun","g":"die","n":"-n"},{"i":414,"d":"das Bad, Bäder","r":"ванная","l":18,"t":"2026-04-28","p":"noun","g":"das","n":"Bäder"},{"i":415,"d":"das Schlafzimmer, -","r":"спальня","l":18,"t":"2026-04-28","p":"noun","g":"das","n":"-"},{"i":416,"d":"das Wohnzimmer, -","r":"гостиная","l":18,"t":"2026-04-28","p":"noun","g":"das","n":"-"},{"i":417,"d":"die Treppe, -n","r":"лестница","l":18,"t":"2026-04-28","p":"noun","g":"die","n":"-n"},{"i":418,"d":"der Keller, -","r":"подвал","l":18,"t":"2026-04-28","p":"noun","g":"der","n":"-"},{"i":419,"d":"das Dach, Dächer","r":"крыша","l":18,"t":"2026-04-28","p":"noun","g":"das","n":"Dächer"},{"i":420,"d":"der Aufzug, -züge","r":"лифт","l":18,"t":"2026-04-28","p":"noun","g":"der","n":"-züge"},{"i":421,"d":"oben","r":"наверху","l":18,"t":"2026-04-28","p":"verb"},{"i":422,"d":"vorn / vorne","r":"спереди","l":18,"t":"2026-04-28","p":"phrase"},{"i":423,"d":"hinten","r":"сзади","l":18,"t":"2026-04-28","p":"verb"},{"i":424,"d":"unten","r":"внизу","l":18,"t":"2026-04-28","p":"verb"},{"i":425,"d":"daneben","r":"рядом","l":18,"t":"2026-04-28","p":"verb"},{"i":426,"d":"das Chaos","r":"хаос, беспорядок","l":18,"t":"2026-04-28","p":"noun","g":"das"},{"i":427,"d":"Komm nur rein!","r":"Заходи!","l":18,"t":"2026-04-28","p":"sentence"},{"i":428,"d":"Man sieht es sofort.","r":"Это сразу видно","l":18,"t":"2026-04-28","p":"sentence"},{"i":429,"d":"umziehen (er zieht um, er ist umgezogen)","r":"переезжать","l":19,"t":"2026-05-01","p":"sentence"},{"i":430,"d":"der Umzug","r":"переезд","l":19,"t":"2026-05-01","p":"noun","g":"der"},{"i":431,"d":"zumachen (er macht zu, er hat zugemacht)","r":"закрывать","l":19,"t":"2026-05-01","p":"sentence"},{"i":432,"d":"anfangen (er fängt an, er hat angefangen)","r":"начинать","l":19,"t":"2026-05-01","p":"sentence"},{"i":433,"d":"am Anfang","r":"в начале","l":19,"t":"2026-05-01","p":"phrase"},{"i":434,"d":"der Strom","r":"электричество","l":19,"t":"2026-05-01","p":"noun","g":"der"},{"i":435,"d":"der Müll","r":"мусор","l":19,"t":"2026-05-01","p":"noun","g":"der"},{"i":436,"d":"der Vermieter","r":"арендодатель / хозяин квартиры","l":19,"t":"2026-05-01","p":"noun","g":"der"},{"i":437,"d":"das Erdgeschoss","r":"первый этаж (в Германии — нулевой этаж)","l":19,"t":"2026-05-01","p":"noun","g":"das"},{"i":438,"d":"das Dachgeschoss","r":"мансарда / чердачный этаж","l":19,"t":"2026-05-01","p":"noun","g":"das"},{"i":439,"d":"im ersten Stock","r":"на первом этаже (в РФ второй)","l":19,"t":"2026-05-01","p":"phrase"},{"i":440,"d":"im zweiten Stock","r":"на втором этаже (в РФ третий)","l":19,"t":"2026-05-01","p":"phrase"},{"i":441,"d":"im dritten Stock","r":"на третьем этаже (в РФ четвертый)","l":19,"t":"2026-05-01","p":"phrase"},{"i":442,"d":"der Traum, Träume","r":"мечта","l":19,"t":"2026-05-01","p":"noun","g":"der","n":"Träume"},{"i":443,"d":"die Traumwohnung","r":"квартира мечты","l":19,"t":"2026-05-01","p":"noun","g":"die"},{"i":444,"d":"der Herd","r":"плита","l":19,"t":"2026-05-01","p":"noun","g":"der"},{"i":445,"d":"die Spülmaschine","r":"посудомоечная машина","l":19,"t":"2026-05-01","p":"noun","g":"die"},{"i":446,"d":"die Sache, -n","r":"вещь / дело","l":19,"t":"2026-05-01","p":"noun","g":"die","n":"-n"},{"i":447,"d":"das Ding, -e","r":"вещь / предмет","l":19,"t":"2026-05-01","p":"noun","g":"das","n":"-e"},{"i":448,"d":"WLAN ist mit dabei","r":"Wi-Fi включён / есть Wi-Fi","l":19,"t":"2026-05-01","p":"phrase"},{"i":449,"d":"übermorgen","r":"послезавтра","l":19,"t":"2026-05-01","p":"verb"},{"i":450,"d":"inklusive","r":"включая, включено","l":19,"t":"2026-05-01","p":"other","e":[["Die Miete ist 600 Euro inklusive Strom",""]]},{"i":451,"d":"möbliert","r":"меблированный","l":19,"t":"2026-05-01","p":"other"},{"i":452,"d":"ins Erdgeschoss fahren","r":"ехать на первый этаж","l":20,"t":"2026-05-07","p":"phrase"},{"i":453,"d":"es ist kurz nach 9","r":"сейчас немного позже девяти","l":20,"t":"2026-05-07","p":"sentence"},{"i":454,"d":"feststecken (ich bin festgesteckt)","r":"застрять (я застрял)","l":20,"t":"2026-05-07","p":"phrase"},{"i":455,"d":"ich habe kein Netz","r":"у меня нет связи","l":20,"t":"2026-05-07","p":"phrase"},{"i":456,"d":"das Netz","r":"сеть, связь","l":20,"t":"2026-05-07","p":"noun","g":"das"},{"i":457,"d":"reparieren","r":"ремонтировать, чинить","l":20,"t":"2026-05-07","p":"verb"},{"i":458,"d":"die Reparatur","r":"ремонт","l":20,"t":"2026-05-07","p":"noun","g":"die"},{"i":459,"d":"der Handwerker","r":"мастер, ремесленник","l":20,"t":"2026-05-07","p":"noun","g":"der"},{"i":460,"d":"selbst","r":"самостоятельно","l":20,"t":"2026-05-07","p":"other","e":[["Ich kann das selbst reparieren.","Я могу сам это починить."]]},{"i":461,"d":"die Notdienst","r":"аварийная служба","l":20,"t":"2026-05-07","p":"noun","g":"die"},{"i":462,"d":"der Kunde / die Kundin","r":"клиент / клиентка","l":20,"t":"2026-05-07","p":"noun","g":"der"},{"i":463,"d":"Was kann ich für Sie tun?","r":"Что я могу для Вас сделать?","l":20,"t":"2026-05-07","p":"sentence","e":[["Was ist los? Kann ich Ihnen helfen?","Что случилось? Могу я Вам помочь?"],["Wie kann ich Ihnen helfen?","Как я могу Вам помочь?"]]},{"i":464,"d":"Wir haben hier ein Problem: Der Aufzug funktioniert nicht.","r":"У нас тут проблема: лифт не работает.","l":20,"t":"2026-05-07","p":"sentence"},{"i":465,"d":"Wir brauchen Ihre Hilfe.","r":"Нам нужна Ваша помощь.","l":20,"t":"2026-05-07","p":"sentence"},{"i":466,"d":"Ja, natürlich.","r":"Да, конечно.","l":20,"t":"2026-05-07","p":"sentence"},{"i":467,"d":"Kein Problem! Das kann ich reparieren.","r":"Нет проблем! Я могу это починить.","l":20,"t":"2026-05-07","p":"sentence"},{"i":468,"d":"Wir können einen Termin ausmachen.","r":"Мы можем договориться о встрече.","l":20,"t":"2026-05-07","p":"sentence"},{"i":469,"d":"Geht es am … um …Uhr?","r":"Вам подходит … в … часов?","l":20,"t":"2026-05-07","p":"sentence"},{"i":470,"d":"Tut mir leid. Das geht leider nicht.","r":"Извините. К сожалению, это невозможно.","l":20,"t":"2026-05-07","p":"sentence","e":[["Leider kann ich da nichts machen.","К сожалению, я ничего не могу с этим сделать."]]},{"i":471,"d":"einen Termin vorschlagen (hat vorgeschlagen)","r":"предложить встречу / назначить время (предложил)","l":21,"t":"2026-05-08","p":"verb","v":"hat vorgeschlagen"},{"i":472,"d":"einen Termin absagen (hat abgesagt)","r":"отменить встречу (отменил)","l":21,"t":"2026-05-08","p":"verb","v":"hat abgesagt"},{"i":473,"d":"einen Termin verschieben (hat verschoben)","r":"перенести встречу (перенёс)","l":21,"t":"2026-05-08","p":"verb","v":"hat verschoben"},{"i":474,"d":"hoffentlich","r":"надеюсь","l":21,"t":"2026-05-08","p":"other","e":[["Hoffentlich ist er pünktlich.","Надеюсь, он придёт вовремя."]]},{"i":475,"d":"ungefähr","r":"примерно","l":21,"t":"2026-05-08","p":"other"},{"i":476,"d":"ungefähr zwei Stunden","r":"примерно два часа","l":21,"t":"2026-05-08","p":"phrase"},{"i":477,"d":"kurz","r":"незадолго","l":21,"t":"2026-05-08","p":"other"},{"i":478,"d":"kurz vor dem Training","r":"незадолго до тренировки","l":21,"t":"2026-05-08","p":"phrase"},{"i":479,"d":"das Gespräch","r":"разговор / беседа","l":21,"t":"2026-05-08","p":"noun","g":"das"},{"i":480,"d":"das Vorstellungsgespräch","r":"собеседование","l":21,"t":"2026-05-08","p":"noun","g":"das"},{"i":481,"d":"Viel Glück!","r":"Удачи!","l":21,"t":"2026-05-08","p":"sentence"},{"i":482,"d":"Bis bald!","r":"До скорого!","l":21,"t":"2026-05-08","p":"sentence"},{"i":483,"d":"Hast du Lust?","r":"Хочешь? / Есть желание?","l":21,"t":"2026-05-08","p":"sentence"},{"i":484,"d":"werden","r":"становиться; вспомогательный глагол будущего времени","l":22,"t":"2026-05-17","p":"verb"},{"i":485,"d":"auf jeden Fall / unbedingt","r":"в любом случае; обязательно","l":22,"t":"2026-05-17","p":"phrase"},{"i":486,"d":"auf keinen Fall","r":"ни в коем случае","l":22,"t":"2026-05-17","p":"phrase"},{"i":487,"d":"der Traumberuf","r":"профессия мечты","l":22,"t":"2026-05-17","p":"noun","g":"der"},{"i":488,"d":"die Gefahr","r":"опасность","l":22,"t":"2026-05-17","p":"noun","g":"die"},{"i":489,"d":"gefährlich","r":"опасный","l":22,"t":"2026-05-17","p":"other"},{"i":490,"d":"ein Start-up gründen","r":"основать стартап","l":22,"t":"2026-05-17","p":"phrase"},{"i":491,"d":"mit einem Blog Geld verdienen (hat verdient)","r":"зарабатывать деньги с помощью блога","l":22,"t":"2026-05-17","p":"verb","v":"hat verdient"},{"i":492,"d":"der Bachelor","r":"бакалавр","l":22,"t":"2026-05-17","p":"noun","g":"der"},{"i":493,"d":"einen Bachelor in Wirtschaft machen","r":"получить степень бакалавра по экономике","l":22,"t":"2026-05-17","p":"sentence"},{"i":494,"d":"die Wirtschaft","r":"экономика","l":22,"t":"2026-05-17","p":"noun","g":"die"},{"i":495,"d":"die Zukunft","r":"будущее","l":22,"t":"2026-05-17","p":"noun","g":"die"},{"i":496,"d":"die Halbtagsstelle","r":"работа на полставки","l":22,"t":"2026-05-17","p":"noun","g":"die"},{"i":497,"d":"selbständig arbeiten","r":"работать самостоятельно / на себя","l":22,"t":"2026-05-17","p":"phrase"},{"i":498,"d":"die Selbständigkeit","r":"самостоятельность; самозанятость","l":22,"t":"2026-05-17","p":"noun","g":"die"},{"i":499,"d":"der Schulabschluss","r":"окончание школы; аттестат","l":22,"t":"2026-05-17","p":"noun","g":"der"},{"i":500,"d":"mitmachen bei D","r":"участвовать в (чём-то)","l":22,"t":"2026-05-17","p":"phrase"},{"i":501,"d":"die Freiheit","r":"свобода","l":22,"t":"2026-05-17","p":"noun","g":"die"},{"i":502,"d":"anfangen (er fängt an, hat angefangen)","r":"начинать","l":22,"t":"2026-05-17","p":"sentence"},{"i":503,"d":"sicher","r":"уверенный; безопасный; наверняка","l":22,"t":"2026-05-17","p":"other"},{"i":504,"d":"nur","r":"только","l":22,"t":"2026-05-17","p":"other"},{"i":505,"d":"erst","r":"только (лишь сейчас / не раньше)","l":22,"t":"2026-05-17","p":"other"},{"i":506,"d":"erst später","r":"только позже","l":22,"t":"2026-05-17","p":"phrase"},{"i":507,"d":"sofort","r":"сразу, немедленно","l":22,"t":"2026-05-17","p":"other"},{"i":508,"d":"durch Europa reisen (ist gereist)","r":"путешествовать по Европе","l":23,"t":"2026-05-20","p":"verb","v":"ist gereist"},{"i":509,"d":"um die Welt segeln (ist gesegelt)","r":"плавать под парусом вокруг света","l":23,"t":"2026-05-20","p":"verb","v":"ist gesegelt"},{"i":510,"d":"im Ausland leben","r":"жить за границей","l":23,"t":"2026-05-20","p":"phrase"},{"i":511,"d":"Motorrad fahren (ist gefahren)","r":"ездить на мотоцикле","l":23,"t":"2026-05-20","p":"verb","v":"ist gefahren"},{"i":512,"d":"den Führerschein machen","r":"получить водительские права","l":23,"t":"2026-05-20","p":"phrase"},{"i":513,"d":"ein Instrument lernen","r":"учиться играть на музыкальном инструменте","l":23,"t":"2026-05-20","p":"phrase"},{"i":514,"d":"viele Fremdsprachen lernen","r":"изучать много иностранных языков","l":23,"t":"2026-05-20","p":"phrase"},{"i":515,"d":"drei Monate freihaben","r":"иметь три месяца отпуска / быть свободным три месяца","l":23,"t":"2026-05-20","p":"phrase"},{"i":516,"d":"einen Blog schreiben (hat geschrieben)","r":"вести блог","l":23,"t":"2026-05-20","p":"verb","v":"hat geschrieben"},{"i":517,"d":"Chef/Chefin werden (ist geworden)","r":"стать начальником / начальницей Politiker/Politikerin werden — стать политиком","l":23,"t":"2026-05-20","p":"verb","v":"ist geworden"},{"i":518,"d":"heiraten","r":"жениться / выйти замуж","l":23,"t":"2026-05-20","p":"verb"},{"i":519,"d":"eine Familie haben","r":"иметь семью","l":23,"t":"2026-05-20","p":"phrase"},{"i":520,"d":"Geld verdienen (hat verdient)","r":"зарабатывать деньги","l":23,"t":"2026-05-20","p":"verb","v":"hat verdient"},{"i":521,"d":"auf einen Berg steigen (ist gestiegen)","r":"подняться на гору","l":23,"t":"2026-05-20","p":"verb","v":"ist gestiegen"},{"i":522,"d":"müde sein","r":"быть уставшим","l":24,"t":"2026-05-29","p":"phrase"},{"i":523,"d":"Rückenschmerzen haben","r":"иметь боли в спине","l":24,"t":"2026-05-29","p":"phrase"},{"i":524,"d":"Kopfschmerzen haben","r":"иметь головную боль","l":24,"t":"2026-05-29","p":"phrase"},{"i":525,"d":"die Übung, -en","r":"упражнение","l":24,"t":"2026-05-29","p":"noun","g":"die","n":"-en"},{"i":526,"d":"schlimm","r":"плохой, тяжёлый","l":24,"t":"2026-05-29","p":"other"},{"i":527,"d":"etwas komisch","r":"немного странный","l":24,"t":"2026-05-29","p":"phrase"},{"i":528,"d":"ziemlich komisch","r":"довольно странный","l":24,"t":"2026-05-29","p":"phrase"},{"i":529,"d":"drei- bis viermal in der Woche / am Tag","r":"три-четыре раза в неделю / в день","l":24,"t":"2026-05-29","p":"sentence"},{"i":530,"d":"üblich sein","r":"быть обычным, привычным","l":24,"t":"2026-05-29","p":"phrase"},{"i":531,"d":"krank","r":"больной","l":24,"t":"2026-05-29","p":"other"},{"i":532,"d":"die Krankheit","r":"болезнь","l":24,"t":"2026-05-29","p":"noun","g":"die"},{"i":533,"d":"gesund","r":"здоровый","l":24,"t":"2026-05-29","p":"other"},{"i":534,"d":"die Gesundheit","r":"здоровье","l":24,"t":"2026-05-29","p":"noun","g":"die"},{"i":535,"d":"die Bewegung","r":"движение, физическая активность","l":24,"t":"2026-05-29","p":"noun","g":"die"},{"i":536,"d":"einfach","r":"просто","l":24,"t":"2026-05-29","p":"other"},{"i":537,"d":"ungefähr","r":"приблизительно","l":24,"t":"2026-05-29","p":"other"},{"i":538,"d":"sogar","r":"даже","l":24,"t":"2026-05-29","p":"other"},{"i":539,"d":"sitzen (ich habe gesessen)","r":"сидеть","l":24,"t":"2026-05-29","p":"phrase"},{"i":540,"d":"im Stehen arbeiten","r":"работать стоя","l":24,"t":"2026-05-29","p":"phrase"},{"i":541,"d":"das Übergewicht","r":"лишний вес","l":24,"t":"2026-05-29","p":"noun","g":"das"},{"i":542,"d":"die Herzprobleme","r":"проблемы с сердцем","l":24,"t":"2026-05-29","p":"noun","g":"die"},{"i":543,"d":"die Treppe benutzen","r":"пользоваться лестницей","l":24,"t":"2026-05-29","p":"noun","g":"die"},{"i":544,"d":"einen Ratschlag geben","r":"давать совет","l":24,"t":"2026-05-29","p":"phrase","e":[["der Ratschlag, Ratschläge",""]]},{"i":545,"d":"der Körper, -","r":"тело","l":24,"t":"2026-05-29","p":"noun","g":"der","n":"-"},{"i":546,"d":"der Körperteil, -e","r":"часть тела","l":24,"t":"2026-05-29","p":"noun","g":"der","n":"-e"},{"i":547,"d":"der Kopf, Köpfe","r":"голова","l":24,"t":"2026-05-29","p":"noun","g":"der","n":"Köpfe"},{"i":548,"d":"das Auge, -n","r":"глаз","l":24,"t":"2026-05-29","p":"noun","g":"das","n":"-n"},{"i":549,"d":"der Mund, Münder","r":"рот","l":24,"t":"2026-05-29","p":"noun","g":"der","n":"Münder"},{"i":550,"d":"das Ohr, -en","r":"ухо","l":24,"t":"2026-05-29","p":"noun","g":"das","n":"-en"},{"i":551,"d":"die Haare","r":"волосы","l":24,"t":"2026-05-29","p":"noun","g":"die"},{"i":552,"d":"der Hals, Hälse","r":"шея","l":24,"t":"2026-05-29","p":"noun","g":"der","n":"Hälse"},{"i":553,"d":"die Brust, Brüste","r":"грудь","l":24,"t":"2026-05-29","p":"noun","g":"die","n":"Brüste"},{"i":554,"d":"die Schulter, -n","r":"плечо","l":24,"t":"2026-05-29","p":"noun","g":"die","n":"-n"},{"i":555,"d":"der Rücken, -","r":"спина","l":24,"t":"2026-05-29","p":"noun","g":"der","n":"-"},{"i":556,"d":"der Bauch, Bäuche","r":"живот","l":24,"t":"2026-05-29","p":"noun","g":"der","n":"Bäuche"},{"i":557,"d":"der Arm, -e","r":"рука","l":24,"t":"2026-05-29","p":"noun","g":"der","n":"-e"},{"i":558,"d":"die Hand, Hände","r":"кисть руки","l":24,"t":"2026-05-29","p":"noun","g":"die","n":"Hände"},{"i":559,"d":"der Finger, -","r":"палец","l":24,"t":"2026-05-29","p":"noun","g":"der","n":"-"},{"i":560,"d":"das Bein, -e","r":"нога","l":24,"t":"2026-05-29","p":"noun","g":"das","n":"-e"},{"i":561,"d":"das Knie, -","r":"колено","l":24,"t":"2026-05-29","p":"noun","g":"das","n":"-"},{"i":562,"d":"der Fuß, Füße","r":"ступня, нога","l":24,"t":"2026-05-29","p":"noun","g":"der","n":"Füße"},{"i":563,"d":"wehtun","r":"болеть, причинять боль","l":25,"t":"2026-06-02","p":"verb","e":[["Mein Rücken tut weh.",""]]},{"i":564,"d":"der Schmerz, -en","r":"боль","l":25,"t":"2026-06-02","p":"noun","g":"der","n":"-en","e":[["Ich habe Kopfschmerzen.",""]]},{"i":565,"d":"gegen","r":"против, от","l":25,"t":"2026-06-02","p":"verb","e":[["Was kann man gegen Kopfschmerzen machen?",""]]},{"i":566,"d":"dagegen","r":"против этого, от этого","l":25,"t":"2026-06-02","p":"verb","e":[["Was hilft dagegen?","Что помогает от этого?"]]},{"i":567,"d":"empfehlen (er empfiehlt, er hat empfohlen)","r":"рекомендовать","l":25,"t":"2026-06-02","p":"sentence"},{"i":568,"d":"der Tipp, -s","r":"совет, рекомендация","l":25,"t":"2026-06-02","p":"noun","g":"der","n":"-s","e":[["Habt ihr Tipps?",""]]},{"i":569,"d":"sollen","r":"следует, должен","l":25,"t":"2026-06-02","p":"verb","e":[["Mein Arzt sagt, ich soll mehr Sport machen.",""]]},{"i":570,"d":"die Krankheit, -en","r":"болезнь","l":25,"t":"2026-06-02","p":"noun","g":"die","n":"-en"},{"i":571,"d":"der Schnupfen","r":"насморк","l":25,"t":"2026-06-02","p":"noun","g":"der"},{"i":572,"d":"das Fieber","r":"температура, жар","l":25,"t":"2026-06-02","p":"noun","g":"das"},{"i":573,"d":"die Erkältung","r":"простуда","l":25,"t":"2026-06-02","p":"noun","g":"die"},{"i":574,"d":"das Husten","r":"кашель","l":25,"t":"2026-06-02","p":"noun","g":"das"},{"i":575,"d":"die Bauchschmerzen","r":"боли в животе","l":25,"t":"2026-06-02","p":"noun","g":"die"},{"i":576,"d":"Tabletten / Medikamente nehmen","r":"принимать таблетки / лекарства","l":25,"t":"2026-06-02","p":"phrase"},{"i":577,"d":"der Hustensaft","r":"сироп от кашля","l":25,"t":"2026-06-02","p":"noun","g":"der"},{"i":578,"d":"die Salbe","r":"мазь","l":25,"t":"2026-06-02","p":"noun","g":"die"},{"i":579,"d":"eine Salbe auftragen","r":"наносить мазь","l":25,"t":"2026-06-02","p":"phrase"},{"i":580,"d":"aufmachen","r":"открывать","l":26,"t":"2026-06-05","p":"verb","e":[["Er macht das Fenster auf.",""]]},{"i":581,"d":"zumachen","r":"закрывать","l":26,"t":"2026-06-05","p":"verb","e":[["Ich habe die Tür zugemacht.",""]]},{"i":582,"d":"die Teeküche","r":"мини-кухня, кухонный уголок (например, в офисе)","l":26,"t":"2026-06-05","p":"noun","g":"die"},{"i":583,"d":"der Haushalt","r":"домашнее хозяйство, быт","l":26,"t":"2026-06-05","p":"noun","e":[["viel / wenig im Haushalt machen",""]]},{"i":584,"d":"das Zimmer aufräumen","r":"убирать комнату","l":26,"t":"2026-06-05","p":"noun","g":"das"},{"i":585,"d":"den Müll / den Abfall rausbringen","r":"выносить мусор","l":26,"t":"2026-06-05","p":"sentence"},{"i":586,"d":"das Bett machen","r":"заправлять кровать","l":26,"t":"2026-06-05","p":"noun","g":"das"},{"i":587,"d":"die Wäsche waschen","r":"стирать бельё","l":26,"t":"2026-06-05","p":"noun","g":"die"},{"i":588,"d":"die Wäsche aufhängen","r":"развешивать бельё","l":26,"t":"2026-06-05","p":"noun","g":"die"},{"i":589,"d":"einkaufen","r":"ходить за покупками, делать покупки","l":26,"t":"2026-06-05","p":"verb"},{"i":590,"d":"kochen","r":"готовить (еду)","l":26,"t":"2026-06-05","p":"verb"},{"i":591,"d":"die Spülmaschine einräumen","r":"загружать посудомоечную машину","l":26,"t":"2026-06-05","p":"noun","g":"die"},{"i":592,"d":"die Spülmaschine ausräumen","r":"разгружать посудомоечную машину","l":26,"t":"2026-06-05","p":"noun","g":"die"},{"i":593,"d":"das Geschirr abwaschen / spülen","r":"мыть посуду","l":26,"t":"2026-06-05","p":"noun","g":"das"},{"i":594,"d":"die Küche sauber machen","r":"убирать кухню","l":26,"t":"2026-06-05","p":"noun","g":"die"},{"i":595,"d":"den Boden wischen","r":"мыть пол","l":26,"t":"2026-06-05","p":"phrase"},{"i":596,"d":"das Bad putzen","r":"чистить / убирать ванную комнату","l":26,"t":"2026-06-05","p":"noun","g":"das"},{"i":597,"d":"staubsaugen","r":"пылесосить","l":26,"t":"2026-06-05","p":"verb"},{"i":598,"d":"beraten (er berät, hat beraten)","r":"консультировать, советовать","l":27,"t":"2026-06-11","p":"sentence"},{"i":599,"d":"der Berater, -","r":"консультант","l":27,"t":"2026-06-11","p":"noun","g":"der","n":"-"},{"i":600,"d":"der IT-Berater, -","r":"IT-консультант","l":27,"t":"2026-06-11","p":"noun","g":"der","n":"-"},{"i":601,"d":"der Experte, -n","r":"эксперт","l":27,"t":"2026-06-11","p":"noun","g":"der","n":"-n"},{"i":602,"d":"der Fachmann, Fachmänner / Fachleute","r":"специалист","l":27,"t":"2026-06-11","p":"noun","g":"der","n":"Fachmänner"},{"i":603,"d":"die Fachfrau, -en","r":"специалистка","l":27,"t":"2026-06-11","p":"noun","g":"die","n":"-en"},{"i":604,"d":"der Projektmanager, -","r":"менеджер проекта","l":27,"t":"2026-06-11","p":"noun","g":"der","n":"-"},{"i":605,"d":"der Psychologe, -n","r":"психолог","l":27,"t":"2026-06-11","p":"noun","g":"der","n":"-n"},{"i":606,"d":"die Psychologin, -nen","r":"психолог (жен.)","l":27,"t":"2026-06-11","p":"noun","g":"die","n":"-nen"},{"i":607,"d":"die Kommunikation","r":"коммуникация, общение","l":27,"t":"2026-06-11","p":"noun","g":"die"},{"i":608,"d":"der Fehler, -","r":"ошибка","l":27,"t":"2026-06-11","p":"noun","g":"der","n":"-"},{"i":609,"d":"denken (er denkt, hat gedacht)","r":"думать","l":27,"t":"2026-06-11","p":"sentence"},{"i":610,"d":"irgendwann","r":"когда-нибудь, в какой-то момент","l":27,"t":"2026-06-11","p":"verb"},{"i":611,"d":"der Schritt, -e","r":"шаг","l":27,"t":"2026-06-11","p":"noun","g":"der","n":"-e"},{"i":612,"d":"die ganze Welt","r":"весь мир","l":27,"t":"2026-06-11","p":"noun","g":"die"},{"i":613,"d":"schließlich","r":"в конце концов, наконец","l":27,"t":"2026-06-11","p":"other"},{"i":614,"d":"erfolgreich","r":"успешный","l":27,"t":"2026-06-11","p":"other"},{"i":615,"d":"sinnvoll","r":"разумный, полезный, имеющий смысл","l":27,"t":"2026-06-11","p":"other"},{"i":616,"d":"sinnlos","r":"бессмысленный, бесполезный","l":27,"t":"2026-06-11","p":"other"},{"i":617,"d":"die Hilfe anbieten (hat angeboten)","r":"предлагать помощь","l":27,"t":"2026-06-11","p":"noun","g":"die","v":"hat angeboten"},{"i":618,"d":"der Bart, Bärte","r":"борода","l":28,"t":"2026-06-15","p":"noun","g":"der","n":"Bärte"},{"i":619,"d":"lange Haare","r":"длинные волосы","l":28,"t":"2026-06-15","p":"phrase"},{"i":620,"d":"kurze Haare","r":"короткие волосы","l":28,"t":"2026-06-15","p":"phrase"},{"i":621,"d":"blonde Haare","r":"светлые / блондинистые волосы","l":28,"t":"2026-06-15","p":"phrase"},{"i":622,"d":"dunkle Haare","r":"тёмные волосы","l":28,"t":"2026-06-15","p":"phrase"},{"i":623,"d":"graue Haare","r":"седые / серые волосы","l":28,"t":"2026-06-15","p":"phrase"},{"i":624,"d":"die Locken","r":"кудри","l":28,"t":"2026-06-15","p":"noun","g":"die"},{"i":625,"d":"glatte Haare","r":"прямые волосы","l":28,"t":"2026-06-15","p":"phrase"},{"i":626,"d":"kräftig","r":"крепкий, сильный, плотного телосложения","l":28,"t":"2026-06-15","p":"other"},{"i":627,"d":"schlank","r":"стройный, худой","l":28,"t":"2026-06-15","p":"other"},{"i":628,"d":"freundlich","r":"дружелюбный","l":28,"t":"2026-06-15","p":"other"},{"i":629,"d":"fröhlich","r":"весёлый","l":28,"t":"2026-06-15","p":"other"},{"i":630,"d":"aussehen (hat ausgesehen)","r":"выглядеть","l":28,"t":"2026-06-15","p":"verb","v":"hat ausgesehen"},{"i":631,"d":"zufrieden sein mit + Dativ","r":"быть довольным чем-либо / кем-либо","l":28,"t":"2026-06-15","p":"sentence"},{"i":632,"d":"bekommen (hat bekommen)","r":"получать","l":28,"t":"2026-06-15","p":"verb","v":"hat bekommen"},{"i":633,"d":"gefallen (hat gefallen)","r":"нравиться","l":28,"t":"2026-06-15","p":"verb","v":"hat gefallen"},{"i":634,"d":"erzählen (hat erzählt)","r":"рассказывать","l":28,"t":"2026-06-15","p":"verb","v":"hat erzählt"},{"i":635,"d":"vergessen (hat vergessen)","r":"забывать","l":28,"t":"2026-06-15","p":"verb","v":"hat vergessen"},{"i":636,"d":"aufstehen (ist aufgestanden)","r":"вставать","l":28,"t":"2026-06-15","p":"verb","v":"ist aufgestanden"},{"i":637,"d":"verstehen (hat verstanden)","r":"понимать","l":28,"t":"2026-06-15","p":"verb","v":"hat verstanden"},{"i":638,"d":"verpassen (hat verpasst)","r":"пропускать, упускать","l":28,"t":"2026-06-15","p":"verb","v":"hat verpasst"},{"i":639,"d":"die Panne, -n","r":"поломка, неисправность","l":29,"t":"2026-06-27","p":"noun","g":"die","n":"-n"},{"i":640,"d":"die Werkstatt, -stätten","r":"мастерская, автосервис","l":29,"t":"2026-06-27","p":"noun","g":"die","n":"-stätten"},{"i":641,"d":"der Wagen, -","r":"автомобиль, машина","l":29,"t":"2026-06-27","p":"noun","g":"der","n":"-"},{"i":642,"d":"die Messe, -n","r":"выставка, ярмарка","l":29,"t":"2026-06-27","p":"noun","g":"die","n":"-n"},{"i":643,"d":"der Held, -en","r":"герой","l":29,"t":"2026-06-27","p":"noun","g":"der","n":"-en"},{"i":644,"d":"die Heldin, -nen","r":"героиня","l":29,"t":"2026-06-27","p":"noun","g":"die","n":"-nen"},{"i":645,"d":"der Alltag","r":"повседневная жизнь, будни","l":29,"t":"2026-06-27","p":"noun","g":"der"},{"i":646,"d":"So ein Mist!","r":"Вот чёрт! / Вот досада!","l":29,"t":"2026-06-27","p":"sentence"},{"i":647,"d":"Ich werde verrückt!","r":"Я с ума сойду!","l":29,"t":"2026-06-27","p":"sentence"},{"i":648,"d":"Was ist jetzt los?!","r":"Что теперь случилось?!","l":29,"t":"2026-06-27","p":"sentence"},{"i":649,"d":"der Vorteil, -e","r":"преимущество","l":29,"t":"2026-06-27","p":"noun","g":"der","n":"-e"},{"i":650,"d":"der Nachteil, -e","r":"недостаток","l":29,"t":"2026-06-27","p":"noun","g":"der","n":"-e"},{"i":651,"d":"erleben","r":"переживать, испытывать","l":29,"t":"2026-06-27","p":"verb"},{"i":652,"d":"die Kälte","r":"холод","l":29,"t":"2026-06-27","p":"noun","g":"die"},{"i":653,"d":"das Erlebnis, -se","r":"впечатление, событие, переживание","l":29,"t":"2026-06-27","p":"noun","g":"das","n":"-se"},{"i":654,"d":"hart","r":"тяжёлый, суровый, жёсткий","l":29,"t":"2026-06-27","p":"other"},{"i":655,"d":"anstrengend","r":"утомительный, изнурительный","l":29,"t":"2026-06-27","p":"other"},{"i":656,"d":"stressig","r":"стрессовый, напряжённый","l":29,"t":"2026-06-27","p":"other"},{"i":657,"d":"furchtbar","r":"ужасный, кошмарный","l":29,"t":"2026-06-27","p":"other"},{"i":658,"d":"wechseln (Geld, Job, Reifen)","r":"менять (деньги, работу, шины)","l":29,"t":"2026-06-27","p":"phrase"},{"i":659,"d":"unterwegs sein","r":"быть в пути","l":29,"t":"2026-06-27","p":"phrase"},{"i":660,"d":"ich bin in Eile","r":"я спешу","l":29,"t":"2026-06-27","p":"phrase"},{"i":661,"d":"Das macht mir nichts aus.","r":"Меня это не беспокоит. / Мне это не мешает.","l":29,"t":"2026-06-27","p":"sentence","g":"das"},{"i":662,"d":"verzweifelt sein","r":"быть в отчаянии","l":29,"t":"2026-06-27","p":"phrase"},{"i":663,"d":"die Hauptrolle, -n","r":"главная роль","l":29,"t":"2026-06-27","p":"noun","g":"die","n":"-n"},{"i":664,"d":"der Erfolg","r":"успех","l":29,"t":"2026-06-27","p":"noun","g":"der"},{"i":665,"d":"aufgeregt","r":"взволнованный, возбуждённый (в зависимости от контекста)","l":29,"t":"2026-06-27","p":"other"},{"i":666,"d":"draußen / im Freien","r":"на улице, на открытом воздухе","l":30,"t":"2026-07-31","p":"phrase"},{"i":667,"d":"drinnen","r":"внутри, в помещении","l":30,"t":"2026-07-31","p":"verb"},{"i":668,"d":"Schicht arbeiten","r":"работать посменно","l":30,"t":"2026-07-31","p":"phrase"},{"i":669,"d":"gut verdienen","r":"хорошо зарабатывать","l":30,"t":"2026-07-31","p":"phrase"},{"i":670,"d":"feste Arbeitszeiten haben","r":"иметь фиксированный (постоянный) график работы","l":30,"t":"2026-07-31","p":"phrase","e":[["Ich habe viel zu tun.","У меня много дел. / У меня много работы."]]},{"i":671,"d":"Das macht mir nichts aus.","r":"Меня это не беспокоит. / Мне это не мешает. / Я не против.","l":30,"t":"2026-07-31","p":"sentence","g":"das"},{"i":672,"d":"Das ist mir total wichtig.","r":"Это для меня очень важно.","l":30,"t":"2026-07-31","p":"sentence","g":"das"},{"i":673,"d":"Das mache ich überhaupt nicht gern.","r":"Мне совсем не нравится это делать. / Я совсем не люблю это делать.","l":30,"t":"2026-07-31","p":"sentence","g":"das"},{"i":674,"d":"Das finde ich ganz schlimm.","r":"Я считаю, что это ужасно. / Мне это кажется очень неприятным.","l":30,"t":"2026-07-31","p":"sentence","g":"das"},{"i":675,"d":"Das mache ich besonders gern.","r":"Мне особенно нравится это делать.","l":30,"t":"2026-07-31","p":"sentence","g":"das"},{"i":676,"d":"Ich bin zufrieden.","r":"Я доволен / довольна.","l":30,"t":"2026-07-31","p":"sentence"},{"i":677,"d":"umziehen (ist umgezogen)","r":"переезжать, переехать","l":31,"t":"2026-08-03","p":"verb","v":"ist umgezogen","e":[["Wir ziehen nächste Woche in eine neue Wohnung um.",""]]},{"i":678,"d":"der Umzug, -züge","r":"переезд","l":31,"t":"2026-08-03","p":"noun","g":"der","n":"-züge","e":[["Der Umzug war anstrengend, aber alles ist gut gelaufen.",""]]},{"i":679,"d":"ein Regal aufbauen","r":"собирать (монтировать) стеллаж / полку","l":31,"t":"2026-08-03","p":"phrase","e":[["Ich baue heute ein neues Regal auf.",""]]},{"i":680,"d":"in einer WG wohnen","r":"жить в коммунальной квартире / в квартире с соседями","l":31,"t":"2026-08-03","p":"phrase","e":[["Sie wohnt in einer WG mit zwei Studentinnen.",""]]},{"i":681,"d":"etwas vermissen (hat vermisst)","r":"скучать по кому-либо / чему-либо; ощущать отсутствие чего-либо","l":31,"t":"2026-08-03","p":"verb","v":"hat vermisst","e":[["Ich vermisse meine Familie.",""]]},{"i":682,"d":"fehlen","r":"отсутствовать; не хватать","l":31,"t":"2026-08-03","p":"verb","e":[["Du fehlst mir.",""]]},{"i":683,"d":"mit etwas fertig sein","r":"закончить что-либо; быть готовым","l":31,"t":"2026-08-03","p":"phrase","e":[["Ich bin mit den Hausaufgaben fertig.",""]]},{"i":684,"d":"mittendrin sein","r":"быть в самом разгаре; быть в процессе","l":31,"t":"2026-08-03","p":"phrase","e":[["Ich bin gerade mitten im Umzug. Ich bin gerade mittendrin.",""]]},{"i":685,"d":"Das nervt langsam.","r":"Это уже начинает раздражать.","l":31,"t":"2026-08-03","p":"sentence","g":"das"},{"i":686,"d":"Wie läuft’s?","r":"Как дела? / Как всё идёт?","l":31,"t":"2026-08-03","p":"sentence"},{"i":687,"d":"werben für A. (er wirbt, hat geworben)","r":"рекламировать что-либо, продвигать что-либо","l":32,"t":"2026-08-11","p":"sentence","e":[["für ein Produkt werben",""]]},{"i":688,"d":"die Werbung","r":"реклама","l":32,"t":"2026-08-11","p":"noun","g":"die"},{"i":689,"d":"die stressige Situation","r":"стрессовая ситуация","l":32,"t":"2026-08-11","p":"noun","g":"die"},{"i":690,"d":"ich bin gestresst","r":"я в стрессе / я испытываю стресс","l":32,"t":"2026-08-11","p":"phrase"},{"i":691,"d":"fertig","r":"готовый, законченный","l":32,"t":"2026-08-11","p":"other","e":[["Ich bin mit der Präsentation fertig.",""]]},{"i":692,"d":"ausschalten, ausmachen","r":"выключать","l":32,"t":"2026-08-11","p":"phrase","e":[["das Licht ausmachen",""]]},{"i":693,"d":"einschalten, anmachen","r":"включать","l":32,"t":"2026-08-11","p":"phrase","e":[["das Mikro einschalten",""],["die Lampe anmachen",""]]},{"i":694,"d":"teilnehmen an D (er nimmt teil, hat teilgenommen)","r":"участвовать в чём-либо","l":32,"t":"2026-08-11","p":"sentence","e":[["Ich nehme an der Konferenz teil.",""]]},{"i":695,"d":"absagen","r":"отменять","l":32,"t":"2026-08-11","p":"verb","e":[["einen Termin absagen",""]]},{"i":696,"d":"bezahlen","r":"платить, оплачивать","l":32,"t":"2026-08-11","p":"verb","e":[["eine Rechnung bezahlen",""]]},{"i":697,"d":"anrufen + A (hat angerufen)","r":"звонить кому-либо","l":32,"t":"2026-08-11","p":"verb","v":"hat angerufen","e":[["den Kunden, die Chefin anrufen",""]]},{"i":698,"d":"unterschreiben (hat unterschrieben)","r":"подписывать","l":32,"t":"2026-08-11","p":"verb","v":"hat unterschrieben","e":[["den Vertrag unterschreiben",""]]},{"i":699,"d":"organisieren (hat organisiert)","r":"организовывать","l":32,"t":"2026-08-11","p":"verb","v":"hat organisiert","e":[["ein Meeting organisieren",""]]},{"i":700,"d":"verschicken (hat verschickt)","r":"отправлять, рассылать","l":32,"t":"2026-08-11","p":"verb","v":"hat verschickt","e":[["die Einladung zum Meeting verschicken",""]]},{"i":701,"d":"vorbereiten (hat vorbereitet)","r":"подготавливать, готовить","l":32,"t":"2026-08-11","p":"verb","v":"hat vorbereitet","e":[["die Präsentation vorbereiten",""]]},{"i":702,"d":"ausmachen (hat ausgemacht)","r":"договариваться о чём-либо; назначать","l":32,"t":"2026-08-11","p":"verb","v":"hat ausgemacht","e":[["den Termin ausmachen",""]]},{"i":703,"d":"kontaktieren (hat kontaktiert)","r":"связаться с кем-либо","l":32,"t":"2026-08-11","p":"verb","v":"hat kontaktiert","e":[["den Geschäftspartner kontaktieren",""]]},{"i":704,"d":"die Veranstaltung, -en","r":"мероприятие, событие","l":33,"t":"2026-08-18","p":"noun","g":"die","n":"-en"},{"i":705,"d":"das Event, -s","r":"мероприятие, событие","l":33,"t":"2026-08-18","p":"noun","g":"das","n":"-s"},{"i":706,"d":"die Überraschung, -en","r":"сюрприз, неожиданность","l":33,"t":"2026-08-18","p":"noun","g":"die","n":"-en"},{"i":707,"d":"erleben","r":"пережить, испытать; побывать на чём-либо","l":33,"t":"2026-08-18","p":"verb"},{"i":708,"d":"wählen","r":"выбирать","l":33,"t":"2026-08-18","p":"verb"},{"i":709,"d":"spannend","r":"захватывающий, увлекательный","l":33,"t":"2026-08-18","p":"other"},{"i":710,"d":"enttäuscht","r":"разочарованный","l":33,"t":"2026-08-18","p":"other"},{"i":711,"d":"begeistert","r":"в восторге, воодушевлённый","l":33,"t":"2026-08-18","p":"other"},{"i":712,"d":"lecker","r":"вкусный","l":33,"t":"2026-08-18","p":"other"},{"i":713,"d":"fantastisch","r":"фантастический, потрясающий","l":33,"t":"2026-08-18","p":"other"},{"i":714,"d":"eine großartige / tolle Idee!","r":"отличная / замечательная идея!","l":33,"t":"2026-08-18","p":"sentence"},{"i":715,"d":"aufregend","r":"волнующий, захватывающий","l":33,"t":"2026-08-18","p":"other"},{"i":716,"d":"das lohnt sich / das hat sich gelohnt","r":"это того стоит / это того стоило","l":33,"t":"2026-08-18","p":"noun","g":"das"},{"i":717,"d":"auf jeden Fall","r":"в любом случае, обязательно","l":33,"t":"2026-08-18","p":"phrase"},{"i":718,"d":"neugierig","r":"любопытный, заинтересованный","l":33,"t":"2026-08-18","p":"other"},{"i":719,"d":"seit einem Monat, zwei Jahren","r":"уже месяц, уже два года","l":33,"t":"2026-08-18","p":"sentence"},{"i":720,"d":"über einen Monat, zwei Jahre","r":"больше месяца, больше двух лет","l":33,"t":"2026-08-18","p":"sentence"},{"i":721,"d":"vor der Show","r":"перед шоу, перед представлением","l":33,"t":"2026-08-18","p":"phrase"},{"i":722,"d":"nach der Show","r":"после шоу, после представления","l":33,"t":"2026-08-18","p":"phrase"},{"i":723,"d":"in zwei Stunden","r":"через два часа","l":33,"t":"2026-08-18","p":"phrase"},{"i":724,"d":"von Anfang bis Ende","r":"от начала до конца","l":33,"t":"2026-08-18","p":"phrase"},{"i":725,"d":"vom ersten bis zum fünften September","r":"с первого по пятое сентября","l":33,"t":"2026-08-18","p":"sentence"},{"i":726,"d":"dauern","r":"длиться, продолжаться","l":33,"t":"2026-08-18","p":"verb","e":[["Wie lange dauert das Konzert?","Как долго длится концерт?"]]},{"i":727,"d":"vorschlagen (hat vorgeschlagen)","r":"предлагать","l":34,"t":"2026-08-21","p":"verb","v":"hat vorgeschlagen","e":[["Ich schlage vor, dass wir morgen anfangen.","Я предлагаю начать завтра."]]},{"i":728,"d":"der Vorschlag, Vorschläge","r":"предложение","l":34,"t":"2026-08-21","p":"noun","g":"der","n":"Vorschläge","e":[["Das ist ein guter Vorschlag.","Это хорошее предложение."]]},{"i":729,"d":"stattfinden (hat stattgefunden)","r":"состояться, проходить","l":34,"t":"2026-08-21","p":"verb","v":"hat stattgefunden","e":[["Die Veranstaltung findet am Samstag statt.","Мероприятие состоится в субботу."]]},{"i":730,"d":"überzeugen","r":"убеждать","l":34,"t":"2026-08-21","p":"verb","e":[["Du hast mich überzeugt.","Ты меня убедил(а)."]]},{"i":731,"d":"überreden","r":"уговорить","l":34,"t":"2026-08-21","p":"verb","e":[["Sie hat mich überredet, mitzukommen.","Она уговорила меня пойти с ней."]]},{"i":732,"d":"Was hältst du davon?","r":"Что ты об этом думаешь? / Как ты к этому относишься?","l":34,"t":"2026-08-21","p":"sentence"},{"i":733,"d":"Einverstanden.","r":"Согласен / Договорились.","l":34,"t":"2026-08-21","p":"other"},{"i":734,"d":"eigentlich","r":"вообще-то, собственно, на самом деле","l":34,"t":"2026-08-21","p":"other","e":[["Ich muss eigentlich arbeiten.","Вообще-то мне нужно работать."]]},{"i":735,"d":"Ich möchte schon, aber ich muss leider arbeiten.","r":"Я бы с удовольствием, но, к сожалению, мне нужно работать.","l":34,"t":"2026-08-21","p":"sentence"},{"i":736,"d":"sicher","r":"наверняка, точно; безопасный","l":34,"t":"2026-08-21","p":"other","e":[["Na los, das ist sicher spannend!","Ну давай, это наверняка будет интересно!"]]},{"i":737,"d":"bestimmt","r":"наверняка, точно","l":34,"t":"2026-08-21","p":"other","e":[["Ach komm schon! Das macht bestimmt Spaß!","Да ладно! Это наверняка будет весело!"]]},{"i":738,"d":"Komm schon, das ist doch mal was anderes!","r":"Да ладно, это же что-то новое!","l":34,"t":"2026-08-21","p":"sentence"},{"i":739,"d":"eher","r":"скорее, скорее всего; довольно","l":34,"t":"2026-08-21","p":"other","e":[["Lesungen finde ich eher langweilig.","Литературные чтения я считаю скорее скучными."]]},{"i":740,"d":"stattfinden (fand statt, hat stattgefunden)","r":"состояться, проходить","l":35,"t":"2026-09-06","p":"sentence","e":[["Die Veranstaltung findet am Freitag statt.",""]]},{"i":741,"d":"die Veranstaltung, -en","r":"мероприятие","l":35,"t":"2026-09-06","p":"noun","g":"die","n":"-en","e":[["An der Veranstaltung nehmen viele Mitarbeiter teil.",""]]},{"i":742,"d":"teilnehmen (nahm teil, hat teilgenommen) an + Dativ","r":"участвовать в чём-либо","l":35,"t":"2026-09-06","p":"sentence","e":[["Viele Mitarbeiter nehmen an der Veranstaltung teil.",""],["der Teilnehmer, - / die Teilnehmerin, -nen","участник / участница"],["An der Besprechung nehmen zehn Teilnehmer teil.",""]]},{"i":743,"d":"die Abteilung, -en","r":"отдел","l":35,"t":"2026-09-06","p":"noun","g":"die","n":"-en","e":[["Ich arbeite in einer großen Abteilung.",""],["die IT-Abteilung",""],["die Personalabteilung",""]]},{"i":744,"d":"besprechen (besprach, hat besprochen)","r":"обсуждать","l":35,"t":"2026-09-06","p":"phrase","e":[["Wir müssen dieses Problem noch besprechen.",""]]},{"i":745,"d":"die Besprechung, -en","r":"совещание, обсуждение, рабочая встреча","l":35,"t":"2026-09-06","p":"noun","g":"die","n":"-en","e":[["Die Besprechung beginnt um neun Uhr.",""]]},{"i":746,"d":"untersuchen (untersuchte, hat untersucht)","r":"исследовать, изучать; обследовать","l":35,"t":"2026-09-06","p":"phrase","e":[["Die Wissenschaftler untersuchen das Problem.","Учёные исследуют проблему."]]},{"i":747,"d":"die Untersuchung, -en","r":"исследование; обследование","l":35,"t":"2026-09-06","p":"noun","g":"die","n":"-en","e":[["Die Untersuchungen zeigen, dass …","Исследования показывают, что …"]]},{"i":748,"d":"das Unternehmen, -","r":"предприятие, компания","l":35,"t":"2026-09-06","p":"noun","g":"das","n":"-","e":[["Das Unternehmen beschäftigt 500 Mitarbeiter.","В компании работает 500 сотрудников."]]},{"i":749,"d":"der Betrieb, -e","r":"предприятие, фирма; производство","l":35,"t":"2026-09-06","p":"noun","g":"der","n":"-e","e":[["In diesem Betrieb arbeiten etwa 100 Menschen.",""]]},{"i":750,"d":"das Betriebsklima","r":"рабочая атмосфера, климат в коллективе","l":35,"t":"2026-09-06","p":"noun","g":"das","e":[["Ein gutes Betriebsklima ist für viele Arbeitnehmer wichtig.",""]]},{"i":751,"d":"außerdem","r":"кроме того, к тому же","l":35,"t":"2026-09-06","p":"other","e":[["Die Arbeit ist interessant. Außerdem ist das Gehalt gut.",""]]},{"i":752,"d":"der Arbeitnehmer, - / die Arbeitnehmerin, -nen","r":"наёмный работник / работница","l":35,"t":"2026-09-06","p":"noun","g":"der","n":"-","e":[["Arbeitnehmer haben ein Recht auf Urlaub.","Работники имеют право на отпуск."]]},{"i":753,"d":"der Arbeitgeber, - / die Arbeitgeberin, -nen","r":"работодатель","l":35,"t":"2026-09-06","p":"noun","g":"der","n":"-","e":[["Der Arbeitgeber muss das Gehalt pünktlich zahlen.",""]]},{"i":754,"d":"zufrieden sein mit + Dativ","r":"быть довольным кем-либо / чем-либо","l":35,"t":"2026-09-06","p":"sentence","e":[["Ich bin mit meinem Arbeitsplatz zufrieden.","Я доволен своим рабочим местом."]]},{"i":755,"d":"wenn","r":"если; когда","l":35,"t":"2026-09-06","p":"verb","e":[["Wenn ich Zeit habe, gehe ich spazieren.","Если у меня есть время, я иду гулять."]]},{"i":756,"d":"Es überrascht mich, dass …","r":"Меня удивляет, что …","l":35,"t":"2026-09-06","p":"sentence","e":[["Es überrascht mich, dass die Mittagspause so kurz ist.",""]]},{"i":757,"d":"Es wundert mich, dass …","r":"Меня удивляет, что … / Мне странно, что …","l":35,"t":"2026-09-06","p":"sentence","e":[["Es wundert mich, dass so viele Mitarbeiter zu Hause arbeiten.",""],["Ich finde es seltsam, dass …","Я нахожу странным, что … / Мне кажется странным, что …"],["Ich finde es seltsam, dass es keine Kantine gibt.",""]]},{"i":758,"d":"Die Mittagspause bei uns ist auch so wie (in dieser Firma).","r":"У нас обеденный перерыв такой же, как …","l":35,"t":"2026-09-06","p":"sentence","g":"die","e":[["Die Mittagspause bei uns ist anders als … / nicht so wie …","У нас обеденный перерыв отличается от … / не такой, как …"],["Die Mittagspause bei uns ist anders als in Deutschland.",""]]},{"i":759,"d":"Bei uns in der Firma gibt es das nicht.","r":"У нас в фирме такого нет.","l":35,"t":"2026-09-06","p":"sentence","e":[["Bei uns in der Firma gibt es das auch.","У нас в фирме такое тоже есть."]]},{"i":760,"d":"liegen (lag, hat gelegen)","r":"лежать, находиться","l":36,"t":"2026-09-09","p":"phrase","e":[["Das Buch liegt auf dem Tisch.","Книга лежит на столе."]]},{"i":761,"d":"legen (legte, hat gelegt)","r":"класть, положить","l":36,"t":"2026-09-09","p":"phrase","e":[["Ich lege das Buch auf den Tisch.","Я кладу книгу на стол."]]},{"i":762,"d":"stehen (stand, hat gestanden)","r":"стоять","l":36,"t":"2026-09-09","p":"phrase","e":[["Die Flasche steht auf dem Tisch.","Бутылка стоит на столе."]]},{"i":763,"d":"stellen (stellte, hat gestellt)","r":"ставить, поставить","l":36,"t":"2026-09-09","p":"phrase","e":[["Ich stelle die Flasche auf den Tisch.","Я ставлю бутылку на стол."]]},{"i":764,"d":"hängen (hing, hat gehangen)","r":"висеть","l":36,"t":"2026-09-09","p":"phrase","e":[["Das Bild hängt an der Wand.","Картина висит на стене."]]},{"i":765,"d":"hängen (hängte, hat gehängt)","r":"вешать, повесить","l":36,"t":"2026-09-09","p":"phrase","e":[["Ich hänge das Bild an die Wand.","Я вешаю картину на стену."]]},{"i":766,"d":"sitzen (saß, hat gesessen)","r":"сидеть","l":36,"t":"2026-09-09","p":"phrase","e":[["Das Kind sitzt auf dem Fußboden.","Ребёнок сидит на полу."]]},{"i":767,"d":"(sich) setzen (setzte, hat gesetzt)","r":"сажать; sich setzen — садиться","l":36,"t":"2026-09-09","p":"sentence","e":[["Ich setze mich auf den Stuhl.","Я сажусь на стул."]]},{"i":768,"d":"der Fußboden, -böden","r":"пол","l":36,"t":"2026-09-09","p":"noun","g":"der","n":"-böden","e":[["Die Kinder spielen auf dem Fußboden.","Дети играют на полу."]]},{"i":769,"d":"zählen (zählte, hat gezählt)","r":"считать, пересчитывать","l":36,"t":"2026-09-09","p":"phrase","e":[["Das Kind kann schon bis hundert zählen.","Ребёнок уже умеет считать до ста."]]},{"i":770,"d":"zahlen (zahlte, hat gezahlt)","r":"платить","l":36,"t":"2026-09-09","p":"phrase","e":[["Ich zahle zehn Euro für das Essen.","Я плачу десять евро за еду."]]},{"i":771,"d":"rechnen (rechnete, hat gerechnet)","r":"считать, вычислять","l":36,"t":"2026-09-09","p":"phrase","e":[["In der Schule rechnen wir mit großen Zahlen.","В школе мы считаем с большими числами."]]},{"i":772,"d":"gewöhnlich","r":"обычно; обычный","l":36,"t":"2026-09-09","p":"other","e":[["Gewöhnlich stehe ich um sieben Uhr auf.","Обычно я встаю в семь часов."]]},{"i":773,"d":"sich gewöhnen an + Akk. (gewöhnte sich, hat sich gewöhnt)","r":"привыкать к чему-либо","l":36,"t":"2026-09-09","p":"sentence","e":[["Ich habe mich schnell an die neue Wohnung gewöhnt.","Я быстро привык(ла) к новой квартире."]]},{"i":774,"d":"die Gewohnheit, -en","r":"привычка","l":36,"t":"2026-09-09","p":"noun","g":"die","n":"-en","e":[["Jeden Morgen Kaffee zu trinken ist meine Gewohnheit.","Пить кофе каждое утро — моя привычка."]]},{"i":775,"d":"der Geruch, Gerüche","r":"запах","l":36,"t":"2026-09-09","p":"noun","g":"der","n":"Gerüche","e":[["Ich mag den Geruch von frischem Brot.","Мне нравится запах свежего хлеба."]]},{"i":776,"d":"riechen (roch, hat gerochen)","r":"пахнуть, нюхать","l":36,"t":"2026-09-09","p":"phrase","e":[["Das Essen riecht sehr gut.","Еда очень хорошо пахнет."]]},{"i":777,"d":"an + Dat. riechen","r":"нюхать что-либо","l":36,"t":"2026-09-09","p":"phrase","e":[["Sie riecht an der Blume.","Она нюхает цветок."]]},{"i":778,"d":"nach + Dat. riechen","r":"пахнуть чем-либо","l":36,"t":"2026-09-09","p":"phrase","e":[["Die Küche riecht nach Kaffee.","На кухне пахнет кофе."]]},{"i":779,"d":"verlassen + Akk. (verließ, hat verlassen)","r":"покидать, уходить из","l":36,"t":"2026-09-09","p":"sentence","e":[["Ich verlasse das Haus um acht Uhr.","Я выхожу из дома в восемь часов."]]},{"i":780,"d":"jedes Mal, wenn …","r":"каждый раз, когда …","l":36,"t":"2026-09-09","p":"phrase","e":[["Jedes Mal, wenn ich ihn sehe, grüßt er mich.","Каждый раз, когда я его вижу, он со мной здоровается."]]},{"i":781,"d":"ähnlich","r":"похожий, схожий","l":36,"t":"2026-09-09","p":"other","e":[["Die beiden Taschen sehen ähnlich aus.","Эти две сумки выглядят похоже."],["Das geht mir ähnlich.","У меня так же. / Я чувствую примерно то же самое."]]},{"i":782,"d":"Für mich ist das nichts.","r":"Это не для меня. / Мне это не подходит.","l":37,"t":"2026-09-11","p":"sentence"},{"i":783,"d":"Dafür bin ich zu alt.","r":"Я для этого слишком стар / стара.","l":37,"t":"2026-09-11","p":"sentence"},{"i":784,"d":"versprechen (versprach, hat versprochen)","r":"обещать","l":37,"t":"2026-09-11","p":"phrase","e":[["Ich verspreche dir, das ist ganz toll.","Обещаю тебе, это просто здорово."]]},{"i":785,"d":"Muss das sein?","r":"Это обязательно? / Без этого никак?","l":37,"t":"2026-09-11","p":"sentence"},{"i":786,"d":"Schon gut, ich bin ja einverstanden.","r":"Ладно, хорошо, я согласен / согласна.","l":37,"t":"2026-09-11","p":"sentence"},{"i":787,"d":"von mir aus","r":"я не против / по мне так / пусть","l":37,"t":"2026-09-11","p":"phrase"},{"i":788,"d":"Was hältst du davon?","r":"Что ты об этом думаешь? / Как тебе такая идея?","l":37,"t":"2026-09-11","p":"sentence"},{"i":789,"d":"mit öffentlichen Verkehrsmitteln","r":"на общественном транспорте","l":37,"t":"2026-09-11","p":"phrase"},{"i":790,"d":"günstig","r":"недорогой, выгодный","l":37,"t":"2026-09-11","p":"other"},{"i":791,"d":"genießen (genoss, hat genossen)","r":"наслаждаться, получать удовольствие","l":37,"t":"2026-09-11","p":"phrase","e":[["Ich genieße meinen freien Abend.",""]]},{"i":792,"d":"erledigen (erledigte, hat erledigt)","r":"выполнять, делать, улаживать","l":37,"t":"2026-09-11","p":"phrase","e":[["Ich muss noch die Hausarbeit erledigen.",""]]},{"i":793,"d":"unternehmen (unternahm, hat unternommen)","r":"предпринимать, делать, заниматься чем-либо","l":37,"t":"2026-09-11","p":"phrase","e":[["Was wollen wir am Wochenende unternehmen?",""]]},{"i":794,"d":"im Stau stehen","r":"стоять в пробке","l":37,"t":"2026-09-11","p":"phrase"},{"i":795,"d":"Ich gehe zu Ikea.","r":"Я иду / еду в IKEA.","l":37,"t":"2026-09-11","p":"sentence","e":[["Ich bin bei Ikea.","Я в IKEA."],["Ich komme von Ikea.","Я иду / еду из IKEA."],["Ich gehe zum Arzt.","Я иду к врачу."]]},{"i":796,"d":"Ich bin beim Arzt.","r":"Я у врача.","l":37,"t":"2026-09-11","p":"sentence","e":[["Ich komme vom Arzt.","Я иду / возвращаюсь от врача."]]},{"i":797,"d":"Ich gehe zum Training.","r":"Я иду на тренировку.","l":37,"t":"2026-09-11","p":"sentence","e":[["Ich bin beim Training.","Я на тренировке."],["Ich komme vom Training.","Я иду / возвращаюсь с тренировки."],["Ich gehe nach Hause.","Я иду домой."]]},{"i":798,"d":"Ich bin zu Hause.","r":"Я дома.","l":37,"t":"2026-09-11","p":"sentence","e":[["Ich komme von zu Hause.","Я иду / еду из дома."]]}];
+const GRAM = {"perfekt":[["sein","ist","gewesen","быть","Ich bin in Berlin gewesen.","unregelmäßig"],["haben","hat","gehabt","иметь","Wir haben viel Zeit gehabt.","unregelmäßig"],["werden","ist","geworden","становиться","Er ist Lehrer geworden.","unregelmäßig"],["machen","hat","gemacht","делать","Ich habe die Hausaufgaben gemacht.","regelmäßig"],["lernen","hat","gelernt","учить","Sie hat Deutsch gelernt.","regelmäßig"],["arbeiten","hat","gearbeitet","работать","Ich habe gestern lange gearbeitet.","regelmäßig"],["kaufen","hat","gekauft","покупать","Wir haben Brot gekauft.","regelmäßig"],["spielen","hat","gespielt","играть","Die Kinder haben im Garten gespielt.","regelmäßig"],["wohnen","hat","gewohnt","жить, проживать","Er hat in München gewohnt.","regelmäßig"],["fragen","hat","gefragt","спрашивать","Ich habe den Lehrer gefragt.","regelmäßig"],["antworten","hat","geantwortet","отвечать","Sie hat sofort geantwortet.","regelmäßig"],["sagen","hat","gesagt","говорить, сказать","Was hast du gesagt?","regelmäßig"],["kochen","hat","gekocht","готовить","Ich habe eine Suppe gekocht.","regelmäßig"],["suchen","hat","gesucht","искать","Wir haben den Schlüssel gesucht.","regelmäßig"],["brauchen","hat","gebraucht","нуждаться","Ich habe mehr Zeit gebraucht.","regelmäßig"],["hören","hat","gehört","слышать, слушать","Hast du die Musik gehört?","regelmäßig"],["tanzen","hat","getanzt","танцевать","Wir haben die ganze Nacht getanzt.","regelmäßig"],["lachen","hat","gelacht","смеяться","Alle haben viel gelacht.","regelmäßig"],["leben","hat","gelebt","жить","Sie hat lange in Italien gelebt.","regelmäßig"],["kosten","hat","gekostet","стоить","Das Ticket hat 20 Euro gekostet.","regelmäßig"],["dauern","hat","gedauert","длиться","Der Film hat zwei Stunden gedauert.","regelmäßig"],["warten","hat","gewartet","ждать","Ich habe eine Stunde gewartet.","regelmäßig"],["zeigen","hat","gezeigt","показывать","Er hat mir die Stadt gezeigt.","regelmäßig"],["feiern","hat","gefeiert","праздновать","Wir haben Silvester gefeiert.","regelmäßig"],["putzen","hat","geputzt","чистить, убирать","Ich habe das Bad geputzt.","regelmäßig"],["üben","hat","geübt","упражняться","Sie hat die Wörter geübt.","regelmäßig"],["regnen","hat","geregnet","идти (о дожде)","Gestern hat es geregnet.","regelmäßig"],["öffnen","hat","geöffnet","открывать","Er hat das Fenster geöffnet.","regelmäßig"],["reden","hat","geredet","разговаривать","Wir haben lange geredet.","regelmäßig"],["gehen","ist","gegangen","идти","Ich bin nach Hause gegangen.","unregelmäßig"],["kommen","ist","gekommen","приходить","Sie ist zu spät gekommen.","unregelmäßig"],["fahren","ist","gefahren","ехать","Wir sind nach Wien gefahren.","unregelmäßig"],["fliegen","ist","geflogen","лететь","Er ist nach Spanien geflogen.","unregelmäßig"],["laufen","ist","gelaufen","бежать, идти пешком","Ich bin einen Marathon gelaufen.","unregelmäßig"],["schwimmen","ist","geschwommen","плавать","Sie ist im See geschwommen.","unregelmäßig"],["bleiben","ist","geblieben","оставаться","Wir sind zu Hause geblieben.","unregelmäßig"],["reisen","ist","gereist","путешествовать","Er ist durch Europa gereist.","regelmäßig"],["wandern","ist","gewandert","ходить в поход","Wir sind in den Bergen gewandert.","regelmäßig"],["reiten","ist","geritten","ездить верхом","Sie ist am Strand geritten.","unregelmäßig"],["steigen","ist","gestiegen","подниматься","Die Preise sind gestiegen.","unregelmäßig"],["fallen","ist","gefallen","падать","Das Glas ist auf den Boden gefallen.","unregelmäßig"],["passieren","ist","passiert","случаться","Was ist passiert?","auf -ieren"],["essen","hat","gegessen","есть","Ich habe eine Pizza gegessen.","unregelmäßig"],["trinken","hat","getrunken","пить","Er hat einen Kaffee getrunken.","unregelmäßig"],["sehen","hat","gesehen","видеть","Wir haben einen Film gesehen.","unregelmäßig"],["lesen","hat","gelesen","читать","Ich habe das Buch gelesen.","unregelmäßig"],["schreiben","hat","geschrieben","писать","Sie hat eine E-Mail geschrieben.","unregelmäßig"],["sprechen","hat","gesprochen","говорить","Ich habe mit dem Chef gesprochen.","unregelmäßig"],["nehmen","hat","genommen","брать","Er hat den Bus genommen.","unregelmäßig"],["geben","hat","gegeben","давать","Sie hat mir das Buch gegeben.","unregelmäßig"],["finden","hat","gefunden","находить, считать","Ich habe den Schlüssel gefunden.","unregelmäßig"],["helfen","hat","geholfen","помогать","Er hat mir geholfen.","unregelmäßig"],["treffen","hat","getroffen","встречать","Ich habe meine Freundin getroffen.","unregelmäßig"],["schlafen","hat","geschlafen","спать","Das Baby hat gut geschlafen.","unregelmäßig"],["waschen","hat","gewaschen","мыть, стирать","Ich habe die Wäsche gewaschen.","unregelmäßig"],["tragen","hat","getragen","носить","Sie hat einen Mantel getragen.","unregelmäßig"],["singen","hat","gesungen","петь","Wir haben ein Lied gesungen.","unregelmäßig"],["sitzen","hat","gesessen","сидеть","Er hat am Fenster gesessen.","unregelmäßig"],["stehen","hat","gestanden","стоять","Ich habe lange in der Schlange gestanden.","unregelmäßig"],["liegen","hat","gelegen","лежать","Das Buch hat auf dem Tisch gelegen.","unregelmäßig"],["bringen","hat","gebracht","приносить","Er hat mir einen Tee gebracht.","gemischt"],["denken","hat","gedacht","думать","Ich habe an dich gedacht.","gemischt"],["kennen","hat","gekannt","знать (быть знакомым)","Wir haben ihn gut gekannt.","gemischt"],["wissen","hat","gewusst","знать (факт)","Das habe ich nicht gewusst.","gemischt"],["backen","hat","gebacken","печь","Sie hat einen Kuchen gebacken.","unregelmäßig"],["aufstehen","ist","aufgestanden","вставать","Ich bin um sechs Uhr aufgestanden.","trennbar"],["ankommen","ist","angekommen","прибывать","Der Zug ist pünktlich angekommen.","trennbar"],["mitkommen","ist","mitgekommen","идти вместе","Bist du gestern mitgekommen?","trennbar"],["zurückkommen","ist","zurückgekommen","возвращаться","Sie ist spät zurückgekommen.","trennbar"],["einsteigen","ist","eingestiegen","садиться (в транспорт)","Wir sind in den Bus eingestiegen.","trennbar"],["aussteigen","ist","ausgestiegen","выходить (из транспорта)","Ich bin am Hauptbahnhof ausgestiegen.","trennbar"],["umsteigen","ist","umgestiegen","делать пересадку","Er ist in Köln umgestiegen.","trennbar"],["einschlafen","ist","eingeschlafen","засыпать","Das Kind ist sofort eingeschlafen.","trennbar"],["umziehen","ist","umgezogen","переезжать","Wir sind nach Hamburg umgezogen.","trennbar"],["abbiegen","ist","abgebogen","поворачивать","Er ist links abgebogen.","trennbar"],["anrufen","hat","angerufen","звонить","Ich habe meine Mutter angerufen.","trennbar"],["einkaufen","hat","eingekauft","делать покупки","Wir haben im Supermarkt eingekauft.","trennbar"],["anfangen","hat","angefangen","начинать","Der Kurs hat um neun angefangen.","trennbar"],["aufhören","hat","aufgehört","прекращать","Es hat endlich aufgehört zu regnen.","trennbar"],["abholen","hat","abgeholt","забирать, встречать","Ich habe ihn vom Bahnhof abgeholt.","trennbar"],["einladen","hat","eingeladen","приглашать","Sie hat uns zum Essen eingeladen.","trennbar"],["fernsehen","hat","ferngesehen","смотреть телевизор","Gestern haben wir ferngesehen.","trennbar"],["aufräumen","hat","aufgeräumt","убирать","Ich habe mein Zimmer aufgeräumt.","trennbar"],["aufmachen","hat","aufgemacht","открывать","Er hat das Fenster aufgemacht.","trennbar"],["zumachen","hat","zugemacht","закрывать","Ich habe die Tür zugemacht.","trennbar"],["ausmachen","hat","ausgemacht","выключать","Hast du das Licht ausgemacht?","trennbar"],["anmachen","hat","angemacht","включать","Sie hat die Lampe angemacht.","trennbar"],["teilnehmen","hat","teilgenommen","участвовать","Viele Mitarbeiter haben teilgenommen.","trennbar"],["stattfinden","hat","stattgefunden","состояться","Die Veranstaltung hat am Freitag stattgefunden.","trennbar"],["vorbereiten","hat","vorbereitet","подготавливать","Ich habe die Präsentation vorbereitet.","trennbar"],["vorschlagen","hat","vorgeschlagen","предлагать","Er hat ein Restaurant vorgeschlagen.","trennbar"],["absagen","hat","abgesagt","отменять","Wir haben den Termin abgesagt.","trennbar"],["besuchen","hat","besucht","посещать","Ich habe meine Großeltern besucht.","untrennbar"],["bezahlen","hat","bezahlt","платить","Er hat die Rechnung bezahlt.","untrennbar"],["verkaufen","hat","verkauft","продавать","Sie hat ihr Auto verkauft.","untrennbar"],["erzählen","hat","erzählt","рассказывать","Er hat eine Geschichte erzählt.","untrennbar"],["erklären","hat","erklärt","объяснять","Die Lehrerin hat die Regel erklärt.","untrennbar"],["benutzen","hat","benutzt","использовать","Ich habe dein Handy benutzt.","untrennbar"],["gehören","hat","gehört","принадлежать","Das Fahrrad hat früher meinem Bruder gehört.","untrennbar"],["bekommen","hat","bekommen","получать","Ich habe ein Geschenk bekommen.","untrennbar"],["gefallen","hat","gefallen","нравиться","Der Film hat mir gefallen.","untrennbar"],["verstehen","hat","verstanden","понимать","Ich habe die Frage nicht verstanden.","untrennbar"],["vergessen","hat","vergessen","забывать","Er hat das Passwort vergessen.","untrennbar"],["verlieren","hat","verloren","терять","Ich habe meinen Schlüssel verloren.","untrennbar"],["beginnen","hat","begonnen","начинаться","Der Film hat schon begonnen.","untrennbar"],["unterschreiben","hat","unterschrieben","подписывать","Sie hat den Vertrag unterschrieben.","untrennbar"],["wiederholen","hat","wiederholt","повторять","Wir haben die Grammatik wiederholt.","untrennbar"],["übersetzen","hat","übersetzt","переводить","Er hat den Text übersetzt.","untrennbar"],["verschicken","hat","verschickt","отправлять","Ich habe die Einladungen verschickt.","untrennbar"],["überzeugen","hat","überzeugt","убеждать","Du hast mich überzeugt.","untrennbar"],["überreden","hat","überredet","уговорить","Sie hat mich überredet.","untrennbar"],["erleben","hat","erlebt","пережить, испытать","Wir haben viel Schönes erlebt.","untrennbar"],["telefonieren","hat","telefoniert","звонить по телефону","Ich habe mit ihr telefoniert.","auf -ieren"],["fotografieren","hat","fotografiert","фотографировать","Er hat die Kirche fotografiert.","auf -ieren"],["studieren","hat","studiert","учиться (в вузе)","Sie hat in Berlin studiert.","auf -ieren"],["reparieren","hat","repariert","чинить","Der Mechaniker hat das Auto repariert.","auf -ieren"],["organisieren","hat","organisiert","организовывать","Wir haben ein Meeting organisiert.","auf -ieren"],["probieren","hat","probiert","пробовать","Ich habe den Kuchen probiert.","auf -ieren"],["funktionieren","hat","funktioniert","работать, функционировать","Der Drucker hat nicht funktioniert.","auf -ieren"],["diskutieren","hat","diskutiert","обсуждать","Wir haben lange diskutiert.","auf -ieren"],["informieren","hat","informiert","информировать","Er hat uns rechtzeitig informiert.","auf -ieren"]],"p1":[["weinen","weinend","плакать","das weinende Kind","плачущий ребёнок"],["lachen","lachend","смеяться","die lachenden Kinder","смеющиеся дети"],["schlafen","schlafend","спать","das schlafende Baby","спящий младенец"],["singen","singend","петь","der singende Vogel","поющая птица"],["spielen","spielend","играть","die spielenden Kinder","играющие дети"],["kochen","kochend","кипеть, готовить","kochendes Wasser","кипящая вода"],["fahren","fahrend","ехать","der fahrende Zug","идущий поезд"],["warten","wartend","ждать","die wartenden Gäste","ожидающие гости"],["arbeiten","arbeitend","работать","die arbeitende Bevölkerung","работающее население"],["steigen","steigend","расти, подниматься","die steigenden Preise","растущие цены"],["fehlen","fehlend","отсутствовать","die fehlenden Wörter","недостающие слова"],["passen","passend","подходить","die passende Antwort","подходящий ответ"],["folgen","folgend","следовать","am folgenden Tag","на следующий день"],["kommen","kommend","приходить","in der kommenden Woche","на следующей неделе"],["spannen","spannend","натягивать, напрягать","ein spannender Film","захватывающий фильм"],["aufregen","aufregend","волновать","ein aufregendes Wochenende","волнующие выходные"],["anstrengen","anstrengend","напрягать, утомлять","eine anstrengende Woche","утомительная неделя"],["entscheiden","entscheidend","решать","der entscheidende Moment","решающий момент"],["überzeugen","überzeugend","убеждать","ein überzeugendes Argument","убедительный аргумент"],["dauern","dauernd","длиться","dauernder Lärm","постоянный шум"],["lächeln","lächelnd","улыбаться","die lächelnde Frau","улыбающаяся женщина"],["brennen","brennend","гореть","eine brennende Kerze","горящая свеча"],["laufen","laufend","текущий, идущий","die laufenden Kosten","текущие расходы"],["bellen","bellend","лаять","der bellende Hund","лающая собака"]],"vp":[["warten","auf","A","ждать чего-либо","Ich warte auf den Bus.","Я жду автобус."],["sich freuen","auf","A","радоваться (предстоящему)","Ich freue mich auf das Wochenende.","Я радуюсь предстоящим выходным."],["sich freuen","über","A","радоваться (случившемуся)","Ich freue mich über das Geschenk.","Я рад подарку."],["denken","an","A","думать о","Ich denke oft an dich.","Я часто думаю о тебе."],["sich erinnern","an","A","вспоминать о","Erinnerst du dich an den Urlaub?","Ты помнишь тот отпуск?"],["sprechen","über","A","говорить о","Wir sprechen über das Projekt.","Мы говорим о проекте."],["sprechen","mit","D","говорить с","Ich spreche mit dem Chef.","Я говорю с начальником."],["sich interessieren","für","A","интересоваться","Er interessiert sich für Musik.","Он интересуется музыкой."],["sich ärgern","über","A","злиться на","Sie ärgert sich über den Lärm.","Она злится из-за шума."],["danken","für","A","благодарить за","Ich danke dir für die Hilfe.","Спасибо тебе за помощь."],["bitten","um","A","просить о","Er bittet um Hilfe.","Он просит о помощи."],["fragen","nach","D","спрашивать о","Sie fragt nach dem Weg.","Она спрашивает дорогу."],["suchen","nach","D","искать","Wir suchen nach einer Wohnung.","Мы ищем квартиру."],["teilnehmen","an","D","участвовать в","Ich nehme an der Konferenz teil.","Я участвую в конференции."],["arbeiten","bei","D","работать в (компании)","Sie arbeitet bei Siemens.","Она работает в Siemens."],["arbeiten","an","D","работать над","Er arbeitet an einem Projekt.","Он работает над проектом."],["gehören","zu","D","относиться к","Das gehört zu meinen Aufgaben.","Это относится к моим задачам."],["einladen","zu","D","приглашать на","Ich lade dich zu meiner Party ein.","Я приглашаю тебя на свою вечеринку."],["sich treffen","mit","D","встречаться с","Ich treffe mich mit Freunden.","Я встречаюсь с друзьями."],["telefonieren","mit","D","говорить по телефону с","Ich telefoniere mit meiner Mutter.","Я говорю по телефону с мамой."],["helfen","bei","D","помогать в/с","Er hilft mir bei der Arbeit.","Он помогает мне с работой."],["anfangen","mit","D","начинать с","Wir fangen mit der Übung an.","Мы начинаем с упражнения."],["aufhören","mit","D","прекращать","Hör mit dem Lärm auf!","Прекрати шуметь!"],["sich kümmern","um","A","заботиться о","Sie kümmert sich um die Kinder.","Она заботится о детях."],["sich vorbereiten","auf","A","готовиться к","Ich bereite mich auf die Prüfung vor.","Я готовлюсь к экзамену."],["achten","auf","A","обращать внимание на","Achte auf die Artikel!","Обращай внимание на артикли!"],["werben","für","A","рекламировать","Die Firma wirbt für ein neues Produkt.","Фирма рекламирует новый продукт."],["sich entscheiden","für","A","решаться на, выбирать","Ich entscheide mich für den blauen Mantel.","Я выбираю синее пальто."],["zufrieden sein","mit","D","быть довольным","Ich bin mit dem Ergebnis zufrieden.","Я доволен результатом."],["stolz sein","auf","A","гордиться","Sie ist stolz auf ihre Tochter.","Она гордится своей дочерью."],["Angst haben","vor","D","бояться","Er hat Angst vor Hunden.","Он боится собак."],["Lust haben","auf","A","хотеть, иметь желание","Hast du Lust auf einen Kaffee?","Хочешь кофе?"],["antworten","auf","A","отвечать на","Sie antwortet auf meine Frage.","Она отвечает на мой вопрос."],["glauben","an","A","верить в","Ich glaube an dich.","Я в тебя верю."],["sich bewerben","bei","D","подавать заявление в (фирму)","Er bewirbt sich bei einer großen Firma.","Он подаёт заявление в крупную фирму."],["sich bewerben","um","A","претендовать на (место)","Sie bewirbt sich um die Stelle.","Она претендует на эту должность."],["diskutieren","über","A","обсуждать","Wir diskutieren über das Thema.","Мы обсуждаем эту тему."],["sich beschweren","über","A","жаловаться на","Er beschwert sich über den Service.","Он жалуется на обслуживание."],["einverstanden sein","mit","D","быть согласным с","Ich bin mit dem Vorschlag einverstanden.","Я согласен с предложением."],["sich unterhalten","mit","D","беседовать с","Ich unterhalte mich mit dem Nachbarn.","Я беседую с соседом."]],"ww":[["Das Buch liegt ","auf dem","auf den"," Tisch.","wo","liegen beschreibt eine Position → wo? → Dativ","Книга лежит на столе."],["Ich lege das Buch ","auf den","auf dem"," Tisch.","wohin","legen beschreibt eine Bewegung → wohin? → Akkusativ","Я кладу книгу на стол."],["Die Lampe hängt ","über dem","über den"," Tisch.","wo","hängen (Position) → wo? → Dativ","Лампа висит над столом."],["Ich hänge die Lampe ","über den","über dem"," Tisch.","wohin","hängen (Bewegung) → wohin? → Akkusativ","Я вешаю лампу над столом."],["Die Katze sitzt ","unter dem","unter den"," Stuhl.","wo","sitzen → Position → wo? → Dativ","Кошка сидит под стулом."],["Die Katze springt ","unter den","unter dem"," Stuhl.","wohin","springen → Bewegung → wohin? → Akkusativ","Кошка прыгает под стул."],["Das Bild hängt ","an der","an die"," Wand.","wo","Position → wo? → Dativ (die Wand → an der Wand)","Картина висит на стене."],["Ich hänge das Bild ","an die","an der"," Wand.","wohin","Bewegung → wohin? → Akkusativ (die Wand → an die Wand)","Я вешаю картину на стену."],["Wir sind ","in der","in die"," Küche.","wo","sein → Position → wo? → Dativ","Мы на кухне."],["Wir gehen ","in die","in der"," Küche.","wohin","gehen → Bewegung → wohin? → Akkusativ","Мы идём на кухню."],["Der Schlüssel liegt ","neben dem","neben den"," Computer.","wo","liegen → Position → wo? → Dativ","Ключ лежит рядом с компьютером."],["Ich lege den Schlüssel ","neben den","neben dem"," Computer.","wohin","legen → Bewegung → wohin? → Akkusativ","Я кладу ключ рядом с компьютером."],["Das Auto steht ","vor dem","vor das"," Haus.","wo","stehen → Position → wo? → Dativ","Машина стоит перед домом."],["Der Stuhl steht ","hinter dem","hinter den"," Schrank.","wo","stehen → Position → wo? → Dativ","Стул стоит за шкафом."],["Ich stelle den Stuhl ","hinter den","hinter dem"," Schrank.","wohin","stellen → Bewegung → wohin? → Akkusativ","Я ставлю стул за шкаф."],["Die Tasche steht ","zwischen den Stühlen","zwischen die Stühle",".","wo","Position → wo? → Dativ Plural (den Stühlen)","Сумка стоит между стульями."],["Ich stelle die Tasche ","zwischen die Stühle","zwischen den Stühlen",".","wohin","Bewegung → wohin? → Akkusativ Plural (die Stühle)","Я ставлю сумку между стульями."],["Die Kinder spielen ","im","in den"," Garten.","wo","spielen → Position → wo? → Dativ (in dem = im)","Дети играют в саду."],["Die Kinder laufen ","in den","im"," Garten.","wohin","laufen → Bewegung → wohin? → Akkusativ","Дети бегут в сад."],["Er sitzt ","am","ans"," Fenster.","wo","sitzen → Position → wo? → Dativ (an dem = am)","Он сидит у окна."],["Er setzt sich ","ans","am"," Fenster.","wohin","sich setzen → Bewegung → wohin? → Akkusativ (an das = ans)","Он садится у окна."],["Das Handy liegt ","in der","in die"," Tasche.","wo","liegen → Position → wo? → Dativ","Телефон лежит в сумке."],["Ich stecke das Handy ","in die","in der"," Tasche.","wohin","stecken → Bewegung → wohin? → Akkusativ","Я кладу телефон в сумку."],["Wir warten ","an der","an die"," Ampel.","wo","warten → Position → wo? → Dativ","Мы ждём у светофора."],["Der Hund läuft ","auf die","auf der"," Straße.","wohin","laufen (Richtung) → wohin? → Akkusativ","Собака выбегает на улицу."],["Die Kinder spielen ","auf der","auf die"," Straße.","wo","spielen → Position → wo? → Dativ","Дети играют на улице."]]};
+</script>
+<script>
+(function(){
+"use strict";
+const $ = (s,r)=> (r||document).querySelector(s);
+const $$ = (s,r)=> Array.from((r||document).querySelectorAll(s));
+const LS = "momente.wortschatz.v1";
+const DAY = 86400000;
+const INTERVALS = [0, 1, 3, 7, 21];
+const BOXCOL = ["#8A8E98","#AC3557","#9A6B15","#2C5AA0","#2F7358"];
+const BOXNAME = ["neu","Box 1","Box 2","Box 3","gelernt"];
+const POSNAME = {noun:"Nomen", verb:"Verben", phrase:"Wendungen", sentence:"Sätze", other:"Sonstige"};
+
+const defaults = {
+  mode:"cards", gsub:"perfekt", dir:"de", pos:{}, flags:{due:false,star:false,new:false},
+  lessons:null, prog:{}, star:{}, day:null, todayCount:0, theme:null, updated:0
+};
+let S = load();
+function load(){
+  let s = Object.assign({}, defaults);
+  try{ const raw = localStorage.getItem(LS); if(raw) s = Object.assign(s, JSON.parse(raw)); }catch(e){}
+  if(!s.prog) s.prog = {}; if(!s.star) s.star = {}; if(!s.flags) s.flags = {};
+  const today = new Date().toISOString().slice(0,10);
+  if(s.day !== today){ s.day = today; s.todayCount = 0; }
+  return s;
+}
+let saveT = null;
+function save(){
+  try{ localStorage.setItem(LS, JSON.stringify(S)); }catch(e){}
+}
+
+function applyTheme(){
+  if(S.theme) document.documentElement.setAttribute("data-theme", S.theme);
+  else document.documentElement.removeAttribute("data-theme");
+}
+applyTheme();
+$("#themeBtn").addEventListener("click", ()=>{
+  const cur2 = S.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark":"light");
+  S.theme = cur2 === "dark" ? "light" : "dark"; applyTheme(); save();
+});
+
+const LESSONS = [];
+DATA.forEach(c=>{ let L = LESSONS.find(x=>x.n===c.l); if(!L){ L={n:c.l, date:c.t, count:0}; LESSONS.push(L);} L.count++; });
+LESSONS.sort((a,b)=>a.n-b.n);
+const POSLIST = [];
+DATA.forEach(c=>{ let p = POSLIST.find(x=>x.k===c.p); if(!p){ p={k:c.p,count:0}; POSLIST.push(p);} p.count++; });
+POSLIST.sort((a,b)=>b.count-a.count);
+if(!S.lessons) S.lessons = LESSONS.map(l=>l.n);
+if(!S.pos || !Object.keys(S.pos).length){ S.pos = {}; POSLIST.forEach(p=> S.pos[p.k]=true); }
+
+const deDate = t => { const p = t.split("-"); return p[2]+"."+p[1]+"."; };
+function P(id){ return S.prog[id] || {b:0, due:0, seen:0}; }
+function isDue(id){ const p = S.prog[id]; return !p || (p.due||0) <= Date.now(); }
+
+function deck(){
+  return DATA.filter(c=>{
+    if(!S.lessons.includes(c.l)) return false;
+    if(!S.pos[c.p]) return false;
+    if(S.flags.star && !S.star[c.i]) return false;
+    if(S.flags.new && S.prog[c.i]) return false;
+    if(S.flags.due && !isDue(c.i)) return false;
+    return true;
+  });
+}
+
+let queue = [], qi = 0, flipped = false;
+function buildQueue(){
+  const d = deck(), now = Date.now();
+  const due = [], fresh = [], later = [];
+  d.forEach(c=>{ const p = S.prog[c.i];
+    if(!p) fresh.push(c); else if((p.due||0) <= now) due.push(c); else later.push(c); });
+  shuffle(due); shuffle(fresh); shuffle(later);
+  queue = due.concat(fresh, later);
+  qi = 0; flipped = false;
+}
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); const t=a[i]; a[i]=a[j]; a[j]=t; } }
+function cur(){ return queue[qi]; }
+function next(){ qi++; if(qi >= queue.length) buildQueue(); flipped=false; render(); renderProgress(); }
+
+function grade(id, g){
+  const p = Object.assign({b:0,due:0,seen:0}, S.prog[id]);
+  if(g===0) p.b = 0; else if(g===1) p.b = Math.max(0, p.b - 1); else p.b = Math.min(4, p.b + 1);
+  p.seen = (p.seen||0) + 1;
+  p.due = Date.now() + INTERVALS[p.b]*DAY;
+  S.prog[id] = p;
+  S.todayCount = (S.todayCount||0) + 1;
+  save();
+}
+
+const GEN = {der:["--der","--der-bg"], die:["--die","--die-bg"], das:["--das","--das-bg"]};
+function genStyle(g){ return g ? "--gcol:var("+GEN[g][0]+");--gbg:var("+GEN[g][1]+")" : ""; }
+function esc(s){ return String(s).replace(/[&<>"]/g, m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m])); }
+function termHTML(c){
+  const m = c.d.match(/^(der|die|das)\s+([\s\S]+)$/);
+  return m ? '<span class="art">'+m[1]+'</span> '+esc(m[2]) : esc(c.d);
+}
+function gramTags(c){
+  const t = [];
+  if(c.g) t.push('<span class="gtag g">'+c.g+'</span>');
+  if(c.n) t.push('<span class="gtag">Pl. '+esc(c.n)+'</span>');
+  if(c.v) t.push('<span class="gtag">'+esc(c.v)+'</span>');
+  t.push('<span class="gtag">L'+c.l+' · '+deDate(c.t)+'</span>');
+  if(S.prog[c.i]) t.push('<span class="gtag">'+BOXNAME[P(c.i).b]+'</span>');
+  return '<div class="gram">'+t.join("")+'</div>';
+}
+function exHTML(c){
+  if(!c.e || !c.e.length) return "";
+  return '<div class="ex">'+c.e.map(e=>'<div class="ex-item"><div class="ex-de">'+esc(e[0])+'</div>'+
+    (e[1]?'<div class="ex-ru">'+esc(e[1])+'</div>':"")+'</div>').join("")+'</div>';
+}
+function dirFor(c){ return S.dir === "mix" ? (c.i % 2 ? "ru" : "de") : S.dir; }
+function bareDe(c){ return c.d.replace(/^(der|die|das)\s+/,"").replace(/,\s*[-–—]?[\wÄÖÜäöüß]*$/,"").trim(); }
+
+const stage = $("#stage");
+function render(){
+  if(S.mode === "browse"){ renderBrowse(); return; }
+  if(S.mode === "gram"){ renderGram(); return; }
+  if(S.mode === "artikel"){ renderArtikel(); return; }
+  const c = cur();
+  if(!c){ stage.innerHTML = '<div class="empty"><b>Kein Wort im Deck</b>Erweitere die Auswahl über „Deck“ oben rechts.</div>'; return; }
+  if(S.mode === "cards") renderCards(c);
+  else if(S.mode === "choice") renderChoice(c);
+  else if(S.mode === "type") renderType(c);
+}
+
+function inDays(n){ return n===0 ? "heute" : (n===1 ? "1 Tag" : n+" Tage"); }
+function sizeCard(){
+  requestAnimationFrame(()=>{
+    const card = $("#card"); if(!card) return;
+    const f = $(".face.front", card), b = $(".face.back", card);
+    const h = Math.max(f.scrollHeight, b.scrollHeight, 300);
+    card.style.minHeight = h+"px";
+    const sp = $(".card-spacer"); if(sp) sp.style.minHeight = h+"px";
+  });
+}
+function renderCards(c){
+  const dir = dirFor(c);
+  const frontTxt = dir === "de" ? termHTML(c) : esc(c.r);
+  const frontRaw = dir === "de" ? c.d : c.r;
+  const starOn = !!S.star[c.i];
+  stage.innerHTML =
+  '<div class="card-outer">'+
+    '<div class="card '+(flipped?"flipped":"")+'" id="card" role="button" tabindex="0" aria-label="Karte umdrehen" style="'+genStyle(c.g)+'">'+
+      '<div class="face front">'+
+        '<div class="face-top"><span class="eyebrow">'+(dir==="de"?"Deutsch":"Русский")+'</span>'+
+          '<div style="display:flex;gap:6px;align-items:center">'+
+            '<button class="star" id="starBtn" aria-pressed="'+starOn+'" title="Markieren (S)">'+(starOn?"★":"☆")+'</button>'+
+          '</div></div>'+
+        '<div class="face-mid"><p class="term '+(frontRaw.length>26?"small":"")+'">'+frontTxt+'</p>'+(dir==="de"?gramTags(c):"")+'</div>'+
+        '<div class="face-bot"><span class="hint">Tippen oder <kbd>Space</kbd> zum Umdrehen</span><span class="mono hint">'+(qi+1)+'/'+queue.length+'</span></div>'+
+      '</div>'+
+      '<div class="face back">'+
+        '<div class="face-top"><span class="eyebrow">'+(dir==="de"?"Русский":"Deutsch")+'</span>'+
+          '</div>'+
+        '<div class="face-mid">'+
+          (dir==="de"
+            ? '<p class="trans">'+esc(c.r)+'</p>'+exHTML(c)
+            : '<p class="term '+(c.d.length>26?"small":"")+'">'+termHTML(c)+'</p>'+gramTags(c)+exHTML(c))+
+        '</div>'+
+        '<div class="face-bot"><span class="hint">Wie gut wusstest du es?</span><span class="mono hint">'+(qi+1)+'/'+queue.length+'</span></div>'+
+      '</div>'+
+    '</div><div class="card-spacer"></div></div>'+
+  (flipped
+    ? '<div class="rate">'+
+        '<button data-g="0"><span class="lab again">Nochmal</span><span class="sub">1 · heute</span></button>'+
+        '<button data-g="1"><span class="lab hard">Schwer</span><span class="sub">2 · '+inDays(INTERVALS[Math.max(0,P(c.i).b-1)])+'</span></button>'+
+        '<button data-g="2"><span class="lab good">Gewusst</span><span class="sub">3 · '+inDays(INTERVALS[Math.min(4,P(c.i).b+1)])+'</span></button>'+
+      '</div>'
+    : '<button class="btn showbtn" id="showBtn">Antwort zeigen</button>');
+  sizeCard();
+  const card = $("#card");
+  card.addEventListener("click", e=>{ if(e.target.closest("button")) return; flip(); });
+  card.addEventListener("keydown", e=>{ if(e.key==="Enter"){ e.preventDefault(); flip(); } });
+  const sb = $("#showBtn"); if(sb) sb.addEventListener("click", flip);
+  $("#starBtn").addEventListener("click", ()=> toggleStar(c.i));
+  $$(".rate button").forEach(b=> b.addEventListener("click", ()=>{ grade(c.i, +b.dataset.g); next(); }));
+}
+function flip(){ flipped = !flipped; render(); }
+function toggleStar(id){ if(S.star[id]) delete S.star[id]; else S.star[id] = 1; save(); render(); }
+
+function distractors(c, n, key){
+  let pool = DATA.filter(x=> x.i!==c.i && x.p===c.p && x[key] && x[key]!==c[key]);
+  if(pool.length < n) pool = DATA.filter(x=> x.i!==c.i && x[key] && x[key]!==c[key]);
+  const out = [], used = {};
+  let guard = 0;
+  while(out.length < n && guard++ < 500){
+    const p = pool[Math.floor(Math.random()*pool.length)];
+    if(!p || used[p.i]) continue; used[p.i]=1; out.push(p);
+  }
+  return out;
+}
+function renderChoice(c){
+  const dir = dirFor(c);
+  const key = dir === "de" ? "r" : "d";
+  const opts = distractors(c, 3, key).map(x=>({t:x[key], ok:false}));
+  opts.push({t:c[key], ok:true}); shuffle(opts);
+  stage.innerHTML =
+  '<div class="face" style="position:static;min-height:0;'+genStyle(c.g)+'">'+
+    '<div class="face-top"><span class="eyebrow">Was passt?</span><span class="mono hint">'+(qi+1)+'/'+queue.length+'</span></div>'+
+    '<div class="face-mid" style="padding-block:10px">'+
+      '<p class="term '+((dir==="de"?c.d:c.r).length>26?"small":"")+'">'+(dir==="de"?termHTML(c):esc(c.r))+'</p>'+
+      (dir==="de"?gramTags(c):"")+
+    '</div></div>'+
+  '<div class="opts" id="opts">'+opts.map((o,k)=>'<button class="opt" data-ok="'+o.ok+'">'+esc(o.t)+'</button>').join("")+'</div>'+
+  '<div id="after"></div>';
+  $$("#opts .opt").forEach(b=> b.addEventListener("click", ()=>{
+    const ok = b.dataset.ok === "true";
+    $$("#opts .opt").forEach(x=>{ x.disabled = true; if(x.dataset.ok==="true") x.classList.add("correct"); });
+    if(!ok) b.classList.add("wrong");
+    grade(c.i, ok ? 2 : 0);
+    $("#after").innerHTML = exHTML(c)+'<button class="btn showbtn" id="nx">Weiter →</button>';
+    $("#nx").addEventListener("click", next); $("#nx").focus();
+    renderProgress();
+  }));
+}
+
+let ai = 0;
+function renderArtikel(){
+  const nouns = deck().filter(c=>c.g);
+  if(!nouns.length){ stage.innerHTML = '<div class="empty"><b>Keine Nomen im Deck</b>Aktiviere „Nomen“ unter Wortart.</div>'; return; }
+  if(ai >= nouns.length) ai = 0;
+  const c = nouns[ai];
+  stage.innerHTML =
+  '<div class="face" style="position:static;min-height:0;'+genStyle(c.g)+'">'+
+    '<div class="face-top"><span class="eyebrow">Welcher Artikel?</span>'+
+      '<span class="mono hint">'+(ai+1)+'/'+nouns.length+'</span></div>'+
+    '<div class="face-mid" style="padding-block:10px">'+
+      '<p class="term">'+esc(c.d.replace(/^(der|die|das)\s+/,""))+'</p>'+
+      '<p class="trans" style="font-size:16px;color:var(--ink-2)">'+esc(c.r)+'</p>'+
+    '</div></div>'+
+  '<div class="artopts" id="arts">'+
+    '<button class="opt" data-a="der">der</button>'+
+    '<button class="opt" data-a="die">die</button>'+
+    '<button class="opt" data-a="das">das</button></div>'+
+  '<div id="after"></div>';
+  $$("#arts .opt").forEach(b=> b.addEventListener("click", ()=>{
+    const ok = b.dataset.a === c.g;
+    $$("#arts .opt").forEach(x=>{ x.disabled = true;
+      if(x.dataset.a===c.g) x.classList.add("correct"); else x.classList.add("dim"); });
+    if(!ok) b.classList.add("wrong");
+    grade(c.i, ok ? 2 : 0);
+    $("#after").innerHTML = '<div class="verdict">'+(ok?'<span class="yes">Richtig.</span>':'<span class="no">Falsch.</span>')+
+      '<span class="ans" style="color:var(--gcol)">'+termHTML(c)+'</span></div>'+
+      '<button class="btn showbtn" id="nx">Weiter →</button>';
+    $("#nx").addEventListener("click", ()=>{ ai++; render(); renderProgress(); });
+    $("#nx").focus(); renderProgress();
+  }));
+}
+
+function norm(s){
+  return String(s).toLowerCase().trim()
+    .replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/ß/g,"ss")
+    .replace(/[.,!?;:]/g,"").replace(/\s+/g," ");
+}
+function renderType(c){
+  stage.innerHTML =
+  '<div class="face" style="position:static;min-height:0;'+genStyle(c.g)+'">'+
+    '<div class="face-top"><span class="eyebrow">Auf Deutsch?</span><span class="mono hint">'+(qi+1)+'/'+queue.length+'</span></div>'+
+    '<div class="face-mid" style="padding-block:10px">'+
+      '<p class="term '+(c.r.length>26?"small":"")+'">'+esc(c.r)+'</p>'+
+      '<div class="gram"><span class="gtag">'+(POSNAME[c.p]||c.p)+'</span>'+
+        (c.g?'<span class="gtag g">Artikel optional</span>':"")+'<span class="gtag">L'+c.l+'</span></div>'+
+    '</div></div>'+
+  '<div class="typerow"><input id="ti" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="auf Deutsch tippen…" aria-label="Antwort"></div>'+
+  '<div class="umlauts">'+["ä","ö","ü","ß","Ä","Ö","Ü"].map(u=>'<button data-u="'+u+'">'+u+'</button>').join("")+'</div>'+
+  '<div id="after"></div>';
+  const inp = $("#ti"); inp.focus();
+  $$(".umlauts button").forEach(b=> b.addEventListener("click", ()=>{
+    const a = inp.selectionStart == null ? inp.value.length : inp.selectionStart;
+    const z = inp.selectionEnd == null ? a : inp.selectionEnd;
+    inp.value = inp.value.slice(0,a) + b.dataset.u + inp.value.slice(z);
+    inp.focus(); inp.setSelectionRange(a+1, a+1);
+  }));
+  let done = false;
+  function check(){
+    if(done) return; done = true;
+    const v = norm(inp.value);
+    const full = norm(c.d), bare = norm(bareDe(c));
+    const ok = !!v && (v === full || v === bare || v === norm(c.d.replace(/^(der|die|das)\s+/,"")));
+    inp.classList.add(ok ? "ok" : "no"); inp.disabled = true;
+    grade(c.i, ok ? 2 : 0);
+    $("#after").innerHTML = '<div class="verdict">'+(ok?'<span class="yes">Richtig.</span>':'<span class="no">Nicht ganz.</span>')+
+      '<span class="ans" style="color:var(--gcol)">'+termHTML(c)+'</span></div>'+exHTML(c)+
+      '<button class="btn showbtn" id="nx">Weiter →</button>';
+    $("#nx").addEventListener("click", next); $("#nx").focus(); renderProgress();
+  }
+  inp.addEventListener("keydown", e=>{ if(e.key==="Enter"){ e.preventDefault(); if(done) next(); else check(); } });
+}
+
+let browseN = 60, browseQ = "", browseHide = false;
+function renderBrowse(){
+  const q = browseQ.toLowerCase().trim();
+  const qn = norm(browseQ);
+  const d = deck().filter(c=> !q || norm(c.d).indexOf(qn) >= 0 || c.d.toLowerCase().indexOf(q) >= 0 || c.r.toLowerCase().indexOf(q) >= 0);
+  const rows = d.slice(0, browseN).map(c=>
+    '<div class="row" style="'+genStyle(c.g)+'">'+
+      '<div class="de"'+(c.g?' style="color:var(--gcol)"':"")+'>'+termHTML(c)+
+        (c.n?'<span class="tag" style="margin-left:7px">Pl. '+esc(c.n)+'</span>':"")+'</div>'+
+      '<div class="ru">'+esc(c.r)+'</div>'+
+      '<div class="tag">L'+c.l+'</div></div>').join("");
+  stage.innerHTML =
+    '<input class="search" id="q" placeholder="Suchen: Deutsch oder Русский…" value="'+esc(browseQ)+'" aria-label="Suchen">'+
+    '<div class="quicklinks" style="margin-bottom:10px">'+
+      '<button id="hideBtn">'+(browseHide?"Übersetzungen zeigen":"Übersetzungen ausblenden")+'</button>'+
+      '<span class="hint mono">'+d.length+' Wörter</span></div>'+
+    '<div class="list '+(browseHide?"hidden":"")+'">'+(rows || '<div class="row"><div class="ru">Nichts gefunden.</div></div>')+
+      (d.length > browseN ? '<button class="more" id="moreBtn">Weitere '+Math.min(60, d.length-browseN)+' zeigen</button>' : "")+'</div>';
+  const qi2 = $("#q");
+  qi2.addEventListener("input", ()=>{ browseQ = qi2.value; browseN = 60; const p = qi2.selectionStart;
+    renderBrowse(); const n2 = $("#q"); n2.focus(); n2.setSelectionRange(p,p); });
+  $("#hideBtn").addEventListener("click", ()=>{ browseHide = !browseHide; renderBrowse(); });
+  const mb = $("#moreBtn"); if(mb) mb.addEventListener("click", ()=>{ browseN += 60; renderBrowse(); });
+}
+
+/* ================= Grammatik ================= */
+const GSUBS = [
+  {k:"perfekt", label:"Perfekt", n:()=>GRAM.perfekt.length},
+  {k:"vp",      label:"Verb + Präposition", n:()=>GRAM.vp.length},
+  {k:"ww",      label:"Wo & Wohin", n:()=>GRAM.ww.length},
+  {k:"p1",      label:"Partizip I", n:()=>GRAM.p1.length}
+];
+const CASENAME = {A:"Akkusativ", D:"Dativ"};
+let gOrder = {}, gPos = {}, gRight = 0, gDone = 0, gAns = null;
+
+function gList(){ return GRAM[S.gsub] || []; }
+function gEnsure(){
+  if(!gOrder[S.gsub] || gOrder[S.gsub].length !== gList().length){
+    gOrder[S.gsub] = gList().map((_,i)=>i); shuffle(gOrder[S.gsub]); gPos[S.gsub] = 0;
+  }
+  if(gPos[S.gsub] == null) gPos[S.gsub] = 0;
+  if(gPos[S.gsub] >= gOrder[S.gsub].length) gPos[S.gsub] = 0;
+}
+function gItem(){ gEnsure(); return gList()[gOrder[S.gsub][gPos[S.gsub]]]; }
+function gKey(){ return "g:" + S.gsub + ":" + gOrder[S.gsub][gPos[S.gsub]]; }
+function gNext(){
+  gPos[S.gsub]++;
+  if(gPos[S.gsub] >= gOrder[S.gsub].length){ shuffle(gOrder[S.gsub]); gPos[S.gsub] = 0; }
+  gAns = null; renderGram();
+}
+function gScore(ok){
+  gDone++; if(ok) gRight++;
+  grade(gKey(), ok ? 2 : 0);
+}
+function gShell(inner){
+  gEnsure();
+  const mastered = gList().reduce((n,_,i)=> n + (P("g:"+S.gsub+":"+i).b === 4 ? 1 : 0), 0);
+  return '<div class="subnav" role="tablist">'+
+      GSUBS.map(s=>'<button role="tab" data-gsub="'+s.k+'" aria-selected="'+(s.k===S.gsub)+'">'+
+        s.label+'</button>').join("")+'</div>'+
+    inner+
+    '<div class="gscore" style="margin-top:16px">'+
+      '<span><b>'+(gPos[S.gsub]+1)+'</b> / '+gList().length+'</span>'+
+      '<span>richtig <b>'+gRight+'</b> von <b>'+gDone+'</b></span>'+
+      '<span>gelernt <b>'+mastered+'</b></span>'+
+    '</div>';
+}
+function gCard(body){ return '<div class="face" style="position:static;min-height:0">'+body+'</div>'; }
+function gWhy(ok, head, rule, ru){
+  return '<div class="why">'+
+    '<span>'+(ok?'<b style="color:var(--good)">Richtig.</b> ':'<b style="color:var(--bad)">Noch nicht.</b> ')+head+'</span>'+
+    (rule?'<span class="rule">'+rule+'</span>':"")+
+    (ru?'<span>'+esc(ru)+'</span>':"")+
+  '</div><button class="btn showbtn" id="gnx">Weiter →</button>';
+}
+function gBindNext(){
+  const b = $("#gnx"); if(b){ b.addEventListener("click", gNext); b.focus(); }
+}
+function gBindSub(){
+  $$(".subnav button").forEach(b=> b.addEventListener("click", ()=>{
+    S.gsub = b.dataset.gsub; save(); gAns = null; renderGram();
+  }));
+}
+
+function renderGram(){
+  if(!S.gsub || !GSUBS.some(s=>s.k===S.gsub)) S.gsub = "perfekt";
+  if(S.gsub === "perfekt") gPerfekt();
+  else if(S.gsub === "p1") gPartizip1();
+  else if(S.gsub === "vp") gVerbPrep();
+  else gWoWohin();
+  gBindSub();
+}
+
+/* --- Perfekt: pick the auxiliary, type the Partizip II --- */
+function gPerfekt(){
+  const it = gItem();              // [inf, aux, p2, ru, ex, cat]
+  const done = !!gAns;
+  const chosen = gAns ? gAns.aux : null;
+  const body =
+    '<div class="face-top"><span class="eyebrow">Perfekt bilden</span>'+
+      '<span class="gtag">'+esc(it[5])+'</span></div>'+
+    '<div class="gprompt">'+
+      '<p class="gsent" style="font-size:clamp(24px,5.4vw,34px)">'+esc(it[0])+'</p>'+
+      '<p class="gru">'+esc(it[3])+'</p>'+
+    '</div>'+
+    '<div class="steps">'+
+      '<div class="steprow"><span class="lbl">Hilfsverb</span>'+
+        ["hat","ist"].map(a=>{
+          let cls = "pill";
+          if(done){ if(a === it[1]) cls += " correct"; else if(a === chosen) cls += " wrong"; else cls += " dim"; }
+          else if(a === chosen) cls += " chosen";
+          return '<button class="'+cls+'" data-aux="'+a+'"'+(done?" disabled":"")+'>'+a+'</button>';
+        }).join("")+
+      '</div>'+
+      '<div class="steprow"><span class="lbl">Partizip II</span>'+
+        '<input id="gi" class="search" style="margin:0;flex:1;min-width:11ch;font-family:var(--disp);font-weight:600"'+
+        ' autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="ge…"'+
+        ' aria-label="Partizip II" value="'+(gAns?esc(gAns.txt):"")+'"'+(done?" disabled":"")+'>'+
+        (done?"":'<button class="btn" id="gcheck">Prüfen</button>')+
+      '</div>'+
+    '</div>';
+  stage.innerHTML = gShell(gCard(body) + (done
+    ? gWhy(gAns.ok, '<b>'+esc(it[1]+" "+it[2])+'</b>', esc(it[4]), null)
+    : ""));
+  if(done){ gBindNext(); return; }
+  $$("[data-aux]").forEach(b=> b.addEventListener("click", ()=>{
+    $$("[data-aux]").forEach(x=> x.classList.toggle("chosen", x === b));
+    $("#gi").focus();
+  }));
+  const inp = $("#gi");
+  function check(){
+    const sel = $$("[data-aux]").find(x=> x.classList.contains("chosen"));
+    if(!sel){ $$("[data-aux]")[0].focus(); return; }
+    const txt = inp.value;
+    const ok = sel.dataset.aux === it[1] && norm(txt) === norm(it[2]);
+    gAns = {aux:sel.dataset.aux, txt:txt, ok:ok};
+    gScore(ok); renderGram(); renderProgress();
+  }
+  const cb = $("#gcheck"); if(cb) cb.addEventListener("click", check);
+  inp.addEventListener("keydown", e=>{ if(e.key === "Enter"){ e.preventDefault(); check(); } });
+  inp.focus();
+}
+
+/* --- Partizip I: infinitive + d --- */
+function gPartizip1(){
+  const it = gItem();              // [inf, p1, ru, phrase, phraseRu]
+  const done = !!gAns;
+  const body =
+    '<div class="face-top"><span class="eyebrow">Partizip I bilden</span>'+
+      '<span class="gtag">Infinitiv + d</span></div>'+
+    '<div class="gprompt">'+
+      '<p class="gsent" style="font-size:clamp(24px,5.4vw,34px)">'+esc(it[0])+'</p>'+
+      '<p class="gru">'+esc(it[2])+'</p>'+
+    '</div>'+
+    '<div class="steps"><div class="steprow">'+
+      '<input id="gi" class="search" style="margin:0;flex:1;min-width:11ch;font-family:var(--disp);font-weight:600"'+
+      ' autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…end"'+
+      ' aria-label="Partizip I" value="'+(gAns?esc(gAns.txt):"")+'"'+(done?" disabled":"")+'>'+
+      (done?"":'<button class="btn" id="gcheck">Prüfen</button>')+
+    '</div></div>';
+  stage.innerHTML = gShell(gCard(body) + (done
+    ? gWhy(gAns.ok, '<b>'+esc(it[1])+'</b> — als Adjektiv: <b>'+esc(it[3])+'</b>',
+        "Vor einem Nomen bekommt das Partizip I eine Adjektivendung.", it[4])
+    : ""));
+  if(done){ gBindNext(); return; }
+  const inp = $("#gi");
+  function check(){
+    const ok = norm(inp.value) === norm(it[1]);
+    gAns = {txt:inp.value, ok:ok}; gScore(ok); renderGram(); renderProgress();
+  }
+  $("#gcheck").addEventListener("click", check);
+  inp.addEventListener("keydown", e=>{ if(e.key === "Enter"){ e.preventDefault(); check(); } });
+  inp.focus();
+}
+
+/* --- Verb + Präposition: pick preposition, then case --- */
+let gPrepOpts = null, gPrepPick = null;
+function gVerbPrep(){
+  const it = gItem();              // [verb, prep, case, ru, ex, exRu]
+  const done = !!gAns;
+  if(!gPrepOpts || gPrepOpts.key !== gKey()){
+    const all = [];
+    GRAM.vp.forEach(r=>{ if(r[1] !== it[1] && all.indexOf(r[1]) < 0) all.push(r[1]); });
+    shuffle(all);
+    const opts = all.slice(0,3).concat([it[1]]); shuffle(opts);
+    gPrepOpts = {key:gKey(), opts:opts};
+    gPrepPick = null;
+  }
+  const body =
+    '<div class="face-top"><span class="eyebrow">Welche Präposition?</span>'+
+      '<span class="gtag">festes Verb + Präposition</span></div>'+
+    '<div class="gprompt">'+
+      '<p class="gsent" style="font-size:clamp(22px,4.8vw,30px)">'+esc(it[0])+' <span class="gap">?</span></p>'+
+      '<p class="gru">'+esc(it[3])+'</p>'+
+    '</div>'+
+    '<div class="steps">'+
+      '<div class="steprow"><span class="lbl">Präposition</span>'+
+        gPrepOpts.opts.map(p=>{
+          let cls = "pill";
+          if(done){ if(p === it[1]) cls += " correct"; else if(p === gAns.prep) cls += " wrong"; else cls += " dim"; }
+          else if(p === gPrepPick) cls += " chosen";
+          return '<button class="'+cls+'" data-prep="'+esc(p)+'"'+(done?" disabled":"")+'>'+esc(p)+'</button>';
+        }).join("")+
+      '</div>'+
+      '<div class="steprow"><span class="lbl">Kasus</span>'+
+        ["D","A"].map(c=>{
+          let cls = "pill";
+          if(done){ if(c === it[2]) cls += " correct"; else if(c === gAns.kasus) cls += " wrong"; else cls += " dim"; }
+          return '<button class="'+cls+'" data-kasus="'+c+'"'+(done || !gPrepPick ?" disabled":"")+'>'+CASENAME[c]+'</button>';
+        }).join("")+
+      '</div>'+
+    '</div>';
+  stage.innerHTML = gShell(gCard(body) + (done
+    ? gWhy(gAns.ok, '<b>'+esc(it[0]+" "+it[1]+" + "+CASENAME[it[2]])+'</b> — '+esc(it[4]), null, it[5])
+    : ""));
+  if(done){ gBindNext(); return; }
+  $$("[data-prep]").forEach(b=> b.addEventListener("click", ()=>{ gPrepPick = b.dataset.prep; renderGram(); }));
+  $$("[data-kasus]").forEach(b=> b.addEventListener("click", ()=>{
+    const ok = gPrepPick === it[1] && b.dataset.kasus === it[2];
+    gAns = {prep:gPrepPick, kasus:b.dataset.kasus, ok:ok};
+    gScore(ok); renderGram(); renderProgress();
+  }));
+}
+
+/* --- Wechselpräpositionen: Dativ or Akkusativ --- */
+let gWwOpts = null;
+function gWoWohin(){
+  const it = gItem();              // [start, ok, wrong, end, wo|wohin, why, ru]
+  const done = !!gAns;
+  if(!gWwOpts || gWwOpts.key !== gKey()){
+    const o = [it[1], it[2]]; shuffle(o); gWwOpts = {key:gKey(), opts:o};
+  }
+  const gap = done
+    ? '<span class="gap filled '+(gAns.ok?"ok":"bad")+'">'+esc(gAns.pick)+'</span>'
+    : '<span class="gap">?</span>';
+  const body =
+    '<div class="face-top"><span class="eyebrow">Dativ oder Akkusativ?</span>'+
+      '<span class="gtag">'+(it[4] === "wo" ? "wo?" : "wohin?")+'</span></div>'+
+    '<div class="gprompt">'+
+      '<p class="gsent">'+esc(it[0])+gap+esc(it[3])+'</p>'+
+      '<p class="gru">'+esc(it[6])+'</p>'+
+    '</div>'+
+    '<div class="steps"><div class="steprow" style="margin-top:2px">'+
+      gWwOpts.opts.map(o=>{
+        let cls = "pill";
+        if(done){ if(o === it[1]) cls += " correct"; else if(o === gAns.pick) cls += " wrong"; else cls += " dim"; }
+        return '<button class="'+cls+'" data-ww="'+esc(o)+'"'+(done?" disabled":"")+'>'+esc(o)+'</button>';
+      }).join("")+
+    '</div></div>';
+  stage.innerHTML = gShell(gCard(body) + (done
+    ? gWhy(gAns.ok, '<b>'+esc(it[0]+it[1]+it[3])+'</b>', esc(it[5]), null)
+    : ""));
+  if(done){ gBindNext(); return; }
+  $$("[data-ww]").forEach(b=> b.addEventListener("click", ()=>{
+    const ok = b.dataset.ww === it[1];
+    gAns = {pick:b.dataset.ww, ok:ok}; gScore(ok); renderGram(); renderProgress();
+  }));
+}
+
+function renderChips(){
+  $("#posChips").innerHTML = POSLIST.map(p=>
+    '<button class="chip" data-pos="'+p.k+'" aria-pressed="'+(!!S.pos[p.k])+'">'+(POSNAME[p.k]||p.k)+'<span class="n">'+p.count+'</span></button>').join("");
+  $$("#posChips .chip").forEach(b=> b.addEventListener("click", ()=>{
+    S.pos[b.dataset.pos] = !S.pos[b.dataset.pos]; save(); renderChips(); refresh(); }));
+  $("#lessonGrid").innerHTML = LESSONS.map(l=>
+    '<button class="chip" data-l="'+l.n+'" aria-pressed="'+S.lessons.includes(l.n)+'"><span class="dt">'+deDate(l.date)+'</span><span class="n">'+l.count+'</span></button>').join("");
+  $$("#lessonGrid .chip").forEach(b=> b.addEventListener("click", ()=>{
+    const n = +b.dataset.l;
+    S.lessons = S.lessons.includes(n) ? S.lessons.filter(x=>x!==n) : S.lessons.concat(n);
+    save(); renderChips(); refresh(); }));
+  $$("#dirChips .chip").forEach(b=> b.setAttribute("aria-pressed", String(S.dir === b.dataset.dir)));
+  $$("#flagChips .chip").forEach(b=> b.setAttribute("aria-pressed", String(!!S.flags[b.dataset.flag])));
+}
+function renderProgress(){
+  const d = deck();
+  const counts = [0,0,0,0,0];
+  d.forEach(c=> counts[P(c.i).b]++);
+  const tot = d.length || 1;
+  $("#bar").innerHTML = counts.map((n,i)=> n ? '<i style="width:'+(n/tot*100)+'%;background:'+BOXCOL[i]+'"></i>' : "").join("");
+  $("#legend").innerHTML = counts.map((n,i)=>
+    '<span><i class="dot" style="background:'+BOXCOL[i]+'"></i>'+BOXNAME[i]+' <b>'+n+'</b></span>').join("");
+  $("#sDeck").textContent = d.length;
+  $("#sDue").textContent = d.filter(c=> isDue(c.i)).length;
+  $("#sToday").textContent = S.todayCount || 0;
+  $("#sKnown").textContent = counts[4];
+}
+function refresh(){ buildQueue(); ai = 0; render(); renderProgress(); }
+
+$("#filterBtn").addEventListener("click", ()=>{
+  const p = $("#panel"); const open = p.hidden;
+  p.hidden = !open; $("#filterBtn").setAttribute("aria-expanded", String(open));
+});
+$$("#modes button").forEach(b=> b.addEventListener("click", ()=>{
+  S.mode = b.dataset.mode; save();
+  $$("#modes button").forEach(x=> x.setAttribute("aria-selected", String(x===b)));
+  browseN = 60; flipped = false; gAns = null; render(); renderProgress();
+}));
+$$("#dirChips .chip").forEach(b=> b.addEventListener("click", ()=>{ S.dir = b.dataset.dir; save(); renderChips(); refresh(); }));
+$$("#flagChips .chip").forEach(b=> b.addEventListener("click", ()=>{
+  S.flags[b.dataset.flag] = !S.flags[b.dataset.flag]; save(); renderChips(); refresh(); }));
+$$(".quicklinks [data-pick]").forEach(b=> b.addEventListener("click", ()=>{
+  const all = LESSONS.map(l=>l.n), p = b.dataset.pick;
+  if(p==="all") S.lessons = all;
+  else if(p==="none") S.lessons = [];
+  else if(p==="last5") S.lessons = all.slice(-5);
+  else if(p==="last1") S.lessons = all.slice(-1);
+  else if(p==="invert") S.lessons = all.filter(n=> !S.lessons.includes(n));
+  save(); renderChips(); refresh(); }));
+$("#shuffleBtn").addEventListener("click", ()=>{ buildQueue(); ai = 0; render(); });
+$("#resetBtn").addEventListener("click", ()=>{
+  if(!confirm("Lernfortschritt und Markierungen wirklich löschen?")) return;
+  S.prog = {}; S.star = {}; S.todayCount = 0; save(); refresh(); });
+
+function xferOpen(text, msg){
+  $("#xfer").hidden = false;
+  $("#xferBox").value = text;
+  $("#xferMsg").textContent = msg || "";
+  $("#xferBox").focus(); $("#xferBox").select();
+}
+$("#exportBtn").addEventListener("click", ()=>{
+  const n = Object.keys(S.prog).length;
+  xferOpen(JSON.stringify({v:1, prog:S.prog, star:S.star}),
+    n + " Wörter · Text kopieren und im anderen Browser einlesen");
+});
+$("#importBtn").addEventListener("click", ()=> xferOpen("", "Exportierten Text hier einfügen"));
+$("#xferClose").addEventListener("click", ()=>{ $("#xfer").hidden = true; });
+$("#xferApply").addEventListener("click", ()=>{
+  let d = null;
+  try{ d = JSON.parse($("#xferBox").value); }catch(e){}
+  if(!d || typeof d.prog !== "object" || !d.prog){ $("#xferMsg").textContent = "Text nicht lesbar."; return; }
+  let n = 0;
+  Object.keys(d.prog).forEach(k=>{
+    const inc = d.prog[k], have = S.prog[k];
+    if(!inc || typeof inc.b !== "number") return;
+    if(!have || (inc.seen||0) > (have.seen||0)){ S.prog[k] = inc; n++; }
+  });
+  if(d.star) Object.keys(d.star).forEach(k=>{ S.star[k] = 1; });
+  save(); refresh();
+  $("#xferMsg").textContent = n + " Wörter übernommen.";
+});
+
+document.addEventListener("keydown", e=>{
+  if(e.target && e.target.matches && e.target.matches("input, textarea")) return;
+  if(e.metaKey || e.ctrlKey || e.altKey) return;
+  const c = cur();
+  if(S.mode === "cards" && c){
+    if(e.code === "Space"){ e.preventDefault(); flip(); return; }
+    if(flipped && "123".indexOf(e.key) >= 0){ e.preventDefault(); grade(c.i, +e.key - 1); next(); return; }
+  }
+  if(S.mode === "gram"){
+    const gnx = $("#gnx");
+    if(e.key === "Enter" && gnx){ e.preventDefault(); gnx.click(); }
+    return;
+  }
+  if(S.mode === "choice" || S.mode === "artikel"){
+    const nx = $("#nx");
+    if(e.key === "Enter" && nx){ e.preventDefault(); nx.click(); return; }
+    const opts = $$("#opts .opt, #arts .opt");
+    if(opts.length && "1234".indexOf(e.key) >= 0 && !opts[0].disabled){ e.preventDefault();
+      if(opts[+e.key-1]) opts[+e.key-1].click(); return; }
+  }
+  if(e.key.toLowerCase() === "s" && c && S.mode !== "browse"){ e.preventDefault(); toggleStar(c.i); }
+  if(e.key === "ArrowRight" && S.mode !== "browse"){ e.preventDefault(); next(); }
+});
+window.addEventListener("resize", ()=>{ if(S.mode==="cards") sizeCard(); });
+
+renderChips(); buildQueue(); render(); renderProgress();
+})();
+</script>
+</body>
+</html>
